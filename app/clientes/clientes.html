@@ -1,0 +1,39 @@
+<center>
+
+	<h3>LISTA DE CLIENTES </h3>
+
+<table class=" mdl-cell--10-col mdl-cell--10-col-phone mdl-data-table mdl-js-data-table  mdl-shadow--2dp">
+	<thead>
+	<tr  >
+		<th class="mdl-data-table__cell--non-numeric">#</th>
+				<th>Nombre</th>
+		<th>sexo</th>
+		<th>Correo</th>
+		<th>Ultimo evento</th>
+		<th>Cumpleaños</th>
+		<th>Valoracion promedio</th>
+	</tr>
+	</thead>
+	<tbody ng-repeat="cliente in clientes">
+	<tr >
+
+		<td class="mdl-data-table__cell--non-numeric">{{$index+1}}</td>
+		<td>{{cliente.firstName}} {{cliente.lastName}}</td>
+		<td class="gender-icon">
+			<i ng-show="cliente.gender == 'female'" class="fa fa-female" aria-hidden="true"></i>
+			<i ng-show="cliente.gender == 'male'" class="fa fa-male" aria-hidden="true"></i></td>
+		<td>{{cliente.email}}</td>
+		<td>{{cliente.birthday}}</td>
+		<td>N/A</td>
+
+		<td class="icon">&#xf006&#xf006&#xf006&#xf006&#xf006</td>
+
+	</tr>
+	</tbody>
+</table>
+
+
+</center>
+
+
+

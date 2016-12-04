@@ -1,0 +1,235 @@
+
+<center><br>
+  <div>
+  <md-input-container class="mdl-cell mdl-cell--6-col mdl-cell--12-col-phone md-block">
+    <label>Nombre del evento</label>
+    <input required ng-model="newEvent.name"  md-no-asterisk>
+
+  </md-input-container>
+
+  <div class="image-file-container">
+    <input class="hidden" type='file' id="imgInp" />
+    <img ng-click="openFileInput()"  id="blah" src="{{newEvent.image}}" alt="your image" />
+  </div>
+
+  <div >
+    <div >
+      <md-input-container   class=" mdl-cell--2-col mdl-cell--12-col-phone md-block">
+        <input mdc-datetime-picker="" date="true" time="true" type="text" id="datetime1" placeholder="Fecha inicial"
+               min-date="currentDate" ng-model="newEventStart" class=" md-input">
+      </md-input-container>
+    </div>
+    <div >
+      <md-input-container class=" mdl-cell--2-col mdl-cell--12-col-phone md-block">
+        <input mdc-datetime-picker=""  ng-disabled="isStartDateSelected" date="true" time="true" type="text" id="datetime2"
+               placeholder="Fecha final" min-date="newEventStart" ng-model="newEventEnd" class=" md-input">
+      </md-input-container>
+    </div>
+  </div>
+
+  <md-input-container class="mdl-cell mdl-cell--6-col mdl-cell--12-col-phone md-block">
+    <label>Descripcion</label>
+    <textarea required ng-model="newEvent.eventDetails" md-maxlength="550" rows="3" md-select-on-focus></textarea>
+  </md-input-container>
+
+    <div  class=" music-select">
+      <md-input-container class="mdl-cell mdl-cell--6-col mdl-cell--12-col-phone" >
+        <label>Genero musical (max 3)</label>
+        <md-select class=" musicalSelec" ng-model="newEvent.musicGenres" multiple ng-change="allow3musicaGenres()">
+          <md-option class=" music-options" ng-value="music.name" ng-repeat="music in musics" ng-show="music.visible == true">{{music.name}}</md-option>
+        </md-select>
+      </md-input-container>
+    </div>
+  </div>
+<br>
+  <div>
+    <md-input-container class="mdl-cell mdl-cell--6-col mdl-cell--12-col-phone"  ng-show="citiesOne">
+      <label>Ciudad</label>
+      <md-select ng-model="newEvent.city" class="city-select">
+        <md-option><em>None</em></md-option>
+        <md-option ng-repeat="city in cities" selected ng-value="city.name">
+          {{city.name}}
+        </md-option>
+      </md-select>
+    </md-input-container>
+  </div>
+
+  <md-input-container class="mdl-cell mdl-cell--6-col mdl-cell--12-col-phone" ng-show="!citiesOne">
+    <label>Ciudad</label>
+    <md-select ng-model="newEvent.city" class="city-select">
+      <md-option><em>None</em></md-option>
+      <md-option ng-repeat="city in cities" ng-value="city.name">
+        {{city.name}}
+      </md-option>
+    </md-select>
+  </md-input-container>
+
+  <br>
+  <div class="doorman-select">
+    <md-input-container class="mdl-cell mdl-cell--6-col mdl-cell--12-col-phone" ng-show="myDoormansOne">
+      <label>Doorman</label>
+      <md-select ng-model="selectedDoorman1" multiple>
+        <md-option ng-value="myDoorman.$id" ng-repeat="myDoorman in myDoormans1" selected>{{myDoorman.name}}1</md-option>
+      </md-select>
+    </md-input-container>
+  </div>
+
+  <div class="doorman-select" >
+    <md-input-container class="mdl-cell mdl-cell--6-col mdl-cell--12-col-phone" ng-hide="myDoormansOne">
+      <label>Doorman</label>
+      <md-select ng-model="selectedDoorman" multiple>
+        <md-option ng-value="myDoorman.$id" ng-repeat="myDoorman in myDoormans" >{{myDoorman.name}}</md-option>
+      </md-select>
+    </md-input-container>
+  </div>
+
+<br>
+  <div>
+    <md-input-container class="mdl-cell mdl-cell--6-col mdl-cell--12-col-phone">
+      <label>Club</label>
+      <md-select ng-model="selectedClub">
+        <md-option><em>None</em></md-option>
+        <md-option ng-repeat="club in clubs" ng-value="club.$id">
+          {{club.name}}
+        </md-option>
+      </md-select>
+    </md-input-container>
+  </div>
+
+<br>
+  <div>
+    <md-input-container class="mdl-cell mdl-cell--6-col mdl-cell--12-col-phone">
+      <label>Edad Minima Mujeres</label>
+      <md-select ng-model="ageRangeFemale">
+        <md-option><em>None</em></md-option>
+        <md-option ng-value="ageRange.$value" ng-repeat="ageRange in ageRanges">+{{ageRange.$value}}</md-option>
+      </md-select>
+    </md-input-container>
+  </div>
+<br>
+  <div>
+    <md-input-container class="mdl-cell mdl-cell--6-col mdl-cell--12-col-phone">
+      <label>Edad Minima Hombres</label>
+      <md-select ng-model="ageRangeMale">
+        <md-option><em>None</em></md-option>
+        <md-option ng-value="ageRange.$value" ng-repeat="ageRange in ageRanges">+{{ageRange.$value}}</md-option>
+      </md-select>
+    </md-input-container>
+  </div>
+<br>
+  <md-input-container class="mdl-cell mdl-cell--6-col mdl-cell--12-col-phone">
+    <label>Ambiente (max 2)</label>
+    <md-select ng-model="eventEnvironment" multiple ng-change="allowUpTo2Ambiente()">
+      <md-option class="ambiente-option" ng-value="environment.name" ng-repeat="environment in environments">{{environment.name}}</md-option>
+    </md-select>
+  </md-input-container>
+<br><br>
+  <div>
+    <md-input-container class="mdl-cell mdl-cell--6-col mdl-cell--12-col-phone">
+      <label>Codigo de vestimenta</label>
+      <md-select ng-model="newEvent.clothing">
+        <md-option><em>None</em></md-option>
+        <md-option ng-value="close.$value" ng-repeat="close in clothings">{{close.$value}}</md-option>
+      </md-select>
+    </md-input-container>
+
+
+  </div>
+<br>
+  <md-input-container class="mdl-cell mdl-cell--6-col mdl-cell--12-col-phone md-block">
+    <label>Artista, dj, banda</label>
+    <input ng-model="newEvent.djs">
+  </md-input-container>
+
+  <md-input-container class="mdl-cell mdl-cell--6-col mdl-cell--12-col-phone  md-block">
+    <label>Termino horario gratis(minimo 00:00)</label>
+    <input mdc-datetime-picker="" ng-disabled="isEndDateSelected"  date="true" time="true" type="text" id="datetime3"
+           min-date="newEventStart" max-date="newEventEndPlus1" ng-model="newEvent.freemiumHour" class="md-input">
+  </md-input-container>
+
+  <div>
+    <md-input-container class="mdl-cell mdl-cell--6-col mdl-cell--12-col-phone ">
+      <label>Descuento Izinat luego de horario cumplido</label>
+      <md-select ng-model="newEvent.descOutHour">
+        <md-option><em>None</em></md-option>
+        <md-option ng-value="descOutHour" ng-repeat="descOutHour in descOutHours">{{descOutHour}}%</md-option>
+      </md-select>
+    </md-input-container>
+  </div>
+<br>
+  <md-input-container class="mdl-cell mdl-cell--6-col mdl-cell--12-col-phone md-block">
+    <label>Valor de ingreso</label>
+    <input type="number" ng-model="newEvent.entryValue" required md-no-asterisk>
+  </md-input-container>
+
+  <button ng-click="saveEvent()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Publicar</button>
+
+</center>
+
+
+<div class="view-container create-event">
+<div>
+  <md-progress-circular ng-disabled="isLoading" class="md-warn md-hue-3 loader-saving hidden" md-diameter="70">
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Button trigger modal -->
+<button type="button" id="openEventSavedModal" class="btn btn-primary btn-lg hidden" data-toggle="modal" data-target="#myModal">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">Evento guardado con exito.</h4>
+      </div>
+      <div class="modal-body">
+        <a href="{{shareWithFacebook}}" class="btn btn-default" target="_blank">Compartir con facebook</a>
+        <a href="{{shareWithTwiter}}" class="btn btn-default" target="_blank">Compartir con twitter</a>
+        <a href="{{newEvent.evenUrl}}" class="btn btn-default" target="_blank">Ver</a>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" ng-click="closeModal()" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+	
+</div>

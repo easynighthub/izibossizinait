@@ -1,0 +1,85 @@
+<center>
+	<br>
+
+
+	<h3> EVENTOS </h3>
+
+	<div class="filter-container">
+
+		<md-input-container class="mdl-cell mdl-cell--3-col mdl-cell--12-col-phone">
+			<label >buscar por nombre</label>
+			<input type="text" class="mdl-textfield__input" type="text" id="nombreEvento" ng-keyup="filterEventsByText()" ng-model="filterNameInput">
+
+		</md-input-container>
+
+
+				<div class="mdl-cell mdl-cell--3-col mdl-cell--12-col-phone searsh-date  searsh-item">
+			<md-datepicker class="searsh-date" ng-model="filterDateInput" ng-change="filterEventsByDate()"></md-datepicker>
+		</div>
+
+
+		<button  ng-click="seeAllEvents()" class="mdl-cell mdl-cell--3-col mdl-cell--12-col-phone mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"> Ver Todos</button>
+
+	</div>
+	<br>
+
+	<div class="event  mdl-shadow--2dp mdl-cell mdl-cell--3-col mdl-cell--12-col-phone"
+		 ng-repeat="event in events | orderBy:'date' " ng-click="goToEventDetails(event)">
+
+
+		<div class="col-sm-6 col-md-4">
+			<div class="thumbnail">
+				<center>
+					<div class="event-img"
+						 style="background: url('{{event.image}}') center center; background-size: cover;">
+						<div class="event-overlay">
+
+							<div class="event-date ">
+								<!--  <i class="material-icons " style="vertical-align: middle;">event</i>   -->
+								{{event.date | date:"EEEE d', 'MMMM " }}
+							</div>
+
+							<div class="event-name"><!-- {{event.name}} -->
+								<!-- <i class="material-icons" style="vertical-align: middle;">center_focus_strong</i> -->
+							<!--	GRATIS HASTA
+								{{event.freemiumHour | date:'shortTime'}}
+								-->
+							</div>
+
+
+						</div>
+
+
+					</div>
+					<div class=" mdl-color--white">
+						<div class="textoNombreEvento">
+							{{event.name}} <br>
+						</div>
+
+						<button class="mdl-cell mdl-cell--5-col mdl-cell--12-col-phone mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect "
+								ng-click="redirectToEvent($index)" >Informe</button>
+
+						<button class="mdl-cell mdl-cell--5-col mdl-cell--12-col-phone mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect "
+								ng-click="duplicateEvent($index)">Duplicar</button>
+
+					<!--	<div class="j2">
+							<i class="material-icons" style="vertical-align: middle;">music_note</i>
+							{{event.musicGenres}} <i class="material-icons" style="vertical-align: middle;">layers</i>
+							{{event.eventEnvironment}} <br>
+						</div>
+						<i class="material-icons" style="vertical-align: middle;">store</i>{{getClub(event.clubs)}}-->
+
+
+					</div>
+				</center>
+
+			</div>
+		</div>
+	</div>
+
+
+	</center>
+
+
+
+

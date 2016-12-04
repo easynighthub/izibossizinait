@@ -1,0 +1,81 @@
+<!--breadcrumbs-->
+  <div id="content-header">
+    <div id="breadcrumb"> <a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a><span> Facturacion</span></div>
+  </div>
+<!--End-breadcrumbs-->
+
+<div class="view-container facturacion">
+
+  <div>
+    <md-progress-circular ng-disabled="isLoading" class="md-warn md-hue-3 loader-saving hidden" md-diameter="70">
+  </div>
+
+  <div class="facturacion-header">
+    <h1>Facturacion</h1>
+    <md-input-container style="margin-right: 10px;">
+        <label>Año</label>
+        <md-select ng-model="year">
+          <md-option  value="2016" selected>2016</md-option>
+        </md-select>
+    </md-input-container>
+    <md-input-container style="margin-right: 10px;">
+      <label>Mes</label>
+      <md-select ng-model="month">
+        <md-option  value="1">Enero</md-option>
+        <md-option  value="2">Febrero</md-option>
+        <md-option  value="3">Marzo</md-option>
+        <md-option  value="4">Abril</md-option>
+        <md-option  value="5">Mayo</md-option>
+        <md-option  value="6">Junio</md-option>
+        <md-option  value="7">Julio</md-option>
+        <md-option  value="8">Agosto</md-option>
+        <md-option  value="9">Septiembre</md-option>
+        <md-option  value="10">Obtubre</md-option>
+        <md-option  value="11">Noviembre</md-option>
+        <md-option  value="12">Diciembre</md-option>
+      </md-select>
+    </md-input-container>
+    <button class="btn btn-default" ng-click="buscar()">Buscar</button>
+    <div ng-show="isFactura"  class="estado-button {{facturaEstado}}">Estado: {{facturaEstado}}</div>
+  </div>
+
+  <div ng-show="isFactura" class="detalle">
+
+    <div class="image-file-container">
+      <input class="hidden" type='file' id="imgInp" />
+      <img ng-click="openFileInput()"  id="blah" src="{{image}}" alt="your image" />
+      <button ng-click="uploadImage()" id="btnSaveImage" class="btn btn-default hidden">Guardar imagen</button>
+    </div>
+
+    <div class="divider"></div>
+    <div class="resume">
+      <div class="asistencia">
+        <p class="value">{{asistencias}}</p>
+        <p class="title">Asistencias</p>
+      </div>
+      <div class="eventos">
+        <p class="value">{{facturaDetail.eventos}}</p>
+        <p class="title">Eventos</p>
+        </div>
+      <div class="valor">
+        <p class="value">{{facturaDetail.valor}}</p>
+        <p class="title">Valor</p>
+      </div>
+    </div>
+
+    <h1>Detalle</h1>
+    <table  class="table">
+      <tr>
+        <th>Dia</th>
+        <th>Nombre</th>
+        <th>Asistencia</th>
+      </tr>
+      <tr ng-repeat="event in events">
+        <td>{{event.date  | date:'medium'}}</td>
+        <td>{{event.name}}</td>
+        <td>{{event.asistencias}}</td>
+      </tr>
+    </table>
+  </div>
+
+</div>

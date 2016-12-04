@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>izinait | Ingresar </title>
+
+    <meta name="description" content="">
+
+    <!-- TOMAR EN CUENTAAA PARA COMPARTIR LA PAGINA CON INFORMACION -->
+    <meta property="og:url"                content="www.business.izinait.com" />
+    <meta property="og:type"               content="article" />
+    <meta property="og:title"              content="PANEL ADMINISTRATIVO #izinaitCL" />
+    <meta property="og:description"        content="Se espontáneo. Descubre los mejores clubs y eventos en tu ciudad desde la palma de tu mano.
+Sin impresiones, Sin filas, Solo muestra tu Smartphone!" />
+    <meta property="og:image"              content="app/img/fondomanosarriba.jpg"/>
+    <meta property="fb:app_id"              content="1138664439526562"/>
+
+
+
+
+
+    <!-- Material Design Lite CSS -->
+    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.indigo-pink.min.css">
+    <!-- Font Awesome CSS -->
+
+
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.blue_grey-pink.min.css" />
+
+    <script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+
+    <link rel="icon" href="http://izinait.com/wp-content/uploads/2016/09/web_hi_res_512.png" type="image/x-icon"/>
+    <link rel="shortcut icon" href="http://izinait.com/wp-content/uploads/2016/09/web_hi_res_512.png" type="image/x-icon"/>
+</head>
+<body>
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header " >
+        <div class="mdl-layout__header-row">
+            <!-- Title -->
+            <span class="mdl-layout-title">izinait | Business</span>
+            <!-- Add spacer, to align navigation to the right -->
+            <div class="mdl-layout-spacer">     </div>
+            <!-- Navigation -->
+            <nav class="mdl-navigation mdl-layout--large-screen-only">
+               <!-- <a class="mdl-navigation__link" href="">
+                    <i class="material-icons" style="vertical-align: middle;">android</i>   Descargar</a>
+                <!--    <a class="mdl-navigation__link" href="">Link</a>
+                    <a class="mdl-navigation__link" href="">Link</a>
+                    <a class="mdl-navigation__link" href="">Link</a> -->
+            </nav>
+        </div>
+    </header>
+
+    <div  class="mdl-layout__drawer">
+        <span class="mdl-layout-title">Menú</span>
+        <nav class="mdl-navigation">
+            <a class="mdl-navigation__link" href="http://www.izinait.com">
+                <i class="material-icons">web</i> Pagina Oficial</a>
+         <!--   <a class="mdl-navigation__link" href="http://www.business.izinait.com">
+                <i class="material-icons">business</i>  izinait Bussines</a>
+            <!--  <a class="mdl-navigation__link" href="">
+                  <i class="material-icons">info</i> Terminos & Condiciones</a>
+              <a class="mdl-navigation__link" href="http://www.izinait.com">
+              -->
+
+            <a class="mdl-navigation__link" href="mailto:contacto@izinait.com">
+                <i class="material-icons">contact_mail</i> Contacto</a>
+
+     <!--       <a class="mdl-navigation__link" href="https://play.google.com/store/apps/details?id=com.easynight&hl=es">
+                <i class="material-icons" style="vertical-align: middle;">android</i>Descargar</a> -->
+        </nav>
+    </div>
+    <main class="mdl-layout__content mdl-color--blue-grey-50">
+        <br><br>
+        <center>
+            <div class="mdl-cell mdl-cell--2-col mdl-cell--2-col-phone">
+                <img src="app/img/logo.png" style="width: 70%;height: auto"> </div>
+            <br><br><br>
+
+            <script type="text/javascript">
+                function mostrarBarraCargando(){
+                    document.getElementById('BarraCargando').style.display = 'block';
+                    document.getElementById('sign-in-facebook').style.display = 'none'
+
+                }
+            </script>
+
+            <form action="#">
+            <div class="mdl-textfield mdl-js-textfield">
+                <input    type="email" class="mdl-textfield__input" type="text" id="correo">
+                <label class="mdl-textfield__label" for="correo">Correo Electronico</label>
+            </div>
+        </form>
+
+            <form action="#">
+                <div class="mdl-textfield mdl-js-textfield">
+                    <input  type="password" class="mdl-textfield__input" type="text" id="password">
+                    <label class="mdl-textfield__label" for="password">Password</label>
+                </div>
+            </form>
+
+            <button  id="signIn" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">INGRESAR</button>
+
+
+
+            <br><br>
+     <!--       Al registrarte aceptas los  <a class="mdl-color-text--cyan" href="http://www.izinait.com/terms">Términos y condiciones </a> de uso y las Politicas de privacidad de <a class="mdl-color-text--cyan" href="http://www.izinait.com/">izinait  </a>
+            <br><br> -->
+            <div class="fb-like" data-href="https://www.facebook.com/IzinaitCL" data-layout="box_count" data-action="like" data-size="large" data-show-faces="false" data-share="false"></div>
+        </center>
+    </main>
+
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/3.6.1/firebase.js"></script>
+<script src="index.js"></script>
+
+<script>
+    window.fbAsyncInit = function() {
+        FB.init({
+            appId      : '1138664439526562',
+            xfbml      : true,
+            version    : 'v2.8'
+        });
+        FB.AppEvents.logPageView();
+    };
+
+    (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/es_LA/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyAN4CNEsxW_EZ5fEQZIi5M2T7DMcpwYa-Y",
+        authDomain: "easynight.firebaseapp.com",
+        databaseURL: "https://easynight.firebaseio.com",
+        storageBucket: "project-8746388695669481444.appspot.com",
+        messagingSenderId: "1041818414581"
+    };
+    firebase.initializeApp(config);
+</script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<center>
+
+	<a class="mdl-cell mdl-cell--3-col mdl-cell--3-col-phone
+      mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" href=javascript:history.back(1)>
+		<i  class="material-icons " style="vertical-align: middle;">keyboard_backspace</i> VOLVER
+	</a>
+</center>
+
+<center>
+	<h6>{{event.name}}</h6>
+	<div class="mdl-cell mdl-cell--12-col mdl-cell--12-col-phone">
+		<!--<h4>{{event.name}}</h4> -->
+
+		<div class="mdl-cell mdl-cell--6-col mdl-cell--12-col-phone">
+		<img
+				style=" width:100%; height: auto;" src="{{event.image}}">
+		<br>
+		</div>
+
+
+		<div class="mdl-cell mdl-color--white  mdl-cell--10-col mdl-cell--12-col-phone mdl-shadow--2dp" >
+
+			<div class="mdl-cell mdl-color--white  mdl-cell--6-col mdl-cell--12-col-phone" >
+				<br>
+				<i  class="material-icons " style="vertical-align: middle;">alarm</i>
+				{{event.date | date : 'mediumDate'}}
+				<br>
+				{{event.fromHour | date : 'shortTime'}} A {{event.toHour | date : 'shortTime'}}
+				<br>
+
+			</div>
+
+
+				<div class="mdl-cell mdl-color--white  mdl-cell--6-col mdl-cell--12-col-phone" >
+					<i  class="material-icons " style="vertical-align: middle;">music_note</i>
+					{{event.musicGenres}}
+					<br>
+				</div>
+				<div class="mdl-cell mdl-color--white  mdl-cell--6-col mdl-cell--12-col-phone" >
+					<i  class="material-icons " style="vertical-align: middle;">accessibility</i>
+					{{event.clothing}}
+
+					<br>
+				</div>
+				<div class="mdl-cell mdl-color--white  mdl-cell--6-col mdl-cell--12-col-phone" >
+					<i  class="material-icons " style="vertical-align: middle;">people</i>
+					{{event.ageRange}}
+					<br>
+				</div>
+
+
+			</div>
+
+
+
+		</div>
+
+	<table class=" mdl-cell--10-col mdl-cell--10-col-phone mdl-data-table mdl-js-data-table  mdl-shadow--2dp">
+		<thead>
+		<tr  >
+			<th class="mdl-data-table__cell--non-numeric">#</th>
+			<th>Nombre</th>
+			<th>Sexo</th>
+			<th>Correo</th>
+			<th>Hora de Ingreso</th>
+			<th>Primera vez</th>
+		</tr>
+		</thead>
+		<tbody ng-repeat="user in eventUsers">
+		<tr >
+
+			<td>{{$index+1}}</td>
+			<td>{{user.name}}</td>
+			<td>{{user.gender}}</td>
+			<td>{{user.email}}</td>
+			<td>{{user.dateAttendance | date:'medium'}}</td>
+			<td>{{user.isFirstTime}}</td>
+
+		</tr>
+		</tbody>
+	</table>
+
+	<div class="mdl-cell mdl-cell--10-col mdl-cell--10-col-phone charts-custom">
+		<table>
+		<tr>
+			<th>
+		<div class="chart-custom " id="bySex"></div>
+			</th><th>
+		<div class="chart-custom "  id="byfirstTime"></div>
+		</th><th>
+		<div class="chart-custom "  id="byDesc"></div>
+			</th>
+		</tr>
+		</table>
+	</div>
+
+
+
+</center>
+
+
+
+
