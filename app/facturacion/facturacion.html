@@ -1,42 +1,38 @@
-<!--breadcrumbs-->
-  <div id="content-header">
-    <div id="breadcrumb"> <a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a><span> Facturacion</span></div>
-  </div>
-<!--End-breadcrumbs-->
+<center>
+  <h6>Facturación</h6>
+<div>
+  <md-input-container class="mdl-cell mdl-cell--2-col mdl-cell--12-col-phone" style="margin-right: 10px;">
+    <label>Año</label>
+    <md-select ng-model="year">
+      <md-option  value="2016" selected>2016</md-option>
+    </md-select>
+  </md-input-container>
+  <md-input-container class="mdl-cell mdl-cell--2-col mdl-cell--12-col-phone" style="margin-right: 10px;">
+    <label>Mes</label>
+    <md-select ng-model="month">
+      <md-option  value="1">Enero</md-option>
+      <md-option  value="2">Febrero</md-option>
+      <md-option  value="3">Marzo</md-option>
+      <md-option  value="4">Abril</md-option>
+      <md-option  value="5">Mayo</md-option>
+      <md-option  value="6">Junio</md-option>
+      <md-option  value="7">Julio</md-option>
+      <md-option  value="8">Agosto</md-option>
+      <md-option  value="9">Septiembre</md-option>
+      <md-option  value="10">Obtubre</md-option>
+      <md-option  value="11">Noviembre</md-option>
+      <md-option  value="12">Diciembre</md-option>
+    </md-select>
+  </md-input-container>
 
-<div class="view-container facturacion">
+  <button class="mdl-cell mdl-cell--2-col mdl-cell--12-col-phone mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" ng-click="buscar()">Buscar</button>
+</div>
 
   <div>
-    <md-progress-circular ng-disabled="isLoading" class="md-warn md-hue-3 loader-saving hidden" md-diameter="70">
-  </div>
+    <md-button ng-show="isFactura" ng-disabled="true" class="estado-button {{facturaEstado}}">
+      Estado: {{facturaEstado}}
+    </md-button>
 
-  <div class="facturacion-header">
-    <h1>Facturacion</h1>
-    <md-input-container style="margin-right: 10px;">
-        <label>Año</label>
-        <md-select ng-model="year">
-          <md-option  value="2016" selected>2016</md-option>
-        </md-select>
-    </md-input-container>
-    <md-input-container style="margin-right: 10px;">
-      <label>Mes</label>
-      <md-select ng-model="month">
-        <md-option  value="1">Enero</md-option>
-        <md-option  value="2">Febrero</md-option>
-        <md-option  value="3">Marzo</md-option>
-        <md-option  value="4">Abril</md-option>
-        <md-option  value="5">Mayo</md-option>
-        <md-option  value="6">Junio</md-option>
-        <md-option  value="7">Julio</md-option>
-        <md-option  value="8">Agosto</md-option>
-        <md-option  value="9">Septiembre</md-option>
-        <md-option  value="10">Obtubre</md-option>
-        <md-option  value="11">Noviembre</md-option>
-        <md-option  value="12">Diciembre</md-option>
-      </md-select>
-    </md-input-container>
-    <button class="btn btn-default" ng-click="buscar()">Buscar</button>
-    <div ng-show="isFactura"  class="estado-button {{facturaEstado}}">Estado: {{facturaEstado}}</div>
   </div>
 
   <div ng-show="isFactura" class="detalle">
@@ -47,35 +43,46 @@
       <button ng-click="uploadImage()" id="btnSaveImage" class="btn btn-default hidden">Guardar imagen</button>
     </div>
 
-    <div class="divider"></div>
-    <div class="resume">
-      <div class="asistencia">
-        <p class="value">{{asistencias}}</p>
-        <p class="title">Asistencias</p>
-      </div>
-      <div class="eventos">
-        <p class="value">{{facturaDetail.eventos}}</p>
-        <p class="title">Eventos</p>
-        </div>
-      <div class="valor">
-        <p class="value">{{facturaDetail.valor}}</p>
-        <p class="title">Valor</p>
-      </div>
-    </div>
-
-    <h1>Detalle</h1>
-    <table  class="table">
+<br>
+    Tabla Resumen del Mes
+    <table class="mdl-cell  mdl-cell--6-col mdl-cell--12-col-phone mdl-data-table mdl-js-data-table  mdl-shadow--2dp">
+      <thead>
       <tr>
-        <th>Dia</th>
-        <th>Nombre</th>
-        <th>Asistencia</th>
+        <th >ASISTENCIAS</th>
+        <th>EVENTOS</th>
+        <th>TOTAL</th>
       </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td >{{asistencias}}</td>
+        <td>{{facturaDetail.eventos}}</td>
+        <td>{{facturaDetail.valor}}</td>
+      </tr>
+
+
+      </tbody>
+    </table>
+
+ Detalle
+    <table class="mdl-cell  mdl-cell--6-col mdl-cell--12-col-phone mdl-data-table mdl-js-data-table  mdl-shadow--2dp">
+      <thead>
+      <tr>
+        <th >DIA</th>
+        <th>NOMBRE</th>
+        <th>ASISTENCIAS</th>
+      </tr>
+      </thead>
+      <tbody>
       <tr ng-repeat="event in events">
         <td>{{event.date  | date:'medium'}}</td>
         <td>{{event.name}}</td>
         <td>{{event.asistencias}}</td>
       </tr>
-    </table>
-  </div>
 
-</div>
+
+      </tbody>
+    </table>
+    </div>
+
+</center>
