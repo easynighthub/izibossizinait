@@ -23,6 +23,7 @@ angular.module('myApp.facturacion', ['ngRoute'])
 	$scope.image = 'http://placehold.it/350x150';
 	$scope.isLoading = true;
 	var facturaId = '';
+		$('.modulo').text("Facturación");
 
 	if (!adminData) {
 		if (window.currenUser) {

@@ -13,6 +13,8 @@ angular.module('myApp.clientes', ['ngRoute'])
 
 	$scope.clientes = [];
 
+	$('.modulo').text('Clientes');
+
 	var getClients = function() {
 		angular.forEach(Object.keys(window.adminData.clients), function(client){
 			var clientesRequest = $firebaseObject(firebase.database().ref('/users/' + client));

@@ -23,6 +23,7 @@ angular.module('myApp.crearEventos', ['ngRoute'])
 		$scope.isEndDateSelected  = true;
 		$scope.descOutHours = [];
 		var doormanIndex = 0;
+		$('.modulo').text("Crear "+ "Evento");
 
 		for (var i = 0; i < 100; i++) {
 			$scope.descOutHours.push(i);
@@ -104,6 +105,7 @@ angular.module('myApp.crearEventos', ['ngRoute'])
 			  adminData.$loaded().then(function(){
 			    window.adminData = adminData;
 			  	$('.user-header .text.user').text(window.adminData.name);
+
 			  	getClubs();
 			  	getCities();
 			  	gerDoormans();

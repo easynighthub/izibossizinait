@@ -22,9 +22,11 @@ angular.module('myApp.eventos', ['ngRoute'])
 		    window.adminData = adminData;
 		    $rootScope.adminData = adminData;
 			  $('.user-header .text.user').text(window.adminData.name);
+			  $('.modulo').text("Eventos");
 	  });
 	}else {
 		$('.user-header .text.user').text(window.adminData.name);
+		$('.modulo').text("Eventos");
 	}
 
 	var ref1 = firebase.database().ref('/events').orderByChild('admin').equalTo(window.currenUser.uid);

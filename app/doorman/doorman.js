@@ -14,6 +14,8 @@ angular.module('myApp.doorman', ['ngRoute'])
 
 	$scope.doormans = [];
 
+	 $('.modulo').text('Doormans');
+
 	var mainFunction = function () {
 		var ref1 = firebase.database().ref('/doormans');
 		var doormansRequest = $firebaseArray(ref1);

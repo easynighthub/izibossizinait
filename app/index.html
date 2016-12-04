@@ -45,13 +45,21 @@
     <header class="mdl-layout__header">
       <div class="mdl-layout__header-row">
         <!-- Title -->
-        <span class="mdl-layout-title">izinait | Business</span>
+        <span class="mdl-layout-title">izinait | <b class="modulo">  </b></span>
         <!-- Add spacer, to align navigation to the right -->
         <div class="mdl-layout-spacer"> </div>
         <!-- Navigation. We hide it in small screens. -->
         <nav class="mdl-navigation mdl-layout--large-screen-only">
           <a  class="mdl-navigation__link" href="#!/crear-eventos">
             <i class="material-icons" style="vertical-align: middle;">create</i>   Crear Evento</a>
+
+          <a  class="mdl-navigation__link" href="#!/eventos-pasados">
+            <i class="material-icons" style="vertical-align: middle;">event_note</i>   Eventos Pasados</a>
+
+          <a  class="mdl-navigation__link" href="#!/eventos-futuros">
+            <i class="material-icons" style="vertical-align: middle;">event_available</i>   Eventos Futuros</a>
+
+
           <a id="sign-out-button2" class="mdl-navigation__link" href="">
             <i class="material-icons" style="vertical-align: middle;">power_settings_new</i>   Salir</a>
 
@@ -62,11 +70,21 @@
     <div class="mdl-layout__drawer">
       <span class="mdl-layout-title">MENÚ</span>
       <nav class="mdl-navigation">
-        <a class="mdl-navigation__link" href="#!/eventos">Eventos</a>
-        <a class="mdl-navigation__link" href="#!/clientes">clientes</a>
-        <a class="mdl-navigation__link" href="#!/doorman">doormans </a>
-          <a class="mdl-navigation__link" href="#!/facturacion">facturacion</a>
-        <a  id="sign-out-button" class="mdl-navigation__link" >Salir</a>
+        <a class="mdl-navigation__link" href="#!/eventos">
+          <i class="material-icons" style="vertical-align: middle;">event</i>
+          Eventos</a>
+        <a class="mdl-navigation__link" href="#!/clientes">
+          <i class="material-icons" style="vertical-align: middle;">person</i>
+          clientes</a>
+        <a class="mdl-navigation__link" href="#!/doorman">
+          <i class="material-icons" style="vertical-align: middle;">phonelink_lock</i>
+          doormans </a>
+          <a class="mdl-navigation__link" href="#!/facturacion">
+            <i class="material-icons" style="vertical-align: middle;">payment</i>
+            facturacion</a>
+        <a  id="sign-out-button" class="mdl-navigation__link" >
+          <i class="material-icons" style="vertical-align: middle;">power_settings_new</i>   Salir</a>
+
       </nav>
     </div>
     <main class="mdl-layout__content">
@@ -136,6 +154,9 @@
   <script src="evento/evento.js"></script>
 
   <script src="crearEventos/crearEvento.js"></script>
+  <script src="eventosFuturos/eventosFuturos.js"></script>
+  <script src="eventosFuturos/eventosFuturos.js"></script>
+  <script src="eventosPasados/eventosPasados.js"></script>
 
   <script src="components/version/version.js"></script>
   <script src="components/version/version-directive.js"></script>

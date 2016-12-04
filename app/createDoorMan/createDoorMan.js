@@ -10,6 +10,8 @@ angular.module('myApp.createDoorMan', ['ngRoute'])
 }])
 
 .controller('CreateDoorManCtrl', ['$scope', '$rootScope', function($scope, $rootScope) {
+
+
   
 	function validateEmail(email) {
     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -17,6 +19,8 @@ angular.module('myApp.createDoorMan', ['ngRoute'])
 	}
 
   var userId = window.currenUser.uid || firebase.auth().currentUser.uid;
+
+    $('.modulo').text('Crear Doorman');
 
   var addDoormanToAdmin = function(doormanId) {
     firebase.database().ref('admins/'+ userId + '/doormans/' + doormanId).set(true).then(

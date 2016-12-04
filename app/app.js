@@ -16,6 +16,8 @@ angular.module('myApp', [
   'myApp.eventos',
   'myApp.evento',
   'myApp.crearEventos',
+  'myApp.eventosFuturos',
+  'myApp.eventosPasados',
   'myApp.version'
 ]).
 config(['$locationProvider', '$routeProvider',
