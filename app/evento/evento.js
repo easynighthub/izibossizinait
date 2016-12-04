@@ -24,6 +24,7 @@ angular.module('myApp.evento', ['ngRoute'])
 	var isNotFirstTime = 0;
 	var descActive = 0;
 	var descNotActive = 0;
+        $('.modulo').text('Informe Evento');
 
 	var loadCharts = function() {
       google.charts.load('current', {'packages':['corechart']});
@@ -37,9 +38,7 @@ angular.module('myApp.evento', ['ngRoute'])
           ['Mujeres', woman],
           ['No definido', sex]
         ]);
-        var options = {'title':'Asistencia por sexo',
-                       'width':400,
-                       'height':300};
+        var options = {'title':'Asistencia por sexo'};
         var chart = new google.visualization.PieChart(document.getElementById('bySex'));
         chart.draw(data, options);
       }
@@ -55,9 +54,8 @@ angular.module('myApp.evento', ['ngRoute'])
           ['Es primera vez', ifFirstTime],
           ['No es primera vez', isNotFirstTime]
         ]);
-        var options = {'title':'Asistencia por si es primera vez',
-                       'width':400,
-                       'height':300};
+        var options = {'title':'Asistencia por si es primera vez'};
+
         var chart = new google.visualization.PieChart(document.getElementById('byfirstTime'));
         chart.draw(data, options);
       }
@@ -73,9 +71,7 @@ angular.module('myApp.evento', ['ngRoute'])
           ['Gratis', descActive],
           ['Con descuento', descNotActive]
         ]);
-        var options = {'title':'Asistencia por los que entraron en horario gratis',
-                       'width':400,
-                       'height':300};
+        var options = {'title':'Asistencia por los que entraron en horario gratis'};
         var chart = new google.visualization.PieChart(document.getElementById('byDesc'));
         chart.draw(data, options);
       }
