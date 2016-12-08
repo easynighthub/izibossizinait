@@ -56,6 +56,16 @@
 					<div class=" mdl-color--white">
 						<div class="textoNombreEvento">
 							{{event.name}} <br>
+							<i ng-show="event.visible == false" aria-hidden="true">
+								<button class="mdl-button mdl-js-button mdl-button--primary">
+									Pendiente
+								</button>
+								</i>
+							<i ng-show="event.visible == true"  aria-hidden="true">
+								<button class="mdl-button mdl-js-button mdl-button--accent">
+									Habilitado
+								</button>
+								</i>
 						</div>
 
 						<button class="mdl-cell mdl-cell--5-col mdl-cell--12-col-phone mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect "
