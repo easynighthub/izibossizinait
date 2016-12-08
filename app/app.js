@@ -57,7 +57,7 @@ config(['$locationProvider', '$routeProvider',
     signOutButton.addEventListener('click', function() {
        firebase.auth().signOut();
 
-     window.location.href = '/pruebadoorman';
+     window.location.href = '/angularjsproyectiziboss';
      });
 
 }]);
