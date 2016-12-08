@@ -46,18 +46,18 @@ config(['$locationProvider', '$routeProvider',
 
 
 
- // var signOutButton = document.getElementById('sign-out-button');
- //   var signOutButton2 = document.getElementById('sign-out-button2');
-    //
-    // signOutButton2.addEventListener('click', function() {
-    //  firebase.auth().signOut();
+  var signOutButton = document.getElementById('sign-out-button');
+   var signOutButton2 = document.getElementById('sign-out-button2');
 
-    //   window.location.href = '/angularjsproyectiziboss';
-    //  });
-    //signOutButton.addEventListener('click', function() {
-    //   firebase.auth().signOut();
-    //
-    //  window.location.href = '/pruebadoorman';
-    // });
+     signOutButton2.addEventListener('click', function() {
+      firebase.auth().signOut();
+
+       window.location.href = '/angularjsproyectiziboss';
+     });
+    signOutButton.addEventListener('click', function() {
+       firebase.auth().signOut();
+
+     window.location.href = '/pruebadoorman';
+     });
 
 }]);

@@ -10,6 +10,10 @@
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
   <link rel="stylesheet" href="app.css">
 
 
@@ -17,7 +21,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link href="https://fonts.googleapis.com/css?family=Lobster|Slabo+27px|Shrikhand|Open+Sans" rel="stylesheet">
   <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.blue_grey-pink.min.css" />
-  <script src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+
 
 
   <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
@@ -55,7 +59,7 @@
 </head>
 <body>
 
-  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header demo-layout mdl-layout--fixed-drawer">
+  <div class="demo-layout  mdl-layout mdl-js-layout mdl-layout--fixed-header  mdl-layout--fixed-drawer">
     <header class="demo-header mdl-layout__header">
       <div class="mdl-layout__header-row">
         <!-- Title -->
@@ -81,30 +85,58 @@
 
       </div>
     </header>
-    <div class="mdl-layout__drawer">
-      <span class="mdl-layout-title">MENÚ</span>
-      <nav class="mdl-navigation">
+    <div class="mdl-layout__drawer demo-drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50 ">
+
+      <header class="demo-drawer-header">
+        <img src="img/logo.png" class="demo-avatar">
+        <div class="user-header demo-avatar-dropdown">
+          &nbsp; <span class="text user"> </span>
+          <div class="mdl-layout-spacer"></div>
+          <button id="accbtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+            <i class="material-icons" role="presentation">arrow_drop_down</i>
+            <span class="visuallyhidden">Accounts</span>
+          </button>
+          <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="accbtn">
+            <li class="mdl-menu__item" href="#!/crear-eventos">
+              <i style="vertical-align: middle;" class="material-icons">create</i> Crear Evento</li>
+            <li class="mdl-menu__item" href="#!/eventos-pasados">
+              <i style="vertical-align: middle;" class="material-icons">event_note</i>Eventos Futuros</li>
+            <li class="mdl-menu__item" href="#!/eventos-futuros">
+              <i style="vertical-align: middle;" class="material-icons">event_available</i>Eventos Pasados</li>
+            <li class="mdl-menu__item" href="#!/configuracion">
+              <i style="vertical-align: middle;" class="material-icons">settings</i>Configuracion</li>
+          </ul>
+        </div>
+      </header>
+
+    <!--  <span class="mdl-layout-title">MENÚ</span> -->
+
+      <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
         <a class="mdl-navigation__link" href="#!/eventos">
-          <i class="material-icons" style="vertical-align: middle;">event</i>
+          <i role="presentation" class="material-icons" style="vertical-align: middle;">event</i>
           Eventos</a>
         <a class="mdl-navigation__link" href="#!/clientes">
-          <i class="material-icons" style="vertical-align: middle;">person</i>
+          <i role="presentation" class="material-icons" style="vertical-align: middle;">person</i>
           clientes</a>
         <a class="mdl-navigation__link" href="#!/doorman">
-          <i class="material-icons" style="vertical-align: middle;">phonelink_lock</i>
+          <i role="presentation" class="material-icons" style="vertical-align: middle;">phonelink_lock</i>
           doormans </a>
           <a class="mdl-navigation__link" href="#!/facturacion">
-            <i class="material-icons" style="vertical-align: middle;">payment</i>
+            <i role="presentation" class="material-icons" style="vertical-align: middle;">payment</i>
             facturacion</a>
         <a  id="sign-out-button" class="mdl-navigation__link" >
           <i class="material-icons" style="vertical-align: middle;">power_settings_new</i>   Salir</a>
 
       </nav>
+
+
     </div>
     <main class="mdl-layout__content">
       <div class="page-content">
 
-        <div ng-view>  </div>
+        <div ng-view>
+
+        </div>
 <center>
 
   <div class="user-header">
@@ -131,7 +163,9 @@
     firebase.initializeApp(config);
   </script>
 
+  <script src="https://code.getmdl.io/1.2.1/material.min.js"></script>
 
+  <a href="http://user.izinait.com/" target="_blank" id="view-source" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored mdl-color-text--white">ir a Izinait</a>
   <!-- Angular Material Library -->    <!-- Angular Material requires Angular.js Libraries -->
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>

@@ -25,15 +25,15 @@
 
 	<div class="mdl-grid">
 
-	<div class="event  mdl-shadow--2dp mdl-cell mdl-cell--3-col mdl-cell--12-col-phone"
+	<div class="event  mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--12-col-phone"
 		 ng-repeat="event in events | orderBy:'date' " ng-click="goToEventDetails(event)">
 
 
-		<div class="col-sm-6 col-md-4">
+		<div class="">
 			<div class="thumbnail">
 				<center>
 					<div class="event-img"
-						 style="background: url('{{event.image}}') center center; background-size: cover;">
+						 style="background: url('{{event.image}}')  center center; background-size: cover; ">
 						<div class="event-overlay">
 
 							<div class="event-date ">
