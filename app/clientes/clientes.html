@@ -5,6 +5,7 @@
 	<thead>
 	<tr  >
 		<th class="mdl-data-table__cell--non-numeric">#</th>
+		<th>Foto</th>
 				<th>Nombre</th>
 		<th>sexo</th>
 		<th>Correo</th>
@@ -17,16 +18,19 @@
 	<tr >
 
 		<td class="mdl-data-table__cell--non-numeric">{{$index+1}}</td>
+
+		<td><img class="mdl-list__item-avatar" src="{{cliente.picture}}"></td>
+
 		<td>{{cliente.firstName}} {{cliente.lastName}}</td>
 		<td class="gender-icon">
-			<i ng-show="cliente.gender == 'female'" class="fa fa-female" aria-hidden="true"></i>
-			<i ng-show="cliente.gender == 'male'" class="fa fa-male" aria-hidden="true"></i></td>
+			<i ng-show="cliente.gender == 'female'" aria-hidden="true"> Mujer</i>
+			<i ng-show="cliente.gender == 'male'"  aria-hidden="true"> Hombre</i></td>
 		<td>{{cliente.email}}</td>
+
 		<td>N/A</td>
 		<td>{{cliente.birthday}}</td>
 
-
-		<td class="icon">&#xf006&#xf006&#xf006&#xf006&#xf006</td>
+		<td> <i class="material-icons ">star</i><i class="material-icons ">star</i><i class="material-icons ">star</i><i class="material-icons ">star</i><i class="material-icons ">star</i> </td>
 
 	</tr>
 	</tbody>
