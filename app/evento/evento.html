@@ -78,11 +78,21 @@
 				<tr >
 
 					<td>{{$index+1}}</td>
-					<td>{{user.name}}</td>
-					<td>{{user.gender}}</td>
+					<td>{{user.displayName}}</td>
+					<td>
+						<i ng-show="user.gender == 'female'" aria-hidden="true"> Mujer</i>
+						<i ng-show="user.gender == 'male'"  aria-hidden="true"> Hombre</i>
+					</td>
 					<td>{{user.email}}</td>
 					<td>{{user.dateAttendance | date:'medium'}}</td>
-					<td>{{user.isFirstTime}}</td>
+					<td>
+						<i ng-show="user.isFirstTime == false" aria-hidden="true" class="material-icons">clear
+							</i>
+						<i ng-show="user.isFirstTime == true" aria-hidden="true" class="material-icons">done
+						</i>
+
+
+					</td>
 
 				</tr>
 				</tbody>
