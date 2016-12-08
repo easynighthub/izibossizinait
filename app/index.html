@@ -10,10 +10,6 @@
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-
   <link rel="stylesheet" href="app.css">
 
 
@@ -21,7 +17,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link href="https://fonts.googleapis.com/css?family=Lobster|Slabo+27px|Shrikhand|Open+Sans" rel="stylesheet">
   <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.blue_grey-pink.min.css" />
-
+  <script src="https://code.getmdl.io/1.2.1/material.min.js"></script>
 
 
   <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
@@ -53,7 +49,6 @@
       z-index: 900;
     }
   </style>
-
 
 
 
@@ -92,28 +87,26 @@
         <img src="img/logo.png" class="demo-avatar">
       </center>
         <div class="user-header demo-avatar-dropdown">
-          <center>
-          &nbsp; <span class="text user"> </span>
-            </center>
+         &nbsp; <span class="text user"> </span>
           <div class="mdl-layout-spacer"></div>
           <button id="accbtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
             <i class="material-icons" role="presentation">arrow_drop_down</i>
             <span class="visuallyhidden">Accounts</span>
           </button>
           <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="accbtn">
-            <a class="mdl-menu__item" href="#!/crear-eventos">
-              <i style="vertical-align: middle;" class="material-icons">create</i> Crear Evento</a>
-            <a class="mdl-menu__item" href="#!/eventos-pasados">
-              <i style="vertical-align: middle;" class="material-icons">event_note</i>Eventos Futuros</a>
-            <a class="mdl-menu__item" href="#!/eventos-futuros">
-              <i style="vertical-align: middle;" class="material-icons">event_available</i>Eventos Pasados</a>
-            <a class="mdl-menu__item" href="#!/configuracion">
-              <i style="vertical-align: middle;" class="material-icons">settings</i>Configuracion</a>
+            <li class="mdl-menu__item"><i class="material-icons">create</i>
+              Crear Evento</li>
+            <li class="mdl-menu__item"><i class="material-icons">event_note</i>
+              Eventos Futuros</li>
+            <li class="mdl-menu__item"><i class="material-icons">event_available</i>
+              Eventos Pasados</li>
+            <li class="mdl-menu__item"><i class="material-icons">settings</i>
+              Configuracion</li>
           </ul>
         </div>
       </header>
 
- <!--  <span class="mdl-layout-title">MENÚ</span> -->
+    <!--  <span class="mdl-layout-title">MENÚ</span> -->
 
       <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
         <a class="mdl-navigation__link" href="#!/eventos">
@@ -129,7 +122,7 @@
             <i role="presentation" class="material-icons" style="vertical-align: middle;">payment</i>
             facturacion</a>
         <a  id="sign-out-button" class="mdl-navigation__link" >
-          <i class="material-icons" style="vertical-align: middle;">power_settings_new</i>Salir</a>
+          <i class="material-icons" style="vertical-align: middle;">power_settings_new</i>   Salir</a>
 
       </nav>
 
@@ -144,8 +137,6 @@
 <center>
 
   <div class="user-header">
-
-    <br><br><br><br>
     <div>Business  Version : <span app-version></span></div>
     Bienvenido  <i class="icon icon-user"></i>  <span class="text user"></span></div><br>
 
@@ -169,10 +160,10 @@
     firebase.initializeApp(config);
   </script>
 
-  <script src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+  <a href="https://github.com/google/material-design-lite/blob/mdl-1.x/templates/dashboard/" target="_blank" id="view-source" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored mdl-color-text--white">View Source</a>
 
-  <a href="http://user.izinait.com/" target="_blank" id="view-source" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored mdl-color-text--white">ir a Izinait</a>
- <!-- Angular Material Library -->    <!-- Angular Material requires Angular.js Libraries -->
+
+  <!-- Angular Material Library -->    <!-- Angular Material requires Angular.js Libraries -->
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
