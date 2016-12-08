@@ -129,7 +129,7 @@
       <label>Codigo de vestimenta</label>
       <md-select ng-model="newEvent.clothing">
         <md-option><em>None</em></md-option>
-        <md-option ng-value="close.$value" ng-repeat="close in clothings">{{close.$value}}</md-option>
+        <md-option ng-value="close.name" ng-repeat="close in clothings">{{close.name}}</md-option>
       </md-select>
     </md-input-container>
 
