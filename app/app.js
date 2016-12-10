@@ -47,17 +47,17 @@ config(['$locationProvider', '$routeProvider',
 
 
   var signOutButton = document.getElementById('sign-out-button');
-    var signOutButton2 = document.getElementById('sign-out-button2');
+   var signOutButton2 = document.getElementById('sign-out-button2');
 
-    signOutButton2.addEventListener('click', function() {
+     signOutButton2.addEventListener('click', function() {
       firebase.auth().signOut();
 
-      window.location.href = '/angularjsproyectiziboss';
-    });
-  signOutButton.addEventListener('click', function() {
-    firebase.auth().signOut();
+       window.location.href = '/angularjsproyectiziboss';
+     });
+    signOutButton.addEventListener('click', function() {
+       firebase.auth().signOut();
 
-    window.location.href = '/pruebadoorman';
-  });
+     window.location.href = '/pruebadoorman';
+     });
 
 }]);
