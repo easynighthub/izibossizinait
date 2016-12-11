@@ -1,5 +1,12 @@
+
+
 <div  class="mdl-cell mdl-cell--12-col mdl-cell--12-col-phone">
-<center><br>
+  <center><br>
+
+  <div>
+ <md-progress-circular ng-disabled="isLoading" class="progress-circular md-warn md-hue-3 loader-saving hidden" md-diameter="70">
+</div>
+
   <div>
   <md-input-container class="mdl-cell mdl-cell--6-col mdl-cell--12-col-phone md-block">
     <label>Nombre del evento</label>
@@ -41,7 +48,7 @@
       </md-input-container>
     </div>
   </div>
-<br>
+  <br>
   <div>
     <md-input-container class="mdl-cell mdl-cell--6-col mdl-cell--12-col-phone"  ng-show="citiesOne">
       <label>Ciudad</label>
@@ -166,37 +173,3 @@
 
 </center>
 </div>
-
-<!-- <div class="view-container create-event">
-<div>
- <md-progress-circular ng-disabled="isLoading" class="md-warn md-hue-3 loader-saving hidden" md-diameter="70">
-</div> -->
-
-<!-- Button trigger modal
-<button type="button" id="openEventSavedModal" class="btn btn-primary btn-lg hidden" data-toggle="modal" data-target="#myModal">
-  Launch demo modal
-</button>
--->
-<!-- Modal
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-        <h4 class="modal-title" id="myModalLabel">Evento guardado con exito.</h4>
-      </div>
-      <div class="modal-body">
-        <a href="{{shareWithFacebook}}" class="btn btn-default" target="_blank">Compartir con facebook</a>
-        <a href="{{shareWithTwiter}}" class="btn btn-default" target="_blank">Compartir con twitter</a>
-        <a href="{{newEvent.evenUrl}}" class="btn btn-default" target="_blank">Ver</a>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" ng-click="closeModal()" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-	
-</div>-->

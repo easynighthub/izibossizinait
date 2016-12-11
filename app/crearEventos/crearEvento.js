@@ -23,7 +23,9 @@ angular.module('myApp.crearEventos', ['ngRoute'])
 		$scope.isEndDateSelected  = true;
 		$scope.descOutHours = [];
 		var doormanIndex = 0;
+
 		$('.modulo').text("Crear "+ "Evento");
+
 
 		for (var i = 0; i < 100; i++) {
 			$scope.descOutHours.push(i);
@@ -31,11 +33,7 @@ angular.module('myApp.crearEventos', ['ngRoute'])
 
 		$scope.$watch('newEvent.freemiumHour', function () {
 			if ($scope.newEvent.freemiumHour > $scope.newEventEnd) {
-				$.gritter.add({
-					title:	'No puede selecionar una fecha anterior a la fecha de inicio del evento',
-					text:	'Seleccione una fecha correcta',
-					sticky: false
-				});	
+				alert('No puede selecionar una fecha anterior a la fecha de inicio del evento');
 				$scope.newEvent.freemiumHour = '';
 			}
 		});
@@ -50,7 +48,6 @@ angular.module('myApp.crearEventos', ['ngRoute'])
 			$scope.isEndDateSelected  = false;
 			var date = new Date($scope.newEventEnd);
 			$scope.newEventEndPlus1 = date.setDate(date.getDate() + 1);
-			$scope.newEvent.freemiumHour = $scope.newEventEnd;
 		});
 
 		var getClubs = function() {
@@ -154,6 +151,7 @@ angular.module('myApp.crearEventos', ['ngRoute'])
 			$('#imgInp').click();
 		}
 
+
 		function readURL(input) {
 	    if (input.files && input.files[0]) {
 	      var reader = new FileReader();
@@ -173,12 +171,20 @@ angular.module('myApp.crearEventos', ['ngRoute'])
 			$('body').addClass('loading');
 			$('.md-warn.md-hue-3').removeClass('hidden');
 			$scope.isLoading = false;
+			var myElements = document.querySelector(".progress-circular.md-hue-3 path");
+			myElements.style.stroke = 'rgb(35, 7, 147)';
 		}
 
 		var stopLoading = function() {
 			$('body').removeClass('loading');
 			$('.md-warn.md-hue-3').addClass('hidden');
 			$scope.isLoading = true;
+		}
+
+		var managerError = function(e){
+			stopLoading();
+			console.log('Hubo un Error', e);
+			alert('Error interno, intente nuevamente.');
 		}
 
 		var getclubId = function(clucb) {
@@ -188,7 +194,9 @@ angular.module('myApp.crearEventos', ['ngRoute'])
 		}
 
 		$scope.closeModal = function() {
-			document.location.href = '#!/eventos';
+			$scope.newEvent = {};
+			$('.custom-modal').addClass('hidden');
+			$('body').removeClass('loading');
 		}
 
 		var updateDoormanEvents = function(index) {
@@ -200,41 +208,17 @@ angular.module('myApp.crearEventos', ['ngRoute'])
 					function(s){
 						doormanIndex ++;
 						updateDoormanEvents(doormanIndex);
-					}, function(e) {
-						alert('Error, intente de nuevo');
-						console.log('se guardo mal ', e);
-					}
+					}, managerError
 				);	
 			} else {
 				stopLoading();
 				$scope.shareWithFacebook = 'https://www.facebook.com/share.php?u='+$scope.newEvent.evenUrl;
 				$scope.shareWithTwiter = 'http://twitter.com/share?text=An%20Awesome%20Link&url=' + $scope.newEvent.evenUrl;
-				$('#openEventSavedModal').click()
+				
+				alert('EVENTO CARGADO EXITOSAMENETE , izinait lo aprobara en unos minutos');
+				$scope.newEvent = {};
 			}		
 		}
-
-		var saveEventInClub = function() {
-			firebase.database().ref('clubs/'+ getclubId($scope.selectedClub) +'/events/'+$scope.newEvent.id).set(true).then(
-				function(s){
-					updateDoormanEvents(doormanIndex);
-				}, function(e) {
-					stopLoading();
-					alert('Error, intente de nuevo');
-					console.log('se guardo mal ', e);
-				}
-			);
-		}
-
-		var saveToFIrebase = function() {
-			firebase.database().ref('events/'+ $scope.newEvent.id).set($scope.newEvent).then(
-				function(s){
-					saveEventInClub();
-				}, function(e) {
-					alert('Error, intente de nuevo');
-					console.log('se guardo mal ', e);
-				}
-			);
-		};
 
 		var uploadImage = function() {
 			startLoading();
@@ -242,10 +226,14 @@ angular.module('myApp.crearEventos', ['ngRoute'])
 			var ref = firebase.storage().ref('eventImages/' + Date.now() + '/' + file.name);
 			ref.put(file).then(function(snapshot) {
 			  $scope.newEvent.image = snapshot.a.downloadURLs[0];
-			  saveToFIrebase();
-			}, function(e){
-				console.log(e);
-			});
+				  firebase.database().ref('events/'+ $scope.newEvent.id).set($scope.newEvent).then(
+					function(s){
+						firebase.database().ref('clubs/'+ getclubId($scope.selectedClub) +'/events/'+$scope.newEvent.id).set(true).then(
+							function(s){
+								updateDoormanEvents(doormanIndex);
+							}, managerError);
+					},managerError);
+			}, managerError);
 		};
 
 		var fieldError = function(message, field) {
@@ -387,25 +375,24 @@ angular.module('myApp.crearEventos', ['ngRoute'])
 		}
 
 		$scope.saveEvent = function() {
-
 			if(!validateFields())
 				return;
 
 			$scope.newEvent.clubs = {};
 			$scope.newEvent.clubs[$scope.selectedClub] = true;
-			$scope.newEvent.date = new Date($filter('date')($scope.newEventStart, 'medium')).getTime();
+			$scope.newEvent.date = new Date($scope.newEventStart).getTime();
 			$scope.newEvent.freeCover = 0;
-			$scope.newEvent.fromHour = new Date($filter('date')($scope.newEventStart, 'medium')).getTime();
-			$scope.newEvent.toHour = new Date($filter('date')($scope.newEventEnd, 'medium')).getTime();
+			$scope.newEvent.fromHour = new Date($scope.newEventStart).getTime();
+			$scope.newEvent.toHour = new Date($scope.newEventEnd).getTime();
 			$scope.newEvent.isPremiumEvent = false;
 			$scope.newEvent.premiumCover = 0;
 			$scope.newEvent.policiesDoor = 'Hombres ' + $scope.ageRangeMale + ' | Mujeres ' + $scope.ageRangeFemale + ' | Dresscode ' + $scope.newEvent.clothing;
-			$scope.newEvent.freemiumHour = new Date($filter('date')($scope.newEvent.freemiumHour, 'medium')).getTime();
+			$scope.newEvent.freemiumHour = new Date($scope.newEvent.freemiumHour).getTime();
 			$scope.newEvent.premiumHour = $scope.newEvent.freemiumHour;
 			$scope.newEvent.lat = getLatAndLng($scope.selectedClub, 'latitude');
 			$scope.newEvent.lng = getLatAndLng($scope.selectedClub, 'longitude');
-			$scope.newEvent.eventEnvironment = $scope.eventEnvironment.join(', ');
-			$scope.newEvent.musicGenres = $scope.newEvent.musicGenres.join(', ');
+			$scope.newEvent.eventEnvironment = $scope.eventEnvironment ? $scope.eventEnvironment.join(', ') : '';
+			$scope.newEvent.musicGenres = $scope.newEvent.musicGenres ? $scope.newEvent.musicGenres.join(', ') : '';
 			$scope.newEvent.admin = window.currenUser.uid;
 			$scope.newEvent.id = $scope.newEvent.admin + new Date().getTime();
 			$scope.newEvent.evenUrl = 'http://www.user.izinait.com/event/'+$scope.newEvent.id
@@ -421,6 +408,7 @@ angular.module('myApp.crearEventos', ['ngRoute'])
 			} else {
 				uploadImage();
 			}
+
 		};
 
 }]);	

@@ -1,5 +1,21 @@
 /* app css stylesheet */
 
+body.loading {
+  pointer-events: none;
+  opacity: 0.5;
+  background: #CCC;
+}
+
+.progress-circular {
+  position: fixed;
+    margin: auto;
+    top: 50%;
+    left: 50%;
+}
+.md-progress-circular.md-hue-3 path {
+  stroke: rgb(35, 7, 147) !important;
+}
+
 .menu {
   list-style: none;
   border-bottom: 0.1em solid black;
