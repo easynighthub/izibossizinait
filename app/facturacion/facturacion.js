@@ -52,14 +52,9 @@ angular.module('myApp.facturacion', ['ngRoute'])
 	};
 
 	$scope.buscar = function() {
-		if ($scope.year && $scope.month) {
-			var startDate = new Date($scope.year + '/' + $scope.month);
-			var aux = new Date(startDate.setMonth(startDate.getMonth() + 1));
-			var endDate = new Date(aux.setDate(aux.getDate() - 1));
+		if ($scope.year && $scope.month) { 
 			var uid = window.currenUser.uid;
-
-			facturaId = month[startDate.getMonth() - 1] + startDate.getUTCFullYear();
-			var ref = firebase.database().ref('admins/' + window.currenUser.uid +'/facturas/'+facturaId);
+			var ref = firebase.database().ref('admins/' + window.currenUser.uid +'/facturas/'+ $scope.month+$scope.year);
 			var facturaRequest = $firebaseObject(ref);
 			facturaRequest.$loaded().then(function(){
 				if ('$value' in facturaRequest) {

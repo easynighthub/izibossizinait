@@ -1,12 +1,3 @@
-/**
- * Created by Andro Ostoic on 03-12-2016.
- */
-
-
-
-
-
-
 var ingresarAdmin = document.getElementById('signIn');
 
 ingresarAdmin.addEventListener('click', function() {
@@ -19,12 +10,7 @@ ingresarAdmin.addEventListener('click', function() {
             window.location.href = 'app';
         },
         function(e) {
-
-        });
-
-
-
+        	
+        }
+    );
 });
-
-
-
