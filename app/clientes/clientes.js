@@ -15,11 +15,23 @@ angular.module('myApp.clientes', ['ngRoute'])
 
 	$('.modulo').text('Clientes');
 
+	var getLastEvent = function(client){
+		var lastDate = 971146800000;
+		var events = client.asistProd[adminData.id];
+		angular.forEach(events, function(event){
+			if (event > lastDate){
+				lastDate = event;
+			}
+		});
+		client.lastDate = lastDate;
+		$scope.clientes.push(client);
+	};
+
 	var getClients = function() {
 		angular.forEach(Object.keys(window.adminData.clients), function(client){
 			var clientesRequest = $firebaseObject(firebase.database().ref('/users/' + client));
 			clientesRequest.$loaded().then(function(){
-				$scope.clientes.push(clientesRequest);
+				getLastEvent(clientesRequest);
 			});
 		});
 	}

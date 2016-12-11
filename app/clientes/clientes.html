@@ -27,7 +27,7 @@
 			<i ng-show="cliente.gender == 'male'"  aria-hidden="true"> Hombre</i></td>
 		<td>{{cliente.email}}</td>
 
-		<td>N/A</td>
+		<td>{{cliente.lastDate | date : 'shortDate' }}</td>
 		<td>{{cliente.birthday}}</td>
 
 		<td> <i class="material-icons ">star</i><i class="material-icons ">star</i><i class="material-icons ">star</i><i class="material-icons ">star</i><i class="material-icons ">star</i> </td>
