@@ -19,6 +19,7 @@ ingresarAdmin.addEventListener('click', function() {
         },
         function(e) {
     		console.log(e);
+			alert('ESTE USUARIO NO EXISTE EN NUESTRA BASE DE DATOS, PONGA SE ENCONTACTO CON IZINAIT');
         }
     );
 });
