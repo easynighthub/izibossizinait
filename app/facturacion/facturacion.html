@@ -37,9 +37,11 @@
 
   <div ng-show="isFactura" class="detalle">
 
-    <div class="image-file-container">
+  <button ng-show="isFacturaClosed()" ng-click="openFileInput()">Pagar</button>
+
+    <div ng-show="isFacturaClosed()" class="image-file-container">
       <input class="hidden" type='file' id="imgInp" />
-      <img ng-click="openFileInput()"  id="blah" src="{{image}}" alt="your image" />
+      <img  id="blah" src="{{image}}" alt="your image" />
       <button ng-click="uploadImage()" id="btnSaveImage" class="btn btn-default hidden">Guardar imagen</button>
     </div>
 
@@ -60,7 +62,6 @@
         <td>{{facturaDetail.valor}}</td>
       </tr>
 
-
       </tbody>
     </table>
 
@@ -79,7 +80,6 @@
         <td>{{event.name}}</td>
         <td>{{event.asistencias}}</td>
       </tr>
-
 
       </tbody>
     </table>

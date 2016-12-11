@@ -23,7 +23,8 @@ angular.module('myApp.facturacion', ['ngRoute'])
 	$scope.image = 'http://placehold.it/350x150';
 	$scope.isLoading = true;
 	var facturaId = '';
-		$('.modulo').text("Facturación");
+
+	$('.modulo').text("Facturación");
 
 	if (!adminData) {
 		if (window.currenUser) {
@@ -52,50 +53,66 @@ angular.module('myApp.facturacion', ['ngRoute'])
 	};
 
 	$scope.buscar = function() {
-		if ($scope.year && $scope.month) { 
-			var uid = window.currenUser.uid;
-			var ref = firebase.database().ref('admins/' + window.currenUser.uid +'/facturas/'+ $scope.month+$scope.year);
-			var facturaRequest = $firebaseObject(ref);
-			facturaRequest.$loaded().then(function(){
-				if ('$value' in facturaRequest) {
-					$scope.isFactura = false;
-					$scope.events = [];
-					alert('No hay facturas para este mes');
-				} else {
-					$scope.isFactura = true;
-					$scope.facturaDetail.asistencias = facturaRequest.usersDesc + facturaRequest.usersFree;
-					$scope.facturaDetail.valor = facturaRequest.usersDesc * adminData.payByUserDesc + facturaRequest.usersFree * adminData.payByUserFree;
-					$scope.facturaEstado = facturaRequest.estado || 'No pagada';
-					$scope.image = facturaRequest.facturaImageUrl || 'http://placehold.it/350x150';
 
-					var ref1 = firebase.database().ref('/events').orderByChild('admin').equalTo(window.currenUser.uid);
-					var facturacionRequest = $firebaseArray(ref1);
-					var eventsId = [];
-					var monthEvents = [];
-					facturacionRequest.$loaded().then(function(){
-						angular.forEach(facturacionRequest, function(event){
-							eventsId.push(event.id);
-						});
-						angular.forEach(eventsId, function(id){
-							var ref = firebase.database().ref('history/'+id);
-							var event = $firebaseObject(ref);
-							event.$loaded().then(function(){
-								if (!('$value' in event)){
-									monthEvents.push(event);
-									$scope.facturaDetail.eventos++;
-									var users = Object.keys(event[Object.keys(event)[3]]).length;
-									getEvents(event.$id, users);
-								}
+		if ($scope.year && $scope.month) {
+			$scope.asistencias = 0;
+			$scope.facturaDetail = {};
+			$scope.facturaEstado = '';
+			$scope.events = [];
+			$scope.isFactura = false;
+
+			facturaId = $scope.month+$scope.year;
+			var uid = window.currenUser.uid;
+			var ref = firebase.database().ref('admins/' + window.currenUser.uid +'/facturas/'+ facturaId);
+			var facturaRequest = $firebaseObject(ref);
+			setTimeout(function(){
+				facturaRequest.$loaded().then(function(){
+					if ('$value' in facturaRequest) {
+						$scope.isFactura = false;
+						$scope.events = [];
+						alert('No hay facturas para este mes');
+					} else {
+						$scope.isFactura = true;
+						$scope.facturaDetail.asistencias = facturaRequest.usersDesc + facturaRequest.usersFree;
+						$scope.facturaDetail.valor = facturaRequest.usersDesc * adminData.payByUserDesc + facturaRequest.usersFree * adminData.payByUserFree;
+						$scope.facturaEstado = facturaRequest.estado || 'No pagada';
+						$scope.image = facturaRequest.facturaImageUrl || 'http://placehold.it/350x150';
+
+						var ref1 = firebase.database().ref('/events').orderByChild('admin').equalTo(window.currenUser.uid);
+						var facturacionRequest = $firebaseArray(ref1);
+						var eventsId = [];
+						var monthEvents = [];
+						facturacionRequest.$loaded().then(function(){
+							angular.forEach(facturacionRequest, function(event){
+								eventsId.push(event.id);
+							});
+							angular.forEach(eventsId, function(id){
+								var ref = firebase.database().ref('history/'+id);
+								var event = $firebaseObject(ref);
+								event.$loaded().then(function(){
+									if (!('$value' in event)){
+										monthEvents.push(event);
+										$scope.facturaDetail.eventos++;
+										var users = Object.keys(event[Object.keys(event)[3]]).length;
+										getEvents(event.$id, users);
+									}
+								});
 							});
 						});
-					});
-				}
-			});
+					}
+				});
+			}, 500);
 			
 		} else {
 			alert('Debe elegir el mes y el año');
 		}
 
+	}
+
+	$scope.isFacturaClosed = function(){
+		var now = new Date();
+		var actualFacturaId = month[now.getMonth()] + now.getUTCFullYear();
+		return facturaId != actualFacturaId;
 	}
 
 	$scope.pagar = function() {
@@ -165,8 +182,7 @@ angular.module('myApp.facturacion', ['ngRoute'])
 	};
 
 	$scope.openFileInput = function() {
-		if ($scope.image == 'http://placehold.it/350x150')
-			$('#imgInp').click();
+		$('#imgInp').click();
 	}
 
 }]);
