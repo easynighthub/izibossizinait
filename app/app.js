@@ -52,12 +52,12 @@ config(['$locationProvider', '$routeProvider',
      signOutButton2.addEventListener('click', function() {
       firebase.auth().signOut();
 
-       window.location.href = '/angularjsproyectiziboss';
+       window.location.href = '/';
      });
     signOutButton.addEventListener('click', function() {
        firebase.auth().signOut();
 
-     window.location.href = '/pruebadoorman';
+     window.location.href = '/';
      });
 
 }]);
