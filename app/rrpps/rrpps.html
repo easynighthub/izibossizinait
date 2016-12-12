@@ -1,0 +1,30 @@
+<center>
+
+    <a class="mdl-cell mdl-cell--3-col mdl-cell--12-col-phone
+      mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" href="#!/agregar-rrpp">
+        AGREGAR RRPP
+    </a>
+
+
+    <table class=" mdl-cell--10-col mdl-cell--10-col-phone mdl-data-table mdl-js-data-table  mdl-shadow--2dp">
+        <thead>
+        <tr  >
+            <th class="mdl-data-table__cell--non-numeric">#</th>
+            <th>Nombre</th>
+            <th>Correo</th>
+        </tr>
+        </thead>
+        <tbody ng-repeat="rrpp in rrpps">
+        <tr >
+
+            <td class="mdl-data-table__cell--non-numeric">{{$index+1}}</td>
+            <td>{{rrpp.name}}</td>
+            <td>{{rrpp.email}}</td>
+
+
+        </tr>
+        </tbody>
+    </table>
+
+
+</center>
