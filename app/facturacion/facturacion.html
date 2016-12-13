@@ -39,9 +39,9 @@
 
   <button ng-show="isFacturaClosed()" ng-click="openFileInput()">Pagar</button>
 
-    <div ng-show="isFacturaClosed()" class="image-file-container">
+    <div ng-show="isFacturaClosed()" class="mdl-cell  mdl-cell--12-col mdl-cell--12-col-phone  image-file-container">
       <input class="hidden" type='file' id="imgInp" />
-      <img  id="blah" src="{{image}}" alt="your image" />
+      <img  class="mdl-cell  mdl-cell--4-col mdl-cell--12-col-phone" id="blah" src="{{image}}" alt="your image" />
       <button ng-click="uploadImage()" id="btnSaveImage" class="btn btn-default hidden">Guardar imagen</button>
     </div>
 
