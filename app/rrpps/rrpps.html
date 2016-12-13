@@ -1,7 +1,7 @@
 <center>
 
     <a class="mdl-cell mdl-cell--3-col mdl-cell--12-col-phone
-      mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" href="#!/agregar-rrpp">
+      mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" href="#!/createRrpp">
         AGREGAR RRPP
     </a>
 
@@ -10,16 +10,28 @@
         <thead>
         <tr  >
             <th class="mdl-data-table__cell--non-numeric">#</th>
+            <th>Habilitado</th>
             <th>Nombre</th>
             <th>Correo</th>
+            <th>Phone</th>
+
+            <th>ASISTENCIAS MENSUALES</th>
+
         </tr>
         </thead>
         <tbody ng-repeat="rrpp in rrpps">
         <tr >
 
             <td class="mdl-data-table__cell--non-numeric">{{$index+1}}</td>
+            <td>si</td>
             <td>{{rrpp.name}}</td>
             <td>{{rrpp.email}}</td>
+            <td>{{rrpp.phone}}</td>
+
+            <td><button class="mdl-cell mdl-cell--3-col mdl-cell--12-col-phone
+      mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" href="#!/createRrpp">
+                VER
+            </button></td>
 
 
         </tr>

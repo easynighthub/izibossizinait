@@ -19,6 +19,7 @@ angular.module('myApp', [
   'myApp.eventosFuturos',
   'myApp.eventosPasados',
   'myApp.rrpps',
+  'myApp.createRrpp',
   'myApp.version'
 ]).
 config(['$locationProvider', '$routeProvider',

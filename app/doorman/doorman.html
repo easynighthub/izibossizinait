@@ -4,18 +4,18 @@
       mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" href="#!/create-doorman">
 		 CREAR DOORMAN
 	</a>
-	<a class="mdl-cell mdl-cell--3-col mdl-cell--12-col-phone
+	<!-- <a class="mdl-cell mdl-cell--3-col mdl-cell--12-col-phone
       mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" href="#!/create-doorman">
 		ASIGNAR DORMAN
-	</a>
+	</a> -->
 
 	<table class=" mdl-cell--10-col mdl-cell--10-col-phone mdl-data-table mdl-js-data-table  mdl-shadow--2dp">
 		<thead>
-		<tr  >
+		<tr>
 			<th class="mdl-data-table__cell--non-numeric">#</th>
 			<th>Nombre</th>
 			<th>Correo</th>
-			<th>Ingresos validados</th>
+		<!--	<th>Ingresos validados</th> -->
 		</tr>
 		</thead>
 		<tbody ng-repeat="doorman in doormans">
@@ -24,7 +24,7 @@
 			<td class="mdl-data-table__cell--non-numeric">{{$index+1}}</td>
 			<td>{{doorman.name}}</td>
 			<td>{{doorman.email}}</td>
-			<td>{{0}}</td>
+		<!--	<td>{{0}}</td> -->
 
 
 		</tr>

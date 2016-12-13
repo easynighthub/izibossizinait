@@ -17,21 +17,21 @@ angular.module('myApp.rrpps', ['ngRoute'])
     .controller('rrppsCtrl', ['$scope', '$rootScope', '$firebaseArray', '$firebaseObject',
         function($scope, $rootScope, $firebaseArray, $firebaseObject) {
 
-            $scope.rrpps = [];
 
+            $scope.rrpps = [];
             $('.modulo').text("Lista  "+ "RRPPs");
+
 
 
             var mainFunction = function () {
                 var ref2 = firebase.database().ref('/rrpps');
-
                 var rrppsRequest = $firebaseArray(ref2);
                 rrppsRequest.$loaded().then(function(){
                     var adminRrpps = Object.keys(window.adminData.rrpps);
                     angular.forEach(rrppsRequest, function(d){
                         if (adminRrpps.indexOf(d.uid) >= 0){
                             $scope.rrpps.push(d);
-                            console.log(d);
+
                         }
                     });
                 });
