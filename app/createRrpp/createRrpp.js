@@ -71,7 +71,7 @@ angular.module('myApp.createRrpp', ['ngRoute'])
                     return;
                 }
 
-                var rrppRequest = $firebaseArray(firebase.database().ref('/doormans'));
+                var rrppRequest = $firebaseArray(firebase.database().ref('/rrpps'));
                 rrppRequest.$loaded().then(function(){
                     var rrppExist = $filter('filter')(rrppRequest, {email: $scope.clientEmail});
                     console.log(rrppExist);

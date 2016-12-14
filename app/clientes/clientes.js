@@ -15,6 +15,8 @@ angular.module('myApp.clientes', ['ngRoute'])
 
 	$('.modulo').text('Clientes');
 
+	window.adminData = adminData;
+
 	var getLastEvent = function(client){
 		var lastDate = 971146800000;
 		var events = client.asistProd[adminData.id];
