@@ -74,6 +74,11 @@ angular.module('myApp.facturacion', ['ngRoute'])
 					} else {
 						$scope.isFactura = true;
 						$scope.facturaDetail.asistencias = facturaRequest.usersDesc + facturaRequest.usersFree;
+                        $scope.asistenciasFree =  facturaRequest.usersFree;
+                        $scope.asistenciasDesc = facturaRequest.usersDesc;
+                        $scope.costoFree = adminData.payByUserFree;
+                        $scope.costoDesc = adminData.payByUserDesc;
+
 						$scope.facturaDetail.valor = facturaRequest.usersDesc * adminData.payByUserDesc + facturaRequest.usersFree * adminData.payByUserFree;
 						$scope.facturaEstado = facturaRequest.estado || 'No pagada';
 						$scope.image = facturaRequest.facturaImageUrl || 'http://placehold.it/350x150';

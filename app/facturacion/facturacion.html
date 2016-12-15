@@ -50,7 +50,8 @@
     <table class="mdl-cell  mdl-cell--6-col mdl-cell--12-col-phone mdl-data-table mdl-js-data-table  mdl-shadow--2dp">
       <thead>
       <tr>
-        <th >ASISTENCIAS</th>
+        <th >ASISTENCIAS TOTALES</th>
+
         <th>EVENTOS</th>
         <th>TOTAL</th>
       </tr>
@@ -58,8 +59,35 @@
       <tbody>
       <tr>
         <td >{{asistencias}}</td>
+
         <td>{{facturaDetail.eventos}}</td>
         <td>{{facturaDetail.valor}}</td>
+      </tr>
+
+      </tbody>
+    </table>
+      COSTOS
+    <table class="mdl-cell  mdl-cell--6-col mdl-cell--12-col-phone mdl-data-table mdl-js-data-table  mdl-shadow--2dp">
+      <thead>
+      <tr>
+
+        <th >ASISTENCIA </th>
+        <th >CANTIDAD </th>
+        <th >COSTO</th>
+
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>GRATIS</td>
+        <td>{{asistenciasFree}}</td>
+        <td>{{costoFree}}</td>
+      </tr>
+
+      <tr>
+        <td>DESCUENTO</td>
+        <td>{{asistenciasDesc}}</td>
+        <td>{{costoDesc}}</td>
       </tr>
 
       </tbody>
