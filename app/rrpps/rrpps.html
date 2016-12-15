@@ -12,10 +12,13 @@
             <th class="mdl-data-table__cell--non-numeric">#</th>
             <th>Habilitado</th>
             <th>Nombre</th>
+            <th>DNI</th>
+            <th>Cuenta Bancaria </th>
+            <th>Banco</th>
             <th>Correo</th>
             <th>Phone</th>
 
-            <th>ASISTENCIAS MENSUALES</th>
+         <!--   <th>ASISTENCIAS MENSUALES</th> -->
 
         </tr>
         </thead>
@@ -25,13 +28,16 @@
             <td class="mdl-data-table__cell--non-numeric">{{$index+1}}</td>
             <td>si</td>
             <td>{{rrpp.name}}</td>
+            <td>{{rrpp.rut}}</td>
+            <td>{{rrpp.cuentaBancaria}}</td>
+            <td>{{rrpp.banco}}</td>
             <td>{{rrpp.email}}</td>
             <td>{{rrpp.phone}}</td>
 
-            <td><button class="mdl-cell mdl-cell--3-col mdl-cell--12-col-phone
+          <!--   <td><button class="mdl-cell mdl-cell--3-col mdl-cell--12-col-phone
       mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" href="#!/createRrpp">
                 VER
-            </button></td>
+            </button></td> -->
 
 
         </tr>
