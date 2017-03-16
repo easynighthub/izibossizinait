@@ -217,6 +217,7 @@ angular.module('myApp.crearEventos', ['ngRoute'])
 				
 				alert('EVENTO CARGADO EXITOSAMENETE , izinait lo aprobara en unos minutos');
 				$scope.newEvent = {};
+                document.location.href = '#!/eventos';
 			}		
 		}
 
