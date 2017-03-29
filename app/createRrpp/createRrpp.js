@@ -28,7 +28,7 @@ angular.module('myApp.createRrpp', ['ngRoute'])
                 firebase.database().ref('admins/'+ userId + '/rrpps/' + rrppId).set(true).then(
                     function(s){
                         if (added)
-                            alert('Este rrpp ya existe, se agregara a su lista de rrpp exitosamente');
+                            alert('se agrego a su lista de rrpp exitosamente');
                         document.location.href = '#!/rrpps';
                     }, function(e) {
                         alert('Error, intente de nuevo');
@@ -50,43 +50,39 @@ angular.module('myApp.createRrpp', ['ngRoute'])
 
             $scope.saveRrpp = function() {
 
-                $scope.clientEmail = document.getElementById('clientEmail').value;
-                $scope.name = document.getElementById('name').value;
-                $scope.password = document.getElementById('password').value;
+                $scope.nombre = document.getElementById('nombre').value;
+                $scope.correo = document.getElementById('correo').value;
+                $scope.password = "proizinait";
 
-                if (!validateEmail($scope.clientEmail)) {
+
+
+                if (!validateEmail($scope.correo)) {
                     alert('Debe ingresar un email valido');
                     return;
                 }
-                if (!$scope.name) {
+                if (!$scope.nombre) {
                     alert('Debe ingresar un nombre');
                     return;
                 }
-                if (!$scope.password) {
-                    alert('Debe ingresar una contraseña');
-                    return;
-                }
-                if ($scope.password.length < 6) {
-                    alert('Debe ingresar una contraseña de 6 caracteres minimos');
-                    return;
-                }
+
+
 
                 var rrppRequest = $firebaseArray(firebase.database().ref('/rrpps'));
                 rrppRequest.$loaded().then(function(){
-                    var rrppExist = $filter('filter')(rrppRequest, {email: $scope.clientEmail});
+                    var rrppExist = $filter('filter')(rrppRequest, {email: $scope.correo});
                     console.log(rrppExist);
                     if (rrppExist.length > 0) {
                         addRrppToAdmin(rrppExist[0].uid, true);
                     } else {
-                        firebase.auth().createUserWithEmailAndPassword($scope.clientEmail, $scope.password).then(
+                        firebase.auth().createUserWithEmailAndPassword($scope.correo, $scope.password).then(
                             function(s) {
+
                                 var rrpp = {
-                                    anonimous: false,
-                                    email: $scope.clientEmail,
-                                    emailVerified: false,
-                                    providerId: 'firebase',
-                                    uid: s.uid,
-                                    name: $scope.name
+                                    activo: true,
+                                    email: $scope.correo,
+                                    name: $scope.nombre,
+                                    uid: s.uid
+
                                 };
                                 saveToFIrebase(rrpp);
                             }, function(e) {

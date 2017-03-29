@@ -4,6 +4,7 @@ ingresarAdmin.addEventListener('click', function() {
 
     var email = document.getElementById('correo').value;
     var password = document.getElementById('password').value;
+    mostrarBarraCargando();
 
     firebase.auth().signInWithEmailAndPassword(email, password).then(
         function(s){

@@ -31,7 +31,6 @@ angular.module('myApp.rrpps', ['ngRoute'])
                     angular.forEach(rrppsRequest, function(d){
                         if (adminRrpps.indexOf(d.uid) >= 0){
                             $scope.rrpps.push(d);
-
                         }
                     });
                 });

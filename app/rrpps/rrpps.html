@@ -12,11 +12,7 @@
             <th class="mdl-data-table__cell--non-numeric">#</th>
             <th>Habilitado</th>
             <th>Nombre</th>
-            <th>DNI</th>
-            <th>Cuenta Bancaria </th>
-            <th>Banco</th>
             <th>Correo</th>
-            <th>Phone</th>
 
          <!--   <th>ASISTENCIAS MENSUALES</th> -->
 
@@ -26,13 +22,20 @@
         <tr>
 
             <td class="mdl-data-table__cell--non-numeric">{{$index+1}}</td>
-            <td>si</td>
+            <td>
+                <i ng-show="rrpp.admins == false"  ng-click="validar(rrpp)" aria-hidden="true">
+                <button class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored">
+                    <i class="material-icons">&#xE5CD;</i>
+                </button>
+            </i>
+                <i ng-show="rrpp.activo == true"  ng-click="validar(rrpp)" aria-hidden="true">
+                    <button class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored">
+                        <i class="material-icons">&#xE876;</i>
+                    </button>
+                </i></td>
             <td>{{rrpp.name}}</td>
-            <td>{{rrpp.rut}}</td>
-            <td>{{rrpp.cuentaBancaria}}</td>
-            <td>{{rrpp.banco}}</td>
             <td>{{rrpp.email}}</td>
-            <td>{{rrpp.phone}}</td>
+
 
 
           <!--   <td><button class="mdl-cell mdl-cell--3-col mdl-cell--12-col-phone
