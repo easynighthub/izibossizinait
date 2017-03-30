@@ -399,7 +399,7 @@ angular.module('myApp.crearEventos', ['ngRoute'])
 			$scope.newEvent.musicGenres = $scope.newEvent.musicGenres ? $scope.newEvent.musicGenres.join(', ') : '';
 			$scope.newEvent.admin = window.currenUser.uid;
 			$scope.newEvent.id = $scope.newEvent.admin + new Date().getTime();
-			$scope.newEvent.evenUrl = 'http://www.user.izinait.com/event/'+$scope.newEvent.id
+			$scope.newEvent.evenUrl = 'http://izinait.com/user/app/#!/detalleEvento?id='+$scope.newEvent.id
 			$scope.newEvent.ageRange = 'Mujeres: ' + $scope.ageRangeFemale + ' | Hombres: ' + $scope.ageRangeMale;
 			$scope.newEvent.ageRangeMale = $scope.ageRangeMale;
 			$scope.newEvent.ageRangeFemale = $scope.ageRangeFemale;
