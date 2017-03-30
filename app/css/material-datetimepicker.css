@@ -39,14 +39,14 @@
 }
 
 .dtp > .dtp-content > .dtp-date-view > header.dtp-header {
-    background: #689F38;
+    background: #340034;
     color: #fff;
     text-align: center;
     padding: 3px;
 }
 
 .dtp div.dtp-date, .dtp div.dtp-time {
-    background: #8BC34A;
+    background: #fe0072;
     text-align: center;
     color: #fff;
     padding: 10px;
@@ -153,7 +153,7 @@
 }
 
 .dtp table.dtp-picker-days tr > td > a.selected {
-    background: #8BC34A;
+    background: #fe0072;
     color: #fff;
 }
 
@@ -169,7 +169,7 @@
 }
 
 .dtp .p10 > a {
-    color: #689F38;
+    color: #340034;
     text-decoration: none;
 }
 
@@ -206,7 +206,7 @@
 }
 
 .dtp .dtp-actual-meridien a.selected {
-    background: #689F38;
+    background: #340034;
     color: #fff;
 }
 
@@ -227,7 +227,7 @@
 }
 
 .dtp .dtp-picker-time > a.dtp-select-hour.selected {
-    background: #689F38;
+    background: #340034;
     color: #fff;
 }
 
@@ -236,7 +236,7 @@
 }
 
 .dtp .dtp-picker-time > a.dtp-select-minute.selected {
-    background: #8BC34A;
+    background: #fe0072;
     color: #fff;
 }
 
@@ -278,7 +278,7 @@
 }
 
 .dtp .dtp-hand.on {
-    background: #8BC34A;
+    background: #fe0072;
 }
 
 .dtp .dtp-buttons {
