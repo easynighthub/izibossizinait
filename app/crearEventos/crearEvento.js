@@ -204,7 +204,7 @@ angular.module('myApp.crearEventos', ['ngRoute'])
 			$('body').removeClass('loading');
 		}
 
-		var updateDoormanEvents = function(index) {a
+		var updateDoormanEvents = function(index) {
 			if ($scope.selectedDoorman1)
 				$scope.selectedDoorman = $scope.selectedDoorman1;
 
