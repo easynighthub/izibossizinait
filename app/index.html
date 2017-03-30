@@ -1,252 +1,251 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
+<!--[if lt IE 7]>
+<html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
 <head>
 
-  <title>IZIBOSS</title>
+    <title>IZIBOSS</title>
 
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link rel="stylesheet" href="app.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <link href="https://fonts.googleapis.com/css?family=Lobster|Slabo+27px|Shrikhand|Open+Sans" rel="stylesheet">
-  <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.blue_grey-pink.min.css" />
-  <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
-  <link rel="stylesheet" type="text/css" href="css/material-datetimepicker.css">
-  <link rel="icon" href="http://izinait.com/wp-content/uploads/2016/09/web_hi_res_512.png" type="image/x-icon"/>
-  <link rel="shortcut icon" href="http://izinait.com/wp-content/uploads/2016/09/web_hi_res_512.png" type="image/x-icon"/>
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-  <style>
-    #view-source {
-      position: fixed;
-      display: block;
-      right: 0;
-      bottom: 0;
-      margin-right: 40px;
-      margin-bottom: 40px;
-      z-index: 900;
-    }
-  </style>
+    <link rel="icon" href="http://izinait.com/wp-content/uploads/2016/09/web_hi_res_512.png" type="image/x-icon"/>
+    <link rel="shortcut icon" href="http://izinait.com/wp-content/uploads/2016/09/web_hi_res_512.png"
+          type="image/x-icon"/>
 
-  <script src="https://code.getmdl.io/1.2.1/material.min.js"></script>
-  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <link rel="stylesheet" href="app.css">
+    <link rel="stylesheet" href="styles.css">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.blue_grey-pink.min.css"/>
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster|Slabo+27px|Shrikhand|Open+Sans">
+
+    <link rel="stylesheet" href="css/material-datetimepicker.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+
+    <link rel="stylesheet" href="css/dropzone/dropzone.min.css">
+
+    <style>
+        #view-source {
+            position: fixed;
+            display: block;
+            right: 0;
+            bottom: 0;
+            margin-right: 40px;
+            margin-bottom: 40px;
+            z-index: 900;
+        }
+    </style>
+
+    <script src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
 </head>
 <body>
 
-  <div class="demo-layout  mdl-layout mdl-js-layout mdl-layout--fixed-header  mdl-layout--fixed-drawer">
+<div class="demo-layout  mdl-layout mdl-js-layout mdl-layout--fixed-header  mdl-layout--fixed-drawer">
     <header class="demo-header mdl-layout__header">
-      <div class="mdl-layout__header-row">
-        <!-- Title -->
-        <span class="mdl-layout-title">izinait | <b class="modulo">  </b></span>
-        <!-- Add spacer, to align navigation to the right -->
-        <div class="mdl-layout-spacer"> </div>
-        <!-- Navigation. We hide it in small screens. -->
-        <nav class="mdl-navigation mdl-layout--large-screen-only">
-          <a  class="mdl-navigation__link" href="#!/crear-eventos">
-            <i class="material-icons" style="vertical-align: middle;">create</i>   Crear Evento</a>
+        <div class="mdl-layout__header-row">
+            <!-- Title -->
+            <span class="mdl-layout-title">izinait | <b class="modulo">  </b></span>
+            <!-- Add spacer, to align navigation to the right -->
+            <div class="mdl-layout-spacer"></div>
+            <!-- Navigation. We hide it in small screens. -->
+            <nav class="mdl-navigation mdl-layout--large-screen-only">
+                <a class="mdl-navigation__link" href="#!/crear-eventos">
+                    <i class="material-icons" style="vertical-align: middle;">create</i> Crear Evento</a>
 
-          <a  class="mdl-navigation__link" href="#!/eventos-pasados">
-            <i class="material-icons" style="vertical-align: middle;">event_note</i>   Eventos Pasados</a>
+                <a class="mdl-navigation__link" href="#!/eventos-pasados">
+                    <i class="material-icons" style="vertical-align: middle;">event_note</i> Eventos Pasados</a>
 
-          <a  class="mdl-navigation__link" href="#!/eventos-futuros">
-            <i class="material-icons" style="vertical-align: middle;">event_available</i>   Eventos Futuros</a>
+                <a class="mdl-navigation__link" href="#!/eventos-futuros">
+                    <i class="material-icons" style="vertical-align: middle;">event_available</i> Eventos Futuros</a>
 
 
-          <a id="sign-out-button2" class="mdl-navigation__link" href="">
-            <i class="material-icons" style="vertical-align: middle;">power_settings_new</i>   Salir</a>
+                <a id="sign-out-button2" class="mdl-navigation__link" href="">
+                    <i class="material-icons" style="vertical-align: middle;">power_settings_new</i> Salir</a>
 
-        </nav>
+            </nav>
 
-      </div>
+        </div>
     </header>
     <div class="mdl-layout__drawer demo-drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50 ">
 
-      <header class="demo-drawer-header"><center>
-        <img src="img/logo.png" class="demo-avatar">
-      </center>
-        <div class="user-header demo-avatar-dropdown">
-         &nbsp; <span class="text user"> </span>
-          <div class="mdl-layout-spacer"></div>
-          <button id="accbtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
-            <i class="material-icons" role="presentation">arrow_drop_down</i>
-            <span class="visuallyhidden">Accounts</span>
-          </button>
-          <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="accbtn">
-            <a class="mdl-menu__item"  href="#!/crear-eventos">
-                <i class="material-icons">create</i>
-              Crear Evento
+        <header class="demo-drawer-header">
+            <center>
+                <img src="img/logo.png" class="demo-avatar">
+            </center>
+            <div class="user-header demo-avatar-dropdown">
+                &nbsp; <span class="text user"> </span>
+                <div class="mdl-layout-spacer"></div>
+                <button id="accbtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+                    <i class="material-icons" role="presentation">arrow_drop_down</i>
+                    <span class="visuallyhidden">Accounts</span>
+                </button>
+                <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="accbtn">
+                    <a class="mdl-menu__item" href="#!/crear-eventos">
+                        <i class="material-icons">create</i>
+                        Crear Evento
+                    </a>
+                    <a class="mdl-menu__item" href="#!/eventos-futuros">
+                        <i class="material-icons">event_note</i>
+                        Eventos Futuros
+                    </a>
+                    <a class="mdl-menu__item" href="#!/eventos-pasados">
+                        <i class="material-icons">event_available</i>
+                        Eventos Pasados
+                    </a>
+                    <a class="mdl-menu__item">
+                        <i class="material-icons">settings</i>
+                        Configuracion
+                    </a>
+                </ul>
+            </div>
+        </header>
+
+        <!--  <span class="mdl-layout-title">MENÚ</span> -->
+
+        <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
+            <a class="mdl-navigation__link" href="#!/eventos">
+                <i role="presentation" class="material-icons" style="vertical-align: middle;">event</i>
+                Eventos
             </a>
-            <a class="mdl-menu__item" href="#!/eventos-futuros">
-                <i class="material-icons">event_note</i>
-              Eventos Futuros
-            </a>
-            <a class="mdl-menu__item" href="#!/eventos-pasados">
-                <i class="material-icons">event_available</i>
-              Eventos Pasados
-            </a>
-            <a class="mdl-menu__item">
-                <i class="material-icons">settings</i>
-              Configuracion
-            </a>
-          </ul>
-        </div>
-      </header>
 
-    <!--  <span class="mdl-layout-title">MENÚ</span> -->
+            <a class="mdl-navigation__link" href="#!/clientes">
+                <i role="presentation" class="material-icons" style="vertical-align: middle;">person</i>
+                Clientes</a>
 
-      <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
-        <a class="mdl-navigation__link" href="#!/eventos">
-          <i role="presentation" class="material-icons" style="vertical-align: middle;">event</i>
-          Eventos
-        </a>
+            <a class="mdl-navigation__link" href="#!/rrpps">
+                <i role="presentation" class="material-icons" style="vertical-align: middle;">hearing</i>
+                Lista RRPP </a>
 
-        <a class="mdl-navigation__link" href="#!/clientes">
-          <i role="presentation" class="material-icons" style="vertical-align: middle;">person</i>
-          Clientes</a>
+            <a class="mdl-navigation__link" href="#!/doorman">
+                <i role="presentation" class="material-icons" style="vertical-align: middle;">phonelink_lock</i>
+                Doormans </a>
+            <!--      <a class="mdl-navigation__link" href="#!/facturacion">
+                    <i role="presentation" class="material-icons" style="vertical-align: middle;">payment</i>
+                    Facturacion</a> -->
 
-        <a class="mdl-navigation__link" href="#!/rrpps">
-              <i role="presentation" class="material-icons" style="vertical-align: middle;">hearing</i>
-              Lista RRPP </a>
+            <a id="sign-out-button" class="mdl-navigation__link">
+                <i class="material-icons" style="vertical-align: middle;">power_settings_new</i> Salir</a>
 
-        <a class="mdl-navigation__link" href="#!/doorman">
-          <i role="presentation" class="material-icons" style="vertical-align: middle;">phonelink_lock</i>
-          Doormans </a>
-    <!--      <a class="mdl-navigation__link" href="#!/facturacion">
-            <i role="presentation" class="material-icons" style="vertical-align: middle;">payment</i>
-            Facturacion</a> -->
-
-        <a  id="sign-out-button" class="mdl-navigation__link" >
-          <i class="material-icons" style="vertical-align: middle;">power_settings_new</i>   Salir</a>
-
-      </nav>
+        </nav>
 
 
     </div>
     <main class="mdl-color--blue-grey-50 mdl-layout__content">
-      <div class="page-content">
+        <div class="page-content">
 
-        <div ng-view>
+            <div ng-view>
 
+            </div>
+            <center>
+
+                <div class="user-header">
+                    <div>Business Version : <span app-version></span></div>
+                    Bienvenido <i class="icon icon-user"></i> <span class="text user"></span></div>
+                <br>
+
+            </center>
         </div>
-<center>
-
-  <div class="user-header">
-    <div>Business  Version : <span app-version></span></div>
-    Bienvenido  <i class="icon icon-user"></i>  <span class="text user"></span></div><br>
-
-</center>
-      </div>
     </main>
-  </div>
+</div>
 
+<a href="http://user.izinait.com/" target="_blank" id="view-source"
+   class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored mdl-color-text--white">ir
+    a izinait</a>
 
+<script src="js/jquery-3.1.1.js"></script>
+<!--<script src="js/dropzone/dropzone-amd-module.min.js"></script>-->
+<script src="js/dropzone/dropzone.min.js"></script>
 
-  <!-- firebase -->
-  <script src="https://www.gstatic.com/firebasejs/3.5.0/firebase.js"></script>
-  <script>
+<!-- firebase -->
+<script src="https://www.gstatic.com/firebasejs/3.5.0/firebase.js"></script>
+<script>
     // Initialize Firebase
     var config = {
-      apiKey: "AIzaSyAN4CNEsxW_EZ5fEQZIi5M2T7DMcpwYa-Y",
-      authDomain: "easynight.firebaseapp.com",
-      databaseURL: "https://easynight.firebaseio.com",
-      storageBucket: "project-8746388695669481444.appspot.com",
+        apiKey: "AIzaSyAN4CNEsxW_EZ5fEQZIi5M2T7DMcpwYa-Y",
+        authDomain: "easynight.firebaseapp.com",
+        databaseURL: "https://easynight.firebaseio.com",
+        storageBucket: "project-8746388695669481444.appspot.com"
     };
     firebase.initializeApp(config);
-  </script>
+</script>
 
-  <a href="http://user.izinait.com/" target="_blank" id="view-source" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored mdl-color-text--white">ir a izinait</a>
+<!-- Angular Material Library -->    <!-- Angular Material requires Angular.js Libraries -->
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
 
+<!-- angular materal -->
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment-with-locales.min.js"></script>
+<script src="js/angular-material-datetimepicker.js"></script>
 
-  <!-- Angular Material Library -->    <!-- Angular Material requires Angular.js Libraries -->
-  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+<script src="js/angular-locale_es-es.js"></script>
 
-  <!-- angular materal -->
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment-with-locales.min.js"></script>
-  <script src="js/angular-material-datetimepicker.js"></script>
+<!-- <script src="libs/angular.js"></script> -->
+<script src="https://cdn.firebase.com/libs/angularfire/2.0.2/angularfire.min.js"></script>
 
-  <script src="js/jquery-3.1.1.js"></script>
-  <script src="js/angular-locale_es-es.js"></script>
+<script src="js/angular-route.js"></script>
+<script src="app.js"></script>
+<script src="view1/view1.js"></script>
+<script src="view2/view2.js"></script>
+<script src="login/login.js"></script>
+<script src="clientes/clientes.js"></script>
+<script src="doorman/doorman.js"></script>
+<script src="createDoorMan/createDoorMan.js"></script>
+<script src="facturacion/facturacion.js"></script>
 
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment-with-locales.min.js"></script>
+<script src="eventos/eventos.js"></script>
+<script src="evento/evento.js"></script>
 
+<script src="crearEventos/crearEvento.js"></script>
+<script src="eventosFuturos/eventosFuturos.js"></script>
+<script src="eventosFuturos/eventosFuturos.js"></script>
+<script src="eventosPasados/eventosPasados.js"></script>
+<script src="rrpps/rrpps.js"></script>
+<script src="createRrpp/createRrpp.js"></script>
 
-  <!-- <script src="libs/angular.js"></script> -->
-  <script src="https://cdn.firebase.com/libs/angularfire/2.0.2/angularfire.min.js"></script>
+<script src="components/version/version.js"></script>
+<script src="components/version/version-directive.js"></script>
+<script src="components/version/interpolate-filter.js"></script>
 
-  <script src="js/angular-route.js"></script>
-  <script src="app.js"></script>
-  <script src="view1/view1.js"></script>
-  <script src="view2/view2.js"></script>
-  <script src="login/login.js"></script>
-  <script src="clientes/clientes.js"></script>
-  <script src="doorman/doorman.js"></script>
-  <script src="createDoorMan/createDoorMan.js"></script>
-  <script src="facturacion/facturacion.js"></script>
-
-  <script src="eventos/eventos.js"></script>
-  <script src="evento/evento.js"></script>
-
-  <script src="crearEventos/crearEvento.js"></script>
-  <script src="eventosFuturos/eventosFuturos.js"></script>
-  <script src="eventosFuturos/eventosFuturos.js"></script>
-  <script src="eventosPasados/eventosPasados.js"></script>
-  <script src="rrpps/rrpps.js"></script>
-  <script src="createRrpp/createRrpp.js"></script>
-
-  <script src="components/version/version.js"></script>
-  <script src="components/version/version-directive.js"></script>
-  <script src="components/version/interpolate-filter.js"></script>
-  
-  <script src="js/bootstrap.js"></script>
+<script src="js/bootstrap.js"></script>
 
 
-  <script type="text/javascript">
+<script type="text/javascript">
     // This function is called from the pop-up menus to transfer to
     // a different page. Ignore if the value returned is a null string:
-    function goPage (newURL) {
+    function goPage(newURL) {
 
-      // if url is empty, skip the menu dividers and reset the menu selection to default
-      if (newURL != "") {
+        // if url is empty, skip the menu dividers and reset the menu selection to default
+        if (newURL != "") {
 
-        // if url is "-", it is this page -- reset the menu:
-        if (newURL == "-" ) {
-          resetMenu();
+            // if url is "-", it is this page -- reset the menu:
+            if (newURL == "-") {
+                resetMenu();
+            }
+            // else, send page to designated URL
+            else {
+                document.location.href = newURL;
+            }
         }
-        // else, send page to designated URL
-        else {
-          document.location.href = newURL;
-        }
-      }
     }
 
     // resets the menu selection upon entry to this page:
     function resetMenu() {
-      document.gomenu.selector.selectedIndex = 2;
+        document.gomenu.selector.selectedIndex = 2;
     }
-  </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+</script>
 </body>
 </html>
