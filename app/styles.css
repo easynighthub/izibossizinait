@@ -39,6 +39,7 @@ html, body {
 }
 .demo-drawer {
   border: none;
+    position: fixed;
 }
 /* iOS Safari specific workaround */
 .demo-drawer .mdl-menu__container {
