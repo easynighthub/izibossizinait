@@ -205,8 +205,9 @@ angular.module('myApp.crearEventos', ['ngRoute'])
                     console.log(entry.$id);
                     firebase.database().ref('doormans/' + entry.$id + '/events/' + $scope.newEvent.id).set(true).then(
                         function (s) {
-                            doormanIndex++;
-                            updateDoormanEvents(doormanIndex);
+                            //doormanIndex++;
+                            //updateDoormanEvents(doormanIndex);
+                            console.log("Doorman actualizado correctamente");
                         }, managerError
                     );
                 });
@@ -381,12 +382,12 @@ angular.module('myApp.crearEventos', ['ngRoute'])
                     fieldError('EL campo Edad minima de hombres debe ser llenado.');
                     return false;
                 }
-                if (!$scope.newEvent.entryValue) {
+                /*if (!$scope.newEvent.entryValue) {
                     fieldError('El campo valor de entrada debe ser llenado');
                     return false;
-                }
+                }*/
                 return true;
-            }
+            };
 
             var cleanObject = function () {
                 delete $scope.newEvent.$id;
