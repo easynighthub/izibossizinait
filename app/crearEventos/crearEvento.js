@@ -97,6 +97,20 @@ angular.module('myApp.crearEventos', ['ngRoute'])
                 });
             }
 
+            var getRRPPs = function () {
+                $scope.misRRPPs = [];
+                var buscarRRPPs = firebase.database().ref().child('rrpps');
+                var rrppsER = $firebaseArray(buscarRRPPs);
+                rrppsER.$loaded().then(function () {
+                    angular.forEach(rrppsER, function (d) {
+                        if (Object.keys(window.adminData.rrpps).indexOf(d.uid) >= 0) {
+                            $scope.misRRPPs.push(d);
+                        }
+                    });
+
+                });
+            }
+
             if (!window.adminData) {
                 var ref = firebase.database().ref('/admins/').child(window.currenUser.uid);
                 var adminData = $firebaseObject(ref);
@@ -107,11 +121,13 @@ angular.module('myApp.crearEventos', ['ngRoute'])
                     getClubs();
                     getCities();
                     gerDoormans();
+                    getRRPPs();
                 });
             } else {
                 getClubs();
                 getCities();
                 gerDoormans();
+                getRRPPs();
             }
 
 
@@ -201,6 +217,26 @@ angular.module('myApp.crearEventos', ['ngRoute'])
                 $('body').removeClass('loading');
             }
 
+            var updateRRppEvents = function (eventId) {
+                console.log("entro a guardar rrpps");
+                $scope.misRRPPs.forEach(function (entry) {
+                    firebase.database().ref('rrpps/' + entry.$id + '/events/' + $scope.newEvent.id).set(true).then(
+                        function (s) {
+                            console.log("============================================");
+                            console.log(s);
+                            console.log("============================================");
+                            console.log("Iniciando Actualizacion de Doorman ");
+                            console.log("rrpp Id " + entry.$id);
+                            console.log("Doorman Actualizados");
+                            console.log("============================================");
+                            console.log("evento incertado " + eventId);
+                            console.log("============================================");
+                        }, managerError
+                    );
+                });
+
+            };
+
             var updateDoormanEvents = function (eventId) {
                 console.log(eventId);
                 $scope.myDoormans.forEach(function (entry) {
@@ -218,6 +254,9 @@ angular.module('myApp.crearEventos', ['ngRoute'])
                         }, managerError
                     );
                 });
+
+
+                updateRRppEvents(eventId);
 
                 stopLoading();
                 $scope.shareWithFacebook = 'https://www.facebook.com/share.php?u=' + $scope.newEvent.evenUrl;
@@ -259,6 +298,7 @@ angular.module('myApp.crearEventos', ['ngRoute'])
                             firebase.database().ref('clubs/' + getclubId($scope.selectedClub) + '/events/' + $scope.newEvent.id).set(true).then(
                                 function (s) {
                                     updateDoormanEvents($scope.newEvent.id);
+
                                 }, managerError);
                         }, managerError);
                 }, managerError);
