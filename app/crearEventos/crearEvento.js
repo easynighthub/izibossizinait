@@ -29,7 +29,6 @@ angular.module('myApp.crearEventos', ['ngRoute'])
 		$('.modulo').text("Crear "+ "Evento");
 
 
-        $('.dropzone').html5imageupload();
 
 		for (var i = 0; i < 100; i++) {
 			$scope.descOutHours.push(i);
