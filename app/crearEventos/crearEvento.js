@@ -391,7 +391,7 @@ angular.module('myApp.crearEventos', ['ngRoute'])
 			$scope.newEvent.fromHour = new Date($scope.newEventStart).getTime();
 			$scope.newEvent.toHour = new Date($scope.newEventEnd).getTime();
 			$scope.newEvent.policiesDoor = 'Hombres ' + $scope.ageRangeMale + ' | Mujeres ' + $scope.ageRangeFemale + ' | Dresscode ' + $scope.newEvent.clothing;
-			//$scope.newEvent.freemiumHour = new Date($scope.newEvent.freemiumHour).getTime();
+			$scope.newEvent.freemiumHour = new Date($scope.newEvent.freemiumHour).getTime();
 
 			$scope.newEvent.lat = getLatAndLng($scope.selectedClub, 'latitude');
 			$scope.newEvent.lng = getLatAndLng($scope.selectedClub, 'longitude');
@@ -407,11 +407,11 @@ angular.module('myApp.crearEventos', ['ngRoute'])
 
 			//ya no utilizado borrar en un futuro
             $scope.newEvent.descOutHour = 0;
-            $scope.newEvent.entryValue = 0;
-            $scope.newEvent.freemiumHour =  new Date($scope.newEventStart).getTime();
+        //    $scope.newEvent.entryValue = 0;
+        //    $scope.newEvent.freemiumHour =  new Date($scope.newEventStart).getTime();
             $scope.newEvent.premiumHour = $scope.newEvent.freemiumHour;
-            $scope.newEvent.premiumCover = 0;
-            $scope.newEvent.freeCover = 0;
+          //  $scope.newEvent.premiumCover = 0;
+            //$scope.newEvent.freeCover = 0;
             $scope.newEvent.isPremiumEvent = false;
 
 			cleanObject();
