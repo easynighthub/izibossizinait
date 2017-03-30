@@ -28,7 +28,6 @@
     <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster|Slabo+27px|Shrikhand|Open+Sans">
 
-<<<<<<< HEAD
     <link rel="stylesheet" href="css/material-datetimepicker.css">
     <link rel="stylesheet" href="css/bootstrap.css">
 
@@ -48,11 +47,6 @@
 
     <script src="https://code.getmdl.io/1.2.1/material.min.js"></script>
     <script src="https://www.gstatic.com/charts/loader.js"></script>
-=======
-  <script src="https://code.getmdl.io/1.2.1/material.min.js"></script>
-  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-
->>>>>>> 30a598f15155ce02a2caf67b5a2d20e7ec19e740
 </head>
 <body>
 
@@ -198,7 +192,16 @@
 <script src="js/angular-material-datetimepicker.js"></script>
 
 <script src="js/angular-locale_es-es.js"></script>
+<div id="dropzone">
+    <form action="/upload" class="dropzone needsclick" id="demo-upload">
 
+        <div class="dz-message needsclick">
+            Drop files here or click to upload.<br/>
+            <span class="note needsclick">(This is just a demo dropzone. Selected files are <strong>not</strong> actually uploaded.)</span>
+        </div>
+
+    </form>
+</div>
 <!-- <script src="libs/angular.js"></script> -->
 <script src="https://cdn.firebase.com/libs/angularfire/2.0.2/angularfire.min.js"></script>
 
