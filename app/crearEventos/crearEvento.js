@@ -200,14 +200,20 @@ angular.module('myApp.crearEventos', ['ngRoute'])
                 $('body').removeClass('loading');
             }
 
-            var updateDoormanEvents = function (index) {
+            var updateDoormanEvents = function (eventId) {
+                console.log(eventId);
                 $scope.myDoormans.forEach(function (entry) {
-                    console.log(entry.$id);
                     firebase.database().ref('doormans/' + entry.$id + '/events/' + $scope.newEvent.id).set(true).then(
                         function (s) {
-                            //doormanIndex++;
-                            //updateDoormanEvents(doormanIndex);
-                            console.log("Doorman actualizado correctamente");
+                            console.log("============================================");
+                            console.log(s);
+                            console.log("============================================");
+                            console.log("Iniciando Actualizacion de Doorman ");
+                            console.log("Doormand Id " + entry.$id);
+                            console.log("Doorman Actualizados");
+                            console.log("============================================");
+                            console.log("Evento ID " + eventId);
+                            console.log("============================================");
                         }, managerError
                     );
                 });
@@ -251,7 +257,7 @@ angular.module('myApp.crearEventos', ['ngRoute'])
                         function (s) {
                             firebase.database().ref('clubs/' + getclubId($scope.selectedClub) + '/events/' + $scope.newEvent.id).set(true).then(
                                 function (s) {
-                                    updateDoormanEvents(doormanIndex);
+                                    updateDoormanEvents($scope.newEvent.id);
                                 }, managerError);
                         }, managerError);
                 }, managerError);
