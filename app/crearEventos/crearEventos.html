@@ -22,9 +22,15 @@
 
     <br>
 
-    <div class="col-xs-12 padd-20-tb contentCard white-bg image-file-container">
-      <input class="mdl-cell hidden" type='file' id="imgInp" />
-      <img class="mdl-cell" ng-click="openFileInput()"  id="blah" src="{{newEvent.image}}" alt="your image" />
+    <div
+
+            data-width="1350" data-resize="true" data-originalsize="false" data-height="500" data-editstart="true"
+            class="col-xs-12 padd-20-tb contentCard white-bg image-file-container "
+            ng-click="openFileInput()" alt="portada evento"
+    >
+      <input class="mdl-cell hidden" style="width: 100%; height:100%;cursor: pointer;position: absolute;" type='file' id="imgInp" />
+      <img class="mdl-cell" style="height: 389px; width: 1045px;     content: '¡Arrastra tu imagen aquí o haz clic para añadir!';"    id="blah" src="{{newEvent.image}}"   />
+
     </div>
 
     <!--  <input time="false" ng-model="prueba1" date="true" mdc-datetime-picker="" type="text" id="date" placeholder="Date"

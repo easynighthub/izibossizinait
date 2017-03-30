@@ -25,7 +25,7 @@ angular.module('myApp.crearEventos', ['ngRoute'])
             $scope.activarHoraGratis = false;
             $scope.descOutHours = [];
             var doormanIndex = 0;
-            var noRRpps = false;
+            var noRRpps = 0;
 
             $('.modulo').text("Crear " + "Evento");
 
@@ -107,8 +107,10 @@ angular.module('myApp.crearEventos', ['ngRoute'])
                     angular.forEach(rrppsER, function (d) {
                         if (Object.keys(window.adminData.rrpps).indexOf(d.uid) >= 0) {
                             $scope.misRRPPs.push(d);
+                            console.log(d + "rrpppppppsss");
+                            noRRpps = (noRRpps + 1);
                         }else{
-                            noRRpps = true;
+                            console.log("no rrpssss!!");
                         }
 
                     });
@@ -260,7 +262,7 @@ angular.module('myApp.crearEventos', ['ngRoute'])
                     );
                 });
 
-                if(noRRpps == false){
+                if(noRRpps > 0){
                     updateRRppEvents(eventId);
                     firebase.database().ref('admins/'+window.currenUser.uid+'/events/' + $scope.newEvent.id).set(true);
                 }else{
