@@ -18,12 +18,14 @@ angular.module('myApp.crearEventos', ['ngRoute'])
             $scope.isDuplicate = false;
             $scope.citiesOne = false;
             $scope.myDoormansOne = false;
+
             $scope.currentDate = new Date();
             $scope.isStartDateSelected = true;
             $scope.isEndDateSelected = true;
             $scope.activarHoraGratis = false;
             $scope.descOutHours = [];
             var doormanIndex = 0;
+            var noRRpps = false;
 
             $('.modulo').text("Crear " + "Evento");
 
@@ -105,7 +107,10 @@ angular.module('myApp.crearEventos', ['ngRoute'])
                     angular.forEach(rrppsER, function (d) {
                         if (Object.keys(window.adminData.rrpps).indexOf(d.uid) >= 0) {
                             $scope.misRRPPs.push(d);
+                        }else{
+                            noRRpps = true;
                         }
+
                     });
 
                 });
@@ -255,8 +260,12 @@ angular.module('myApp.crearEventos', ['ngRoute'])
                     );
                 });
 
+                if(noRRpps == false){
+                    updateRRppEvents(eventId);
+                }else{
+                    console.log("no tiene rrps ");
+                }
 
-                updateRRppEvents(eventId);
 
                 stopLoading();
                 $scope.shareWithFacebook = 'https://www.facebook.com/share.php?u=' + $scope.newEvent.evenUrl;
