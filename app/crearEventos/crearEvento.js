@@ -255,7 +255,7 @@ angular.module('myApp.crearEventos', ['ngRoute'])
                             console.log("Doorman Actualizados");
                             console.log("============================================");
                             console.log("Evento ID " + eventId);
-                            console.log("============================================");
+                            console.log("================================================");
                         }, managerError
                     );
                 });
