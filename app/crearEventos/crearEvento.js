@@ -113,6 +113,7 @@ angular.module('myApp.crearEventos', ['ngRoute'])
 	  		gerDoormans();
 		}
 
+
 		var environmentER = firebase.database().ref().child('environmentEvent');
 			$scope.environmentER = $firebaseArray(environmentER);
 			$scope.environmentER.$loaded().then(function(){
@@ -375,6 +376,10 @@ angular.module('myApp.crearEventos', ['ngRoute'])
 			delete $scope.newEvent.$priority;
 		}
 
+        $scope.mostrar = function() {
+			console.log($scope.newEvent.name);
+        }
+
 		$scope.saveEvent = function() {
 			if(!validateFields())
 				return;
@@ -382,14 +387,12 @@ angular.module('myApp.crearEventos', ['ngRoute'])
 			$scope.newEvent.clubs = {};
 			$scope.newEvent.clubs[$scope.selectedClub] = true;
 			$scope.newEvent.date = new Date($scope.newEventStart).getTime();
-			$scope.newEvent.freeCover = 0;
+
 			$scope.newEvent.fromHour = new Date($scope.newEventStart).getTime();
 			$scope.newEvent.toHour = new Date($scope.newEventEnd).getTime();
-			$scope.newEvent.isPremiumEvent = false;
-			$scope.newEvent.premiumCover = 0;
 			$scope.newEvent.policiesDoor = 'Hombres ' + $scope.ageRangeMale + ' | Mujeres ' + $scope.ageRangeFemale + ' | Dresscode ' + $scope.newEvent.clothing;
-			$scope.newEvent.freemiumHour = new Date($scope.newEvent.freemiumHour).getTime();
-			$scope.newEvent.premiumHour = $scope.newEvent.freemiumHour;
+			//$scope.newEvent.freemiumHour = new Date($scope.newEvent.freemiumHour).getTime();
+
 			$scope.newEvent.lat = getLatAndLng($scope.selectedClub, 'latitude');
 			$scope.newEvent.lng = getLatAndLng($scope.selectedClub, 'longitude');
 			$scope.newEvent.eventEnvironment = $scope.eventEnvironment ? $scope.eventEnvironment.join(', ') : '';
@@ -401,6 +404,15 @@ angular.module('myApp.crearEventos', ['ngRoute'])
 			$scope.newEvent.ageRangeMale = $scope.ageRangeMale;
 			$scope.newEvent.ageRangeFemale = $scope.ageRangeFemale;
 			$scope.newEvent.visible = false;
+
+			//ya no utilizado borrar en un futuro
+            $scope.newEvent.descOutHour = 0;
+            $scope.newEvent.entryValue = 0;
+            $scope.newEvent.freemiumHour =  new Date($scope.newEventStart).getTime();
+            $scope.newEvent.premiumHour = $scope.newEvent.freemiumHour;
+            $scope.newEvent.premiumCover = 0;
+            $scope.newEvent.freeCover = 0;
+            $scope.newEvent.isPremiumEvent = false;
 
 			cleanObject();
 

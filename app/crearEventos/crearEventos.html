@@ -1,67 +1,163 @@
-
+<link rel="stylesheet" type="text/css" href="css/cssCrearEvento.css">
 
 <div  class="mdl-cell mdl-cell--12-col mdl-cell--12-col-phone">
-  <center><br>
 
+  <center>
   <div>
  <md-progress-circular ng-disabled="isLoading" class="progress-circular md-warn md-hue-3 loader-saving hidden" md-diameter="70"/>
 </div>
 
   <div>
-  <md-input-container class="mdl-cell mdl-cell--6-col mdl-cell--12-col-phone md-block">
-    <label>Nombre del evento</label>
-    <input required ng-model="newEvent.name"  md-no-asterisk>
+    <div class="col-xs-12 padd-20-tb contentCard white-bg">
+        <label class="col-xs-12 visible-xs padd-0 required">Título del Evento</label>
 
-  </md-input-container>
+        <div class="col-xs-12 padd-0-l col-sm-6 col-lg-8 text-left padd-0-xs">
+          <input required ng-model="newEvent.name" type="text"  required="required"
+                 class="mdl-cell mdl-cell-- form-control br-2 inputCon checkInput" placeholder="Título del Evento"
+                 data-error="El evento tiene que tener una descripción (al menos 3 letras).">
 
-  <div class="image-file-container">
-    <input class="hidden" type='file' id="imgInp" />
-    <img ng-click="openFileInput()"  id="blah" src="{{newEvent.image}}" alt="your image" />
+        </div>
+      </div>
+    </div>
+
+<br>
+
+  <div class="col-xs-12 padd-20-tb contentCard white-bg image-file-container">
+    <input class="mdl-cell hidden" type='file' id="imgInp" />
+    <img class="mdl-cell" ng-click="openFileInput()"  id="blah" src="{{newEvent.image}}" alt="your image" />
   </div>
 
-  <div >
-    <div >
-      <md-input-container   class=" mdl-cell--2-col mdl-cell--12-col-phone md-block">
+  <!--  <input time="false" ng-model="prueba1" date="true" mdc-datetime-picker="" type="text" id="date" placeholder="Date"
+           ng-model="date" min-date="minDate" max-date="maxDate" class=" md-input" readonly="readonly">
+
+    <input mdc-datetime-picker="" ng-model="prueba2" date="false" time="true" type="text" id="time" short-time="true"
+           placeholder="Time" min-date="minDate" format="hh:mm a" ng-model="time" class=" md-input"
+           readonly="readonly">
+
+    <button  ng-click="mostrar()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"> mostrar dato</button>
+ -->
+<br>
+
+
+<div class="col-xs-12 contentCard white-bg">
+<table>
+<th>
+      <md-input-container   class="mdl-cell mdl-cell--12-col mdl-cell--12-col-phone md-block">
         <input mdc-datetime-picker="" date="true" time="true" type="text" id="datetime1" placeholder="Fecha inicial"
-               min-date="currentDate" ng-model="newEventStart" class=" md-input">
+               min-date="currentDate" ng-model="newEventStart" class="md-input">
       </md-input-container>
-    </div>
-    <div >
-      <md-input-container class=" mdl-cell--2-col mdl-cell--12-col-phone md-block">
+  </th><th>
+      <md-input-container class=" mdl-cell mdl-cell--12-col mdl-cell--12-col-phone md-block">
         <input mdc-datetime-picker=""  ng-disabled="isStartDateSelected" date="true" time="true" type="text" id="datetime2"
                placeholder="Fecha final" min-date="newEventStart" ng-model="newEventEnd" class=" md-input">
       </md-input-container>
+</th>
+</table>
+</div>
+
+
+<br>
+    <div class="col-xs-12  padd-20-tb contentCard white-bg">
+      <md-input-container class="mdl-cell mdl-cell--12-col mdl-cell--12-col-phone md-block">
+        <label>Descripcion</label>
+        <textarea required ng-model="newEvent.eventDetails" md-maxlength="500" rows="5" md-select-on-focus></textarea>
+      </md-input-container>
+
     </div>
-  </div>
 
-  <md-input-container class="mdl-cell mdl-cell--6-col mdl-cell--12-col-phone md-block">
-    <label>Descripcion</label>
-    <textarea required ng-model="newEvent.eventDetails" md-maxlength="500" rows="3" md-select-on-focus></textarea>
-  </md-input-container>
+    <div class="col-xs-12 margin-20 padd-20-tb contentCard white-bg">
 
-    <div  class=" music-select">
-      <md-input-container class="mdl-cell mdl-cell--6-col mdl-cell--12-col-phone" >
-        <label>Genero musical (max 3)</label>
-        <md-select class=" musicalSelec" ng-model="newEvent.musicGenres" multiple ng-change="allow3musicaGenres()">
-          <md-option class=" music-options" ng-value="music.name" ng-repeat="music in musics" ng-show="music.visible == true">{{music.name}}</md-option>
+      <div>
+        <md-input-container   class="mdl-cell mdl-cell--12-col mdl-cell--12-col-phone"  ng-show="citiesOne">
+          <label>Ciudad</label>
+          <md-select  ng-model="newEvent.city" class="city-select">
+            <md-option ng-repeat="city in cities" selected ng-value="city.name">
+              {{city.name}}
+            </md-option>
+          </md-select>
+        </md-input-container>
+      </div><br>
+
+      <div>
+        <md-input-container class="mdl-cell mdl-cell--12-col mdl-cell--12-col-phone">
+          <label>Club</label>
+          <md-select ng-model="selectedClub">
+            <md-option><em>None</em></md-option>
+            <md-option ng-repeat="club in clubs" ng-value="club.$id">
+              {{club.name}}
+            </md-option>
+          </md-select>
+        </md-input-container>
+      </div>
+      <br>
+
+      <div  class=" music-select">
+        <md-input-container class="mdl-cell mdl-cell--12-col mdl-cell--12-col-phone" >
+          <label>Genero musical (max 3)</label>
+          <md-select class=" musicalSelec" ng-model="newEvent.musicGenres" multiple ng-change="allow3musicaGenres()">
+            <md-option class=" music-options" ng-value="music.name" ng-repeat="music in musics" ng-show="music.visible == true">{{music.name}}</md-option>
+          </md-select>
+        </md-input-container>
+      </div>
+<div class="artista-select">
+  <br>
+      <md-input-container class="mdl-cell mdl-cell--12-col mdl-cell--12-col-phone">
+        <label>Artista, dj, banda</label>
+        <input ng-model="newEvent.djs">
+      </md-input-container>
+</div>
+      <div class="ambiente-select">
+      <md-input-container class="mdl-cell mdl-cell--12-col mdl-cell--12-col-phone">
+        <label>Ambiente (max 2)</label>
+        <md-select ng-model="eventEnvironment" multiple ng-change="allowUpTo2Ambiente()">
+          <md-option class="ambiente-option" ng-value="environment.name" ng-repeat="environment in environments">{{environment.name}}</md-option>
         </md-select>
       </md-input-container>
-    </div>
-  </div>
-  <br>
-  <div>
-    <md-input-container class="mdl-cell mdl-cell--6-col mdl-cell--12-col-phone"  ng-show="citiesOne">
-      <label>Ciudad</label>
-      <md-select ng-model="newEvent.city" class="city-select">
-        <md-option><em>None</em></md-option>
-        <md-option ng-repeat="city in cities" selected ng-value="city.name">
-          {{city.name}}
-        </md-option>
-      </md-select>
-    </md-input-container>
-  </div>
+      </div>
+      <br>
+      <div>
+        <md-input-container class="mdl-cell mdl-cell--12-col mdl-cell--12-col-phone">
+          <label>Codigo de vestimenta</label>
+          <md-select ng-model="newEvent.clothing">
+            <md-option><em>None</em></md-option>
+            <md-option ng-value="close.name" ng-repeat="close in clothings">{{close.name}}</md-option>
+          </md-select>
+        </md-input-container>
+        <br>
+        <table>
+          <th>
+            <div>
+              <md-input-container class="mdl-cell mdl-cell--12-col mdl-cell--12-col-phone">
+                <label>Edad Minima Mujeres</label>
+                <md-select  ng-model="ageRangeFemale">
+                  <md-option><em>None</em></md-option>
+                  <md-option ng-value="ageRange.$value" ng-repeat="ageRange in ageRanges">+{{ageRange.$value}}</md-option>
+                </md-select>
+              </md-input-container>
+            </div>
 
-  <md-input-container class="mdl-cell mdl-cell--6-col mdl-cell--12-col-phone" ng-show="!citiesOne">
+          </th>
+
+          <th>
+
+            <div>
+              <md-input-container class="mdl-cell mdl-cell--12-col mdl-cell--12-col-phone">
+                <label>Edad Minima Hombres</label>
+                <md-select ng-model="ageRangeMale">
+                  <md-option><em>None</em></md-option>
+                  <md-option ng-value="ageRange.$value" ng-repeat="ageRange in ageRanges">+{{ageRange.$value}}</md-option>
+                </md-select>
+              </md-input-container>
+            </div>
+
+          </th>
+        </table>
+
+      </div>
+    </div>
+
+  <br>
+ <!-- <md-input-container class="mdl-cell mdl-cell--6-col mdl-cell--12-col-phone" ng-show="!citiesOne">
     <label>Ciudad</label>
     <md-select ng-model="newEvent.city" class="city-select">
       <md-option><em>None</em></md-option>
@@ -69,7 +165,7 @@
         {{city.name}}
       </md-option>
     </md-select>
-  </md-input-container>
+  </md-input-container> -->
 
   <br>
   <div class="doorman-select">
@@ -91,69 +187,16 @@
   </div>
 
 <br>
-  <div>
-    <md-input-container class="mdl-cell mdl-cell--6-col mdl-cell--12-col-phone">
-      <label>Club</label>
-      <md-select ng-model="selectedClub">
-        <md-option><em>None</em></md-option>
-        <md-option ng-repeat="club in clubs" ng-value="club.$id">
-          {{club.name}}
-        </md-option>
-      </md-select>
-    </md-input-container>
-  </div>
-
-<br>
-  <div>
-    <md-input-container class="mdl-cell mdl-cell--6-col mdl-cell--12-col-phone">
-      <label>Edad Minima Mujeres</label>
-      <md-select ng-model="ageRangeFemale">
-        <md-option><em>None</em></md-option>
-        <md-option ng-value="ageRange.$value" ng-repeat="ageRange in ageRanges">+{{ageRange.$value}}</md-option>
-      </md-select>
-    </md-input-container>
-  </div>
-<br>
-  <div>
-    <md-input-container class="mdl-cell mdl-cell--6-col mdl-cell--12-col-phone">
-      <label>Edad Minima Hombres</label>
-      <md-select ng-model="ageRangeMale">
-        <md-option><em>None</em></md-option>
-        <md-option ng-value="ageRange.$value" ng-repeat="ageRange in ageRanges">+{{ageRange.$value}}</md-option>
-      </md-select>
-    </md-input-container>
-  </div>
-<br>
-  <md-input-container class="mdl-cell mdl-cell--6-col mdl-cell--12-col-phone">
-    <label>Ambiente (max 2)</label>
-    <md-select ng-model="eventEnvironment" multiple ng-change="allowUpTo2Ambiente()">
-      <md-option class="ambiente-option" ng-value="environment.name" ng-repeat="environment in environments">{{environment.name}}</md-option>
-    </md-select>
-  </md-input-container>
-<br><br>
-  <div>
-    <md-input-container class="mdl-cell mdl-cell--6-col mdl-cell--12-col-phone">
-      <label>Codigo de vestimenta</label>
-      <md-select ng-model="newEvent.clothing">
-        <md-option><em>None</em></md-option>
-        <md-option ng-value="close.name" ng-repeat="close in clothings">{{close.name}}</md-option>
-      </md-select>
-    </md-input-container>
 
 
-  </div>
-<br>
-  <md-input-container class="mdl-cell mdl-cell--6-col mdl-cell--12-col-phone md-block">
-    <label>Artista, dj, banda</label>
-    <input ng-model="newEvent.djs">
-  </md-input-container>
-
+<!--
   <md-input-container class="mdl-cell mdl-cell--6-col mdl-cell--12-col-phone  md-block">
     <label>Termino horario gratis(minimo 00:00)</label>
     <input mdc-datetime-picker="" ng-disabled="isEndDateSelected"  date="true" time="true" type="text" id="datetime3"
            min-date="newEventStart" max-date="newEventEndPlus1" ng-model="newEvent.freemiumHour" class="md-input">
   </md-input-container>
-
+ -->
+<!--
   <div>
     <md-input-container class="mdl-cell mdl-cell--6-col mdl-cell--12-col-phone ">
       <label>Descuento Izinat luego de horario cumplido</label>
@@ -162,13 +205,13 @@
         <md-option ng-value="descOutHour" ng-repeat="descOutHour in descOutHours">{{descOutHour}}%</md-option>
       </md-select>
     </md-input-container>
-  </div>
-<br>
+  </div> -->
+    <!--
   <md-input-container class="mdl-cell mdl-cell--6-col mdl-cell--12-col-phone md-block">
     <label>Valor de ingreso</label>
     <input type="number" ng-model="newEvent.entryValue" required md-no-asterisk>
   </md-input-container>
-
+ -->
   <button ng-click="saveEvent()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Publicar</button>
 
 </center>
