@@ -262,6 +262,7 @@ angular.module('myApp.crearEventos', ['ngRoute'])
 
                 if(noRRpps == false){
                     updateRRppEvents(eventId);
+                    firebase.database().ref('admins/'+window.currenUser.uid+'/events/' + $scope.newEvent.id).set(true);
                 }else{
                     console.log("no tiene rrps ");
                 }
