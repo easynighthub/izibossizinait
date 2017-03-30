@@ -21,6 +21,7 @@ angular.module('myApp.crearEventos', ['ngRoute'])
             $scope.currentDate = new Date();
             $scope.isStartDateSelected = true;
             $scope.isEndDateSelected = true;
+            $scope.activarHoraGratis = false;
             $scope.descOutHours = [];
             var doormanIndex = 0;
 
@@ -364,10 +365,20 @@ angular.module('myApp.crearEventos', ['ngRoute'])
                     fieldError('EL campo Artistico debe ser llenado.');
                     return false;
                 }
-                if (!$scope.newEvent.freemiumHour) {
+            /*    if (!$scope.newEvent.freemiumHour) {
                     fieldError('EL campo Termino de horario gratis debe ser llenado.');
                     return false;
-                }
+                } */
+
+                if(activarHoraGratis == true){
+                    if (!$scope.newEvent.freemiumHour){
+                        fieldError('el campo hora gratis debe ser llenado');
+                    }
+                }else
+				{
+                    $scope.newEvent.freemiumHour = $scope.newEventStart;
+				}
+
                 if (($scope.newEvent.freemiumHour < $scope.newEventStart || $scope.newEvent.freemiumHour > $scope.newEventEnd)) {
                     fieldError('El termino de horario gratis debe ser entre el inicio y el fin delevento.');
                     return false;
@@ -388,10 +399,11 @@ angular.module('myApp.crearEventos', ['ngRoute'])
                     fieldError('EL campo Edad minima de hombres debe ser llenado.');
                     return false;
                 }
-                /*if (!$scope.newEvent.entryValue) {
+                if (!$scope.newEvent.entryValue) {
                     fieldError('El campo valor de entrada debe ser llenado');
                     return false;
-                }*/
+                }
+
                 return true;
             };
 
@@ -404,6 +416,14 @@ angular.module('myApp.crearEventos', ['ngRoute'])
             $scope.mostrar = function () {
                 console.log($scope.newEvent.name);
             }
+            $scope.activarHoraGratisF = function () {
+
+                !$scope.activarHoraGratis;
+				console.log( !$scope.activarHoraGratis);
+
+            }
+
+
 
             $scope.saveEvent = function () {
                 if (!validateFields())
@@ -416,8 +436,13 @@ angular.module('myApp.crearEventos', ['ngRoute'])
                 $scope.newEvent.fromHour = new Date($scope.newEventStart).getTime();
                 $scope.newEvent.toHour = new Date($scope.newEventEnd).getTime();
                 $scope.newEvent.policiesDoor = 'Hombres ' + $scope.ageRangeMale + ' | Mujeres ' + $scope.ageRangeFemale + ' | Dresscode ' + $scope.newEvent.clothing;
-                $scope.newEvent.freemiumHour = new Date($scope.newEvent.freemiumHour).getTime();
 
+               if($scope.activarHoraGratis = true){
+                   $scope.newEvent.freemiumHour = new Date($scope.newEvent.freemiumHour).getTime();
+			   }else
+			   {
+                   $scope.newEvent.freemiumHour = new Date($scope.newEventStart).getTime();
+			   }
                 $scope.newEvent.lat = getLatAndLng($scope.selectedClub, 'latitude');
                 $scope.newEvent.lng = getLatAndLng($scope.selectedClub, 'longitude');
                 $scope.newEvent.eventEnvironment = $scope.eventEnvironment ? $scope.eventEnvironment.join(', ') : '';
@@ -435,8 +460,8 @@ angular.module('myApp.crearEventos', ['ngRoute'])
                 //    $scope.newEvent.entryValue = 0;
                 //    $scope.newEvent.freemiumHour =  new Date($scope.newEventStart).getTime();
                 $scope.newEvent.premiumHour = $scope.newEvent.freemiumHour;
-                //  $scope.newEvent.premiumCover = 0;
-                //$scope.newEvent.freeCover = 0;
+               	$scope.newEvent.premiumCover = 0;
+                $scope.newEvent.freeCover = 0;
                 $scope.newEvent.isPremiumEvent = false;
 
                 cleanObject();

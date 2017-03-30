@@ -153,6 +153,30 @@
           </th>
         </table>
 
+        <div class="mdl-cell">
+          Agregar un horario gratis para todos los usuarios?
+          <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="activarHoraGratis">
+            <input ng-model="activarHoraGratis" ng-click="activarHoraGratisF()" type="checkbox" id="activarHoraGratis" class="mdl-switch__input" >
+            <span class="mdl-switch__label"></span>
+          </label>
+        </div>
+
+<table>
+
+
+  <th >
+        <md-input-container  class="mdl-cell mdl-cell--12-col mdl-cell--12-col-phone  md-block">
+          <label>Termino horario gratis</label>
+          <input mdc-datetime-picker="" ng-show="activarHoraGratis" ng-disabled="isEndDateSelected"  date="true" time="true" type="text" id="datetime3"
+                 min-date="newEventStart" max-date="newEventEndPlus1" ng-model="newEvent.freemiumHour" class="md-input">
+        </md-input-container>
+  </th><th>
+        <md-input-container class="mdl-cell mdl-cell--12-col mdl-cell--12-col-phone md-block">
+          <label>Valor en Puerta</label>
+          <input type="number" ng-model="newEvent.entryValue" required md-no-asterisk>
+        </md-input-container>
+  </th>
+</table>
       </div>
     </div>
 
@@ -167,7 +191,7 @@
     </md-select>
   </md-input-container> -->
 
-  <br>
+<!--  <br>
   <div class="doorman-select">
     <md-input-container class="mdl-cell mdl-cell--6-col mdl-cell--12-col-phone" ng-show="myDoormansOne">
       <label>Doorman</label>
@@ -186,15 +210,11 @@
     </md-input-container>
   </div>
 
-<br>
+<br> -->
 
 
 
-  <md-input-container class="mdl-cell mdl-cell--6-col mdl-cell--12-col-phone  md-block">
-    <label>Termino horario gratis(minimo 00:00)</label>
-    <input mdc-datetime-picker="" ng-disabled="isEndDateSelected"  date="true" time="true" type="text" id="datetime3"
-           min-date="newEventStart" max-date="newEventEndPlus1" ng-model="newEvent.freemiumHour" class="md-input">
-  </md-input-container>
+
 
 <!--
   <div>
@@ -206,12 +226,9 @@
       </md-select>
     </md-input-container>
   </div> -->
-    <!--
-  <md-input-container class="mdl-cell mdl-cell--6-col mdl-cell--12-col-phone md-block">
-    <label>Valor de ingreso</label>
-    <input type="number" ng-model="newEvent.entryValue" required md-no-asterisk>
-  </md-input-container>
- -->
+
+
+
   <button ng-click="saveEvent()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Publicar</button>
 
 </center>
