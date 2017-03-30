@@ -6,6 +6,17 @@ body.loading {
   background: #CCC;
 }
 
+.dropzone {
+  background-color: whitesmoke;
+  text-align: center;
+  position: relative;
+  border: 1px dashed #ccc;
+  display: inline-block;
+  width: 100% !important;
+  height: 0 !important;
+  padding-bottom: 37.04%;
+}
+
 .progress-circular {
   position: fixed;
     margin: auto;
@@ -90,6 +101,7 @@ body.loading {
 }
 .demo-drawer {
   border: none;
+  position: fixed;
 }
 /* iOS Safari specific workaround */
 .demo-drawer .mdl-menu__container {
@@ -120,6 +132,7 @@ body.loading {
   justify-content: flex-end;
   padding: 16px;
   height: 15%;
+
 }
 .demo-avatar-dropdown {
   display: -webkit-flex;
