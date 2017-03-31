@@ -1,5 +1,3 @@
-'use strict';
-
 angular.module('myApp.crearEventos', ['ngRoute'])
 
     .config(['$routeProvider', function ($routeProvider) {
@@ -8,6 +6,7 @@ angular.module('myApp.crearEventos', ['ngRoute'])
             controller: 'crearEventosCtrl'
         });
     }])
+
     .controller('crearEventosCtrl', ['$scope', '$firebaseObject', '$firebaseArray', '$filter', '$rootScope',
         function ($scope, $firebaseObject, $firebaseArray, $filter, $rootScope) {
 
@@ -108,7 +107,7 @@ angular.module('myApp.crearEventos', ['ngRoute'])
                             $scope.misRRPPs.push(d);
                             console.log(d + "rrpppppppsss");
                             noRRpps = (noRRpps + 1);
-                        } else {
+                        }else{
                             console.log("no rrpssss!!");
                         }
 
@@ -240,24 +239,8 @@ angular.module('myApp.crearEventos', ['ngRoute'])
                         }, managerError
                     );
                 });
+
             };
-
-            // Disabling autoDiscover, otherwise Dropzone will try to attach twice.
-            Dropzone.autoDiscover = false;
-            // or disable for specific dropzone:
-            // Dropzone.options.myDropzone = false;
-
-            $(function () {
-                // Now that the DOM is fully loaded, create the dropzone, and setup the
-                // event listeners
-                var myDropzone = new Dropzone("#izinait-event-image");
-                myDropzone.on("addedfile", function (file) {
-                    $scope.file = file;
-                    $scope.$apply(function () {
-                        $scope.fileAdded = true;
-                    });
-                });
-            });
 
             var updateDoormanEvents = function (eventId) {
                 console.log(eventId);
@@ -272,10 +255,18 @@ angular.module('myApp.crearEventos', ['ngRoute'])
                             console.log("Doorman Actualizados");
                             console.log("============================================");
                             console.log("Evento ID " + eventId);
-                            console.log("============================================");
+                            console.log("================================================");
                         }, managerError
                     );
                 });
+
+                if(noRRpps > 0){
+                    updateRRppEvents(eventId);
+                    firebase.database().ref('admins/'+window.currenUser.uid+'/events/' + $scope.newEvent.id).set(true);
+                }else{
+                    console.log("no tiene rrps ");
+                }
+
 
                 stopLoading();
                 $scope.shareWithFacebook = 'https://www.facebook.com/share.php?u=' + $scope.newEvent.evenUrl;
@@ -284,11 +275,31 @@ angular.module('myApp.crearEventos', ['ngRoute'])
                 alert('EVENTO CARGADO EXITOSAMENETE , izinait lo aprobara en unos minutos');
                 $scope.newEvent = {};
                 document.location.href = '#!/eventos';
+
+                /*if ($scope.selectedDoorman1)
+                 $scope.selectedDoorman = $scope.selectedDoorman1;
+
+                 if ($scope.selectedDoorman.length > index) {
+                 firebase.database().ref('doormans/'+ $scope.selectedDoorman[index] +'/events/' + $scope.newEvent.id).set(true).then(
+                 function(s){
+                 doormanIndex ++;
+                 updateDoormanEvents(doormanIndex);
+                 }, managerError
+                 );
+                 } else {
+                 stopLoading();
+                 $scope.shareWithFacebook = 'https://www.facebook.com/share.php?u='+$scope.newEvent.evenUrl;
+                 $scope.shareWithTwiter = 'http://twitter.com/share?text=An%20Awesome%20Link&url=' + $scope.newEvent.evenUrl;
+
+                 alert('EVENTO CARGADO EXITOSAMENETE , izinait lo aprobara en unos minutos');
+                 $scope.newEvent = {};
+                 document.location.href = '#!/eventos';
+                 }*/
             };
 
             var uploadImage = function () {
                 startLoading();
-                var file = $scope.file; //$('#imgInp')[0].files[0];
+                var file = $('#imgInp')[0].files[0];
                 var ref = firebase.storage().ref('eventImages/' + Date.now() + '/' + file.name);
                 ref.put(file).then(function (snapshot) {
                     $scope.newEvent.image = snapshot.a.downloadURLs[0];
@@ -297,6 +308,7 @@ angular.module('myApp.crearEventos', ['ngRoute'])
                             firebase.database().ref('clubs/' + getclubId($scope.selectedClub) + '/events/' + $scope.newEvent.id).set(true).then(
                                 function (s) {
                                     updateDoormanEvents($scope.newEvent.id);
+
                                 }, managerError);
                         }, managerError);
                 }, managerError);
@@ -408,11 +420,12 @@ angular.module('myApp.crearEventos', ['ngRoute'])
                  return false;
                  } */
 
-                if (activarHoraGratis == true) {
-                    if (!$scope.newEvent.freemiumHour) {
+                if(activarHoraGratis == true){
+                    if (!$scope.newEvent.freemiumHour){
                         fieldError('el campo hora gratis debe ser llenado');
                     }
-                } else {
+                }else
+                {
                     $scope.newEvent.freemiumHour = $scope.newEventStart;
                 }
 
@@ -456,9 +469,10 @@ angular.module('myApp.crearEventos', ['ngRoute'])
             $scope.activarHoraGratisF = function () {
 
                 !$scope.activarHoraGratis;
-                console.log(!$scope.activarHoraGratis);
+                console.log( !$scope.activarHoraGratis);
 
             }
+
 
 
             $scope.saveEvent = function () {
@@ -473,9 +487,10 @@ angular.module('myApp.crearEventos', ['ngRoute'])
                 $scope.newEvent.toHour = new Date($scope.newEventEnd).getTime();
                 $scope.newEvent.policiesDoor = 'Hombres ' + $scope.ageRangeMale + ' | Mujeres ' + $scope.ageRangeFemale + ' | Dresscode ' + $scope.newEvent.clothing;
 
-                if ($scope.activarHoraGratis = true) {
+                if($scope.activarHoraGratis = true){
                     $scope.newEvent.freemiumHour = new Date($scope.newEvent.freemiumHour).getTime();
-                } else {
+                }else
+                {
                     $scope.newEvent.freemiumHour = new Date($scope.newEventStart).getTime();
                 }
                 $scope.newEvent.lat = getLatAndLng($scope.selectedClub, 'latitude');

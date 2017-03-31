@@ -1,12 +1,8 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>
-<html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>
-<html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>
-<html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!-->
-<html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
+<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
 <head>
 
     <title>IZIBOSS</title>
@@ -16,23 +12,16 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="icon" href="http://izinait.com/wp-content/uploads/2016/09/web_hi_res_512.png" type="image/x-icon"/>
-    <link rel="shortcut icon" href="http://izinait.com/wp-content/uploads/2016/09/web_hi_res_512.png"
-          type="image/x-icon"/>
-
     <link rel="stylesheet" href="app.css">
-    <link rel="stylesheet" href="styles.css">
-
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.blue_grey-pink.min.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Lobster|Slabo+27px|Shrikhand|Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.blue_grey-pink.min.css" />
     <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster|Slabo+27px|Shrikhand|Open+Sans">
-
-    <link rel="stylesheet" href="css/material-datetimepicker.css">
-    <link rel="stylesheet" href="css/bootstrap.css">
-
-    <link rel="stylesheet" href="css/dropzone/dropzone.min.css">
-
+    <link rel="stylesheet" type="text/css" href="css/material-datetimepicker.css">
+    <link rel="icon" href="http://izinait.com/wp-content/uploads/2016/09/web_hi_res_512.png" type="image/x-icon"/>
+    <link rel="shortcut icon" href="http://izinait.com/wp-content/uploads/2016/09/web_hi_res_512.png" type="image/x-icon"/>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
     <style>
         #view-source {
             position: fixed;
@@ -46,7 +35,8 @@
     </style>
 
     <script src="https://code.getmdl.io/1.2.1/material.min.js"></script>
-    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
 </head>
 <body>
 
@@ -56,21 +46,21 @@
             <!-- Title -->
             <span class="mdl-layout-title">izinait | <b class="modulo">  </b></span>
             <!-- Add spacer, to align navigation to the right -->
-            <div class="mdl-layout-spacer"></div>
+            <div class="mdl-layout-spacer"> </div>
             <!-- Navigation. We hide it in small screens. -->
             <nav class="mdl-navigation mdl-layout--large-screen-only">
-                <a class="mdl-navigation__link" href="#!/crear-eventos">
-                    <i class="material-icons" style="vertical-align: middle;">create</i> Crear Evento</a>
+                <a  class="mdl-navigation__link" href="#!/crear-eventos">
+                    <i class="material-icons" style="vertical-align: middle;">create</i>   Crear Evento</a>
 
-                <a class="mdl-navigation__link" href="#!/eventos-pasados">
-                    <i class="material-icons" style="vertical-align: middle;">event_note</i> Eventos Pasados</a>
+                <a  class="mdl-navigation__link" href="#!/eventos-pasados">
+                    <i class="material-icons" style="vertical-align: middle;">event_note</i>   Eventos Pasados</a>
 
-                <a class="mdl-navigation__link" href="#!/eventos-futuros">
-                    <i class="material-icons" style="vertical-align: middle;">event_available</i> Eventos Futuros</a>
+                <a  class="mdl-navigation__link" href="#!/eventos-futuros">
+                    <i class="material-icons" style="vertical-align: middle;">event_available</i>   Eventos Futuros</a>
 
 
                 <a id="sign-out-button2" class="mdl-navigation__link" href="">
-                    <i class="material-icons" style="vertical-align: middle;">power_settings_new</i> Salir</a>
+                    <i class="material-icons" style="vertical-align: middle;">power_settings_new</i>   Salir</a>
 
             </nav>
 
@@ -78,10 +68,9 @@
     </header>
     <div class="mdl-layout__drawer demo-drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50 ">
 
-        <header class="demo-drawer-header">
-            <center>
-                <img src="img/logo.png" class="demo-avatar">
-            </center>
+        <header class="demo-drawer-header"><center>
+            <img src="img/logo.png" class="demo-avatar">
+        </center>
             <div class="user-header demo-avatar-dropdown">
                 &nbsp; <span class="text user"> </span>
                 <div class="mdl-layout-spacer"></div>
@@ -90,7 +79,7 @@
                     <span class="visuallyhidden">Accounts</span>
                 </button>
                 <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="accbtn">
-                    <a class="mdl-menu__item" href="#!/crear-eventos">
+                    <a class="mdl-menu__item"  href="#!/crear-eventos">
                         <i class="material-icons">create</i>
                         Crear Evento
                     </a>
@@ -133,8 +122,8 @@
                     <i role="presentation" class="material-icons" style="vertical-align: middle;">payment</i>
                     Facturacion</a> -->
 
-            <a id="sign-out-button" class="mdl-navigation__link">
-                <i class="material-icons" style="vertical-align: middle;">power_settings_new</i> Salir</a>
+            <a  id="sign-out-button" class="mdl-navigation__link" >
+                <i class="material-icons" style="vertical-align: middle;">power_settings_new</i>   Salir</a>
 
         </nav>
 
@@ -149,22 +138,15 @@
             <center>
 
                 <div class="user-header">
-                    <div>Business Version : <span app-version></span></div>
-                    Bienvenido <i class="icon icon-user"></i> <span class="text user"></span></div>
-                <br>
+                    <div>Business  Version : <span app-version></span></div>
+                    Bienvenido  <i class="icon icon-user"></i>  <span class="text user"></span></div><br>
 
             </center>
         </div>
     </main>
 </div>
 
-<a href="http://user.izinait.com/" target="_blank" id="view-source"
-   class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored mdl-color-text--white">ir
-    a izinait</a>
 
-<script src="js/jquery-3.1.1.js"></script>
-<!--<script src="js/dropzone/dropzone-amd-module.min.js"></script>-->
-<script src="js/dropzone/dropzone.min.js"></script>
 
 <!-- firebase -->
 <script src="https://www.gstatic.com/firebasejs/3.5.0/firebase.js"></script>
@@ -174,10 +156,13 @@
         apiKey: "AIzaSyAN4CNEsxW_EZ5fEQZIi5M2T7DMcpwYa-Y",
         authDomain: "easynight.firebaseapp.com",
         databaseURL: "https://easynight.firebaseio.com",
-        storageBucket: "project-8746388695669481444.appspot.com"
+        storageBucket: "project-8746388695669481444.appspot.com",
     };
     firebase.initializeApp(config);
 </script>
+
+<a href="http://user.izinait.com/" target="_blank" id="view-source" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored mdl-color-text--white">ir a izinait</a>
+
 
 <!-- Angular Material Library -->    <!-- Angular Material requires Angular.js Libraries -->
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
@@ -187,11 +172,14 @@
 <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
 
 <!-- angular materal -->
-<script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment-with-locales.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment-with-locales.min.js"></script>
 <script src="js/angular-material-datetimepicker.js"></script>
 
+<script src="js/jquery-3.1.1.js"></script>
 <script src="js/angular-locale_es-es.js"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment-with-locales.min.js"></script>
+
 
 <!-- <script src="libs/angular.js"></script> -->
 <script src="https://cdn.firebase.com/libs/angularfire/2.0.2/angularfire.min.js"></script>
@@ -226,13 +214,13 @@
 <script type="text/javascript">
     // This function is called from the pop-up menus to transfer to
     // a different page. Ignore if the value returned is a null string:
-    function goPage(newURL) {
+    function goPage (newURL) {
 
         // if url is empty, skip the menu dividers and reset the menu selection to default
         if (newURL != "") {
 
             // if url is "-", it is this page -- reset the menu:
-            if (newURL == "-") {
+            if (newURL == "-" ) {
                 resetMenu();
             }
             // else, send page to designated URL
@@ -247,5 +235,19 @@
         document.gomenu.selector.selectedIndex = 2;
     }
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </body>
 </html>

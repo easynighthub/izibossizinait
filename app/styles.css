@@ -27,9 +27,11 @@ html, body {
 .demo-layout .demo-header .mdl-textfield {
   padding: 0px;
   margin-top: 41px;
+    position: fixed;
 }
 .demo-layout .demo-header .mdl-textfield .mdl-textfield__expandable-holder {
   bottom: 19px;
+    position: fixed;
 }
 .demo-layout .mdl-layout__header .mdl-layout__drawer-button {
   color: rgba(0, 0, 0, 0.54);
