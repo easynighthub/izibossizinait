@@ -82,7 +82,7 @@ Sin impresiones, Sin filas, Solo muestra tu Smartphone!" />
 
         <div>
             <center>
-                <div class="  mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--12-col-phone">
+                <div class="  mdl-shadow--2dp mdl-cell mdl-cell--5-col mdl-cell--12-col-phone">
                     <br><br>
 
                     <div class="mdl-cell mdl-cell--4-col mdl-cell--2-col-phone">
@@ -98,14 +98,14 @@ Sin impresiones, Sin filas, Solo muestra tu Smartphone!" />
                     </script>
 
                     <form action="#">
-                        <div class="mdl-textfield mdl-js-textfield">
+                        <div class="mdl-cell mdl-cell--12-col mdl-textfield mdl-js-textfield">
                             <input    type="email" class="mdl-textfield__input" type="text" id="correo">
                             <label class="mdl-textfield__label" for="correo">Correo Electronico</label>
                         </div>
                     </form>
 
                     <form action="#">
-                        <div class="mdl-textfield mdl-js-textfield">
+                        <div class=" mdl-cell mdl-cell--12-col mdl-textfield mdl-js-textfield">
                             <input  type="password" class="mdl-textfield__input" type="text" id="password">
                             <label class="mdl-textfield__label" for="password">Password</label>
                         </div>
@@ -113,6 +113,8 @@ Sin impresiones, Sin filas, Solo muestra tu Smartphone!" />
 
                     <button  id="signIn" onclick="mostrarBarraCargando()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">INGRESAR</button>
 
+                    <div id="BarraCargando" style='display:none;'
+                         class="mdl-spinner mdl-spinner--single-color mdl-js-spinner is-active"></div>
 
                     <br><br>
                     <!--       Al registrarte aceptas los  <a class="mdl-color-text--cyan" href="http://www.izinait.com/terms">Términos y condiciones </a> de uso y las Politicas de privacidad de <a class="mdl-color-text--cyan" href="http://www.izinait.com/">izinait  </a>
