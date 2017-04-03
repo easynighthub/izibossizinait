@@ -12,7 +12,7 @@ angular.module('myApp.crearEventos', ['ngRoute'])
 
             $scope.newEvent = {};
             $scope.isLoading = true;
-            $scope.newEvent.image = 'http://placehold.it/350x150';
+            $scope.newEvent.image = '';
             $scope.isDuplicate = false;
             $scope.citiesOne = false;
             $scope.myDoormansOne = false;
