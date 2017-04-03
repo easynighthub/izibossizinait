@@ -69,7 +69,7 @@
 
   angular.module(moduleName, ['ngMaterial'])
     .provider('mdcDatetimePickerDefaultLocale', function () {
-      this.locale = 'en';
+      this.locale = 'es';
 
       this.$get = function () {
         return this.locale;
@@ -103,9 +103,9 @@
             var isOn = false;
             if (!scope.format) {
               if (scope.date && scope.time) {
-                scope.format = 'YYYY-MM-DD HH:mm:ss';
+                scope.format = 'DD-MM-YYYY HH:mm';
               } else if (scope.date) {
-                scope.format = 'YYYY-MM-DD';
+                scope.format = 'DD-MM-YYYY';
               } else {
                 scope.format = 'HH:mm';
               }
@@ -178,7 +178,7 @@
     this.params = {
       date: true,
       time: true,
-      format: 'YYYY-MM-DD',
+      format: 'DD-MM-YYYY',
       minDate: null,
       maxDate: null,
       currentDate: null,

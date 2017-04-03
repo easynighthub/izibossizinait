@@ -1,19 +1,21 @@
 <link rel="stylesheet" type="text/css" href="css/cssCrearEvento.css">
 
-<div  class="mdl-cell mdl-cell--12-col mdl-cell--12-col-phone">
+<div class="mdl-cell mdl-cell--12-col mdl-cell--12-col-phone">
 
     <center>
         <div>
-            <md-progress-circular ng-disabled="isLoading" class="progress-circular md-warn md-hue-3 loader-saving hidden" md-diameter="70"/>
+            <md-progress-circular ng-disabled="isLoading"
+                                  class="progress-circular md-warn md-hue-3 loader-saving hidden" md-diameter="70"/>
         </div>
 
         <div>
-            <div class="col-xs-12 padd-20-tb contentCard white-bg">
-                <label class="col-xs-12 visible-xs padd-0 required">Título del Evento</label>
+            <div class="col-xs-12 contentCard white-bg" STYLE="padding-top: 5px;padding-bottom :20px">
+                <h5>TITULO DEL EVENTO</h5>
 
                 <div class="col-xs-12 padd-0-l col-sm-6 col-lg-8 text-left padd-0-xs">
-                    <input required ng-model="newEvent.name" type="text"  required="required"
-                           class="mdl-cell mdl-cell-- form-control br-2 inputCon checkInput" placeholder="Título del Evento"
+                    <input required ng-model="newEvent.name" type="text" required="required"
+                           class="mdl-cell mdl-cell-- form-control br-2 inputCon checkInput"
+                           placeholder="Título del Evento"
                            data-error="El evento tiene que tener una descripción (al menos 3 letras).">
 
                 </div>
@@ -23,13 +25,15 @@
         <br>
 
         <div
-
                 data-width="1350" data-resize="true" data-originalsize="false" data-height="500" data-editstart="true"
                 class="col-xs-12 padd-20-tb contentCard white-bg image-file-container "
                 ng-click="openFileInput()" alt="portada evento"
         >
-            <input class="mdl-cell hidden" style="width: 100%; height:100%;cursor: pointer;position: absolute;" type='file' id="imgInp" />
-            <img class="mdl-cell" style="height: 389px; width: 1045px;     content: '¡Arrastra tu imagen aquí o haz clic para añadir!';"    id="blah" src="{{newEvent.image}}"   />
+            <input accept="image/x-png,image/gif,image/jpeg" class="mdl-cell hidden"
+                   style="width: 100%; height:100%;cursor: pointer;position: absolute;" type='file' id="imgInp"/>
+            <img class="mdl-cell"
+                 style="height: 389px; width: 1045px;     content: '¡Arrastra tu imagen aquí o haz clic para añadir!';"
+                 id="blah" src="{{newEvent.image}}"/>
 
         </div>
 
@@ -45,83 +49,116 @@
         <br>
 
 
-        <div class="col-xs-12 contentCard white-bg">
-            <table>
-                <th>
-                    <md-input-container   class="mdl-cell mdl-cell--12-col mdl-cell--12-col-phone md-block">
-                        <input mdc-datetime-picker="" date="true" time="true" type="text" id="datetime1" placeholder="Fecha inicial"
-                               min-date="currentDate" ng-model="newEventStart" class="md-input">
-                    </md-input-container>
-                </th><th>
-                <md-input-container class=" mdl-cell mdl-cell--12-col mdl-cell--12-col-phone md-block">
-                    <input mdc-datetime-picker=""  ng-disabled="isStartDateSelected" date="true" time="true" type="text" id="datetime2"
-                           placeholder="Fecha final" min-date="newEventStart" ng-model="newEventEnd" class=" md-input">
+        <div class="col-xs-12 contentCard white-bg" STYLE="padding-top: 5px;padding-bottom :60px">
+            <h6>HORARIOS</h6>
+            <div style="float: left; width:50%;overflow:hidden;">
+                <md-input-container class="mdl-cell mdl-cell--12-col mdl-cell--12-col-phone">
+                    <input mdc-datetime-picker="" date="true" time="true" type="text" id="datetime1"
+                           placeholder="Fecha inicial"
+                           min-date="currentDate" ng-model="newEventStart" class="md-input">
                 </md-input-container>
-            </th>
-            </table>
+            </div>
+
+            <div style="float: right; width:50%;overflow:hidden;">
+                <md-input-container class="mdl-cell mdl-cell--12-col mdl-cell--12-col-phone">
+                    <input mdc-datetime-picker="" ng-disabled="isStartDateSelected" date="true" time="true"
+                           type="text" id="datetime2"
+                           placeholder="Fecha final" min-date="newEventStart" ng-model="newEventEnd"
+                           class=" md-input">
+                </md-input-container>
+            </div>
+
         </div>
 
 
         <br>
-        <div class="col-xs-12  padd-20-tb contentCard white-bg">
-            <md-input-container class="mdl-cell mdl-cell--12-col mdl-cell--12-col-phone md-block">
-                <label>Descripcion</label>
-                <textarea required ng-model="newEvent.eventDetails" md-maxlength="500" rows="5" md-select-on-focus></textarea>
-            </md-input-container>
 
+        <div>
+            <div class="col-xs-12 contentCard white-bg" STYLE="padding-top: 5px;padding-bottom :20px">
+                <h6>DESCRIPCION</h6>
+                <md-input-container class="mdl-cell mdl-cell--12-col mdl-cell--12-col-phone md-block">
+
+                    <textarea required ng-model="newEvent.eventDetails" md-maxlength="1000" rows="5"
+                              md-select-on-focus></textarea>
+                </md-input-container>
+            </div>
         </div>
 
-        <div class="col-xs-12 margin-20 padd-20-tb contentCard white-bg">
+        <br>
+        <!--
 
-            <div>
-                <md-input-container   class="mdl-cell mdl-cell--12-col mdl-cell--12-col-phone"  ng-show="citiesOne">
-                    <label>Ciudad</label>
-                    <md-select  ng-model="newEvent.city" class="city-select">
-                        <md-option ng-repeat="city in cities" selected ng-value="city.name">
-                            {{city.name}}
-                        </md-option>
-                    </md-select>
-                </md-input-container>
-            </div><br>
+        /////////////////////////
+        ciudad escondida
+        //////////////////////////////
 
-            <div>
+
+        <div style="visibility: hidden">
+            <md-input-container   class="mdl-cell mdl-cell&#45;&#45;12-col mdl-cell&#45;&#45;12-col-phone"   ng-show="citiesOne">
+                <label>Ciudad</label>
+                <md-select  ng-model="newEvent.city" class="city-select">
+                    <md-option ng-repeat="city in cities" selected ng-value="city.name">
+                        {{city.name}}
+                    </md-option>
+                </md-select>
+            </md-input-container>
+            ///////////////
+
+
+
+            /////////////////////
+            club ya deberia estar selecionado
+            ///////////////////
+
+            <div style="float: left; width:50%;overflow:hidden;">
                 <md-input-container class="mdl-cell mdl-cell--12-col mdl-cell--12-col-phone">
                     <label>Club</label>
                     <md-select ng-model="selectedClub">
-                        <md-option><em>None</em></md-option>
                         <md-option ng-repeat="club in clubs" ng-value="club.$id">
                             {{club.name}}
                         </md-option>
                     </md-select>
                 </md-input-container>
             </div>
-            <br>
+</div>-->
 
-            <div  class=" music-select">
-                <md-input-container class="mdl-cell mdl-cell--12-col mdl-cell--12-col-phone" >
+        <div class="col-xs-12 contentCard white-bg" STYLE="padding-top: 20px;padding-bottom :60px">
+
+            <div class=" music-select" style="float: left; width:33%;overflow:hidden;">
+                <md-input-container class="mdl-cell mdl-cell--12-col mdl-cell--12-col-phone">
                     <label>Genero musical (max 3)</label>
-                    <md-select class=" musicalSelec" ng-model="newEvent.musicGenres" multiple ng-change="allow3musicaGenres()">
-                        <md-option class=" music-options" ng-value="music.name" ng-repeat="music in musics" ng-show="music.visible == true">{{music.name}}</md-option>
+                    <md-select class=" musicalSelec" ng-model="newEvent.musicGenres" multiple
+                               ng-change="allow3musicaGenres()">
+                        <md-option class=" music-options" ng-value="music.name" ng-repeat="music in musics"
+                                   ng-show="music.visible == true">{{music.name}}
+                        </md-option>
                     </md-select>
                 </md-input-container>
             </div>
-            <div class="artista-select">
-                <br>
+
+
+            <div class="artista-select" style="float: left; width:33%;overflow:hidden;">
+
                 <md-input-container class="mdl-cell mdl-cell--12-col mdl-cell--12-col-phone">
                     <label>Artista, dj, banda</label>
                     <input ng-model="newEvent.djs">
                 </md-input-container>
             </div>
-            <div class="ambiente-select">
+            <div class="ambiente-select" style="float: left; width:33%;overflow:hidden;">
                 <md-input-container class="mdl-cell mdl-cell--12-col mdl-cell--12-col-phone">
                     <label>Ambiente (max 2)</label>
                     <md-select ng-model="eventEnvironment" multiple ng-change="allowUpTo2Ambiente()">
-                        <md-option class="ambiente-option" ng-value="environment.name" ng-repeat="environment in environments">{{environment.name}}</md-option>
+                        <md-option class="ambiente-option" ng-value="environment.name"
+                                   ng-repeat="environment in environments">{{environment.name}}
+                        </md-option>
                     </md-select>
                 </md-input-container>
             </div>
-            <br>
-            <div>
+
+        </div>
+
+        <br>
+        <div class="col-xs-12 contentCard white-bg" STYLE="padding-top: 20px;padding-bottom :60px">
+            <div style="float: left; width:33%;overflow:hidden;">
                 <md-input-container class="mdl-cell mdl-cell--12-col mdl-cell--12-col-phone">
                     <label>Codigo de vestimenta</label>
                     <md-select ng-model="newEvent.clothing">
@@ -129,113 +166,116 @@
                         <md-option ng-value="close.name" ng-repeat="close in clothings">{{close.name}}</md-option>
                     </md-select>
                 </md-input-container>
-                <br>
-                <table>
-                    <th>
-                        <div>
-                            <md-input-container class="mdl-cell mdl-cell--12-col mdl-cell--12-col-phone">
-                                <label>Edad Minima Mujeres</label>
-                                <md-select  ng-model="ageRangeFemale">
-                                    <md-option><em>None</em></md-option>
-                                    <md-option ng-value="ageRange.$value" ng-repeat="ageRange in ageRanges">+{{ageRange.$value}}</md-option>
-                                </md-select>
-                            </md-input-container>
-                        </div>
-
-                    </th>
-
-                    <th>
-
-                        <div>
-                            <md-input-container class="mdl-cell mdl-cell--12-col mdl-cell--12-col-phone">
-                                <label>Edad Minima Hombres</label>
-                                <md-select ng-model="ageRangeMale">
-                                    <md-option><em>None</em></md-option>
-                                    <md-option ng-value="ageRange.$value" ng-repeat="ageRange in ageRanges">+{{ageRange.$value}}</md-option>
-                                </md-select>
-                            </md-input-container>
-                        </div>
-
-                    </th>
-                </table>
-
-                <div class="mdl-cell">
-                    Agregar un horario gratis para todos los usuarios?
-                    <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="activarHoraGratis">
-                        <input ng-model="activarHoraGratis" ng-click="activarHoraGratisF()" type="checkbox" id="activarHoraGratis" class="mdl-switch__input" >
-                        <span class="mdl-switch__label"></span>
-                    </label>
-                </div>
-
-                <table>
+            </div>
 
 
-                    <th >
-                        <md-input-container  class="mdl-cell mdl-cell--12-col mdl-cell--12-col-phone  md-block">
-                            <label>Termino horario gratis</label>
-                            <input mdc-datetime-picker="" ng-show="activarHoraGratis" ng-disabled="isEndDateSelected"  date="true" time="true" type="text" id="datetime3"
-                                   min-date="newEventStart" max-date="newEventEndPlus1" ng-model="newEvent.freemiumHour" class="md-input">
-                        </md-input-container>
-                    </th><th>
+            <div style="float: left; width:33%;overflow:hidden;">
+                <md-input-container class="mdl-cell mdl-cell--12-col mdl-cell--12-col-phone">
+                    <label>Edad Minima Mujeres</label>
+                    <md-select ng-model="ageRangeFemale">
+                        <md-option><em>None</em></md-option>
+                        <md-option ng-value="ageRange.$value" ng-repeat="ageRange in ageRanges">
+                            +{{ageRange.$value}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+            </div>
+
+            <div style="float: left; width:33%;overflow:hidden;">
+                <md-input-container class="mdl-cell mdl-cell--12-col mdl-cell--12-col-phone">
+                    <label>Edad Minima Hombres</label>
+                    <md-select ng-model="ageRangeMale">
+                        <md-option><em>None</em></md-option>
+                        <md-option ng-value="ageRange.$value" ng-repeat="ageRange in ageRanges">
+                            +{{ageRange.$value}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+            </div>
+        </div>
+
+        <div class="col-xs-12 contentCard white-bg" STYLE="padding-top: 5px;padding-bottom :20px">
+            <div class="mdl-cell">
+                <strong>Agregar un horario gratis para todos los usuarios?</strong>
+                <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="activarHoraGratis">
+                    <input ng-model="activarHoraGratis" ng-click="activarHoraGratisF()" type="checkbox"
+                           id="activarHoraGratis" class="mdl-switch__input">
+                    <span class="mdl-switch__label"></span>
+                </label>
+            </div>
+
+            <table>
+
+
+                <th>
+                    <md-input-container class="mdl-cell mdl-cell--12-col mdl-cell--12-col-phone  md-block">
+                        <label>Termino horario gratis</label>
+                        <input mdc-datetime-picker="" ng-show="activarHoraGratis" ng-disabled="isEndDateSelected"
+                               date="true" time="true" type="text" id="datetime3"
+                               min-date="newEventStart" max-date="newEventEndPlus1" ng-model="newEvent.freemiumHour"
+                               class="md-input">
+                    </md-input-container>
+                </th>
+                <th>
                     <md-input-container class="mdl-cell mdl-cell--12-col mdl-cell--12-col-phone md-block">
                         <label>Valor en Puerta</label>
                         <input type="number" ng-model="newEvent.entryValue" required md-no-asterisk>
                     </md-input-container>
                 </th>
-                </table>
-            </div>
+            </table>
         </div>
 
-        <br>
-        <!-- <md-input-container class="mdl-cell mdl-cell--6-col mdl-cell--12-col-phone" ng-show="!citiesOne">
-           <label>Ciudad</label>
-           <md-select ng-model="newEvent.city" class="city-select">
-             <md-option><em>None</em></md-option>
-             <md-option ng-repeat="city in cities" ng-value="city.name">
-               {{city.name}}
-             </md-option>
-           </md-select>
-         </md-input-container> -->
 
-        <!--  <br>
-          <div class="doorman-select">
-            <md-input-container class="mdl-cell mdl-cell--6-col mdl-cell--12-col-phone" ng-show="myDoormansOne">
-              <label>Doorman</label>
-              <md-select ng-model="selectedDoorman1" multiple>
-                <md-option ng-value="myDoorman.$id" ng-repeat="myDoorman in myDoormans1" selected>{{myDoorman.name}}1</md-option>
-              </md-select>
-            </md-input-container>
-          </div>
+<!-- <md-input-container class="mdl-cell mdl-cell--6-col mdl-cell--12-col-phone" ng-show="!citiesOne">
+   <label>Ciudad</label>
+   <md-select ng-model="newEvent.city" class="city-select">
+     <md-option><em>None</em></md-option>
+     <md-option ng-repeat="city in cities" ng-value="city.name">
+       {{city.name}}
+     </md-option>
+   </md-select>
+ </md-input-container> -->
 
-          <div class="doorman-select" >
-            <md-input-container class="mdl-cell mdl-cell--6-col mdl-cell--12-col-phone" ng-hide="myDoormansOne">
-              <label>Doorman</label>
-              <md-select ng-model="selectedDoorman" multiple>
-                <md-option ng-value="myDoorman.$id" ng-repeat="myDoorman in myDoormans" >{{myDoorman.name}}</md-option>
-              </md-select>
-            </md-input-container>
-          </div>
+<!--  <br>
+  <div class="doorman-select">
+    <md-input-container class="mdl-cell mdl-cell--6-col mdl-cell--12-col-phone" ng-show="myDoormansOne">
+      <label>Doorman</label>
+      <md-select ng-model="selectedDoorman1" multiple>
+        <md-option ng-value="myDoorman.$id" ng-repeat="myDoorman in myDoormans1" selected>{{myDoorman.name}}1</md-option>
+      </md-select>
+    </md-input-container>
+  </div>
 
-        <br> -->
+  <div class="doorman-select" >
+    <md-input-container class="mdl-cell mdl-cell--6-col mdl-cell--12-col-phone" ng-hide="myDoormansOne">
+      <label>Doorman</label>
+      <md-select ng-model="selectedDoorman" multiple>
+        <md-option ng-value="myDoorman.$id" ng-repeat="myDoorman in myDoormans" >{{myDoorman.name}}</md-option>
+      </md-select>
+    </md-input-container>
+  </div>
 
-
+<br> -->
 
 
+<!--
+  <div>
+    <md-input-container class="mdl-cell mdl-cell--6-col mdl-cell--12-col-phone ">
+      <label>Descuento Izinat luego de horario cumplido</label>
+      <md-select ng-model="newEvent.descOutHour">
+        <md-option><em>None</em></md-option>
+        <md-option ng-value="descOutHour" ng-repeat="descOutHour in descOutHours">{{descOutHour}}%</md-option>
+      </md-select>
+    </md-input-container>
+  </div> -->
 
-        <!--
-          <div>
-            <md-input-container class="mdl-cell mdl-cell--6-col mdl-cell--12-col-phone ">
-              <label>Descuento Izinat luego de horario cumplido</label>
-              <md-select ng-model="newEvent.descOutHour">
-                <md-option><em>None</em></md-option>
-                <md-option ng-value="descOutHour" ng-repeat="descOutHour in descOutHours">{{descOutHour}}%</md-option>
-              </md-select>
-            </md-input-container>
-          </div> -->
+<div class="col-xs-12 mdl-cell mdl-cell--12-col mdl-cell--12-col-phone contentCard white-bg">
+    <center>
+        <button ng-click="saveEvent()"
+                class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-cell mdl-cell--12-col mdl-cell--12-col-phone">
+            PUBLICAR
+        </button>
 
-
-
-        <button ng-click="saveEvent()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Publicar</button>
 
     </center>
 </div>
