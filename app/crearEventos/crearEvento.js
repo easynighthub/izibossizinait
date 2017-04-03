@@ -524,4 +524,45 @@ angular.module('myApp.crearEventos', ['ngRoute'])
 
             };
 
+            $scope.serviciosEvent = [];
+
+            $scope.addNewChoice = function() {
+                var newItemNo = $scope.serviciosEvent.length+1;
+                $scope.serviciosEvent.push({
+                    tipo:$scope.tipoServicio
+
+                }
+                    );
+            };
+
+
+            $scope.guardarServicios = function (servicioEvent) {
+            console.log("entre a guardar ")
+
+              var tipoServicio = {
+                    precio: servicioEvent.precio,
+                    cantidad: servicioEvent.cantidad,
+                    maxEntradas: servicioEvent.maxEntradas,
+                    desc:  servicioEvent.desc
+                };
+
+                var newPostKey = firebase.database().ref().child('events/idevento123').push().key; //esto es solo para probar rapido
+               var serviceEvent = angular.toJson($scope.serviciosEvent);
+                firebase.database().ref('eventServices/idevento123/' + newPostKey + '/').set(tipoServicio).then(
+                    function(s){
+
+                        alert('Se Agrego el asdasdasda Correctamente');
+                        console.log('se guardo bien ', s);
+                    }, function(e) {
+                        alert('Error, intente de nuevo');
+                        console.log('se guardo mal ', e);
+                    }
+                );
+            }
+
+            $scope.removeChoice = function() {
+                var lastItem = $scope.serviciosEvent.length-1;
+                $scope.serviciosEvent.splice(lastItem);
+            };
+
         }]);

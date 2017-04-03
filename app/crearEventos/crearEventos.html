@@ -278,6 +278,48 @@
             </md-input-container>
           </div> -->
 
+
+        <button class="addfields" ng-click="addNewChoice()">Agregar Servicio</button>
+
+
+
+        <select ng-model="tipoServicio">
+<!-- este es el tipo de servicio -->
+            <option ng-value="PREVENTA">PREVENTA</option>
+            <option ng-value="MESA" >MESA</option>
+            <option ng-value="BOTELLAS">BOTELLAS</option>
+            <option ng-value="VIP">VIP</option>
+        </select>
+
+        <fieldset  data-ng-repeat="servicioEvent in serviciosEvent">
+<!-- datos de uno de los servicios -->
+            <input type="text" ng-value="servicioEvent.tipo" name="" placeholder="TIPO">
+            <input type="text" ng-value="servicioEvent.precio" name="" placeholder="Precio">
+            <input type="text" ng-value="servicioEvent.cantidad" name="" placeholder="Cantidad">
+            <input type="text" ng-value="servicioEvent.maxEntradas" name="" placeholder="maximo de Entradas">
+            <input type="text" ng-model="servicioEvent.desc" name="" placeholder="Descripción">
+
+            <div style="float: left; width:50%;overflow:hidden;">
+                <md-input-container class="mdl-cell mdl-cell--12-col mdl-cell--12-col-phone">
+                    <input mdc-datetime-picker="" date="true" time="true" type="text" id=""
+                           placeholder="Finalización" ng-model="servicioEvent.fechaFin" class="md-input">
+                </md-input-container>
+            </div>
+
+                <button class="remove" ng-show="$last" ng-click="removeChoice()">-</button>
+        </fieldset>
+
+
+
+        <div id="choicesDisplay">
+            {{ serviciosEvent }}
+        </div>
+        <button ng-click="guardarServicios(servicioEvent)"
+                class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-cell mdl-cell--12-col mdl-cell--12-col-phone">
+            Guardar Servicios
+        </button>
+
+
         <div class="col-xs-12 mdl-cell mdl-cell--12-col mdl-cell--12-col-phone contentCard white-bg">
             <center>
                 <button ng-click="saveEvent()"
