@@ -491,6 +491,8 @@ angular.module('myApp.crearEventos', ['ngRoute'])
                 $scope.newEvent.freeCover = 0;
                 $scope.newEvent.isPremiumEvent = false;
 
+                guardarServicios();
+
                 cleanObject();
 
                 if ($scope.isDuplicate) {
@@ -511,38 +513,38 @@ angular.module('myApp.crearEventos', ['ngRoute'])
                 );
             };
 
-           var guardarServicios = function (servicioEvent) {
-                console.log("entre a guardar ");
+            var guardarServicios = function () {
+                if ("undefined" === typeof $scope.newEvent.id) {
+                    console.log("Omitir");
+                } else {
+                    console.log("Guardando servicios para el evento: " + $scope.newEvent.id);
 
-                var tipoServicio = [];
-                console.log(servicioEvent);
-                console.log($scope.serviciosEvent);
-                if (servicioEvent !== 'undefined') {
+                    var tipoServicio = [];
+                    console.log($scope.serviciosEvent);
                     $scope.serviciosEvent.forEach(function (element, index, array) {
                         var service = {
+                            tipo: element.tipo,
                             precio: element.precio,
                             cantidad: element.cantidad,
                             maxEntradas: element.maxEntradas,
                             desc: element.desc,
-                            fechaFin :  new Date(element.fechaFin).getTime()
+                            fechaFin: new Date(element.fechaFin).getTime()
                         };
 
                         tipoServicio.push(service);
                     });
-                }
 
-                var newPostKey = firebase.database().ref().child('events/' + $scope.newEvent.id + '/').push().key; //esto es solo para probar rapido
-                var serviceEvent = angular.toJson($scope.serviciosEvent);
-                //+ newPostKey + '/'
-                firebase.database().ref('eventServices/' + $scope.newEvent.id + '/').set(tipoServicio).then(
-                    function (s) {
-                        alert('Se Agrego el asdasdasda Correctamente');
-                        console.log('se guardo bien ', s);
-                    }, function (e) {
-                        alert('Error, intente de nuevo');
-                        console.log('se guardo mal ', e);
-                    }
-                );
+                    var newPostKey = firebase.database().ref().child('events/' + $scope.newEvent.id + '/').push().key; //esto es solo para probar rapido
+                    firebase.database().ref('eventServices/' + $scope.newEvent.id + '/').set(tipoServicio).then(
+                        function (s) {
+                            alert('Se Agrego el asdasdasda Correctamente');
+                            console.log('se guardo bien ', s);
+                        }, function (e) {
+                            alert('Error, intente de nuevo');
+                            console.log('se guardo mal ', e);
+                        }
+                    );
+                }
             };
 
             $scope.removeChoice = function () {
