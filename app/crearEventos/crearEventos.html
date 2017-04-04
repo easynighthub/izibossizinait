@@ -1,7 +1,6 @@
 <link rel="stylesheet" type="text/css" href="css/cssCrearEvento.css" xmlns="http://www.w3.org/1999/html">
 
 
-
 <div class="mdl-cell mdl-cell--12-col mdl-cell--12-col-phone">
 
     <center>
@@ -272,7 +271,7 @@
           </div> -->
 
 
-        <div class="col-xs-12 contentCard white-bg" style="margin: 20px; padding-bottom: 20px"
+        <div class="col-xs-12 contentCard white-bg" style="margin: 20px; padding-bottom: 60px"
              data-ng-repeat="servicioEvent in serviciosEvent">
 
             <!-- datos de uno de los servicios -->
@@ -286,20 +285,18 @@
             <div>
 
 
-                    <div class="mdl-cell--4-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <input class="mdl-textfield__input" required="required" type="number"
-                               ng-model="servicioEvent.precio" placeholder="Precio" id="Precio">
-                        <label class="mdl-textfield__label" for="Precio"></label>
-                    </div>
+                <div class="mdl-cell--4-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" required="required" type="number"
+                           ng-model="servicioEvent.precio" placeholder="Precio" id="Precio">
+                    <label class="mdl-textfield__label" for="Precio"></label>
+                </div>
 
 
-
-
-                    <div class=" mdl-cell--4-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <input class="mdl-textfield__input" required="required" type="number"
-                               ng-model="servicioEvent.cantidad" placeholder="cantidad" id="cantidad">
-                        <label class="mdl-textfield__label" for="cantidad"></label>
-                    </div>
+                <div class=" mdl-cell--4-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" required="required" type="number"
+                           ng-model="servicioEvent.cantidad" placeholder="cantidad" id="cantidad">
+                    <label class="mdl-textfield__label" for="cantidad"></label>
+                </div>
 
                 <div class=" mdl-cell--4-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                     <input class="mdl-textfield__input" required="required" type="number"
@@ -308,73 +305,38 @@
                 </div>
 
 
-
-
             </div>
-            <div layout-gt-sm="row">
-            <md-input-container class="md-block" flex-gt-sm>
-                <label>Email</label>
-                <input name="email" ng-model="user.email"
-                       required minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/" />
 
-                <div class="hint" ng-show="showHints">How can we reach you?</div>
 
-                <div ng-messages="userForm.email.$error" ng-hide="showHints">
-                    <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
-                        Your email must be between 10 and 100 characters long and look like an e-mail address.
-                    </div>
+            <md-input-container style="text-align: left"
+                                class="mdl-cell mdl-cell--12-col mdl-cell--12-col-phone md-block">
+
+                    <textarea required ng-model="servicioEvent.desc" placeholder="Descripción" md-maxlength="250"
+                              rows="3"
+                              md-select-on-focus>
+                    </textarea>
+            </md-input-container>
+            <div style="width: 100%">
+
+                <div style="width:30%;float: left">
+                    <md-input-container class="mdl-cell mdl-cell--12-col mdl-cell--12-col-phone">
+
+                        <input mdc-datetime-picker="" date="true" time="true" type="text" id=""
+                               max-date="newEventStart"
+                               placeholder="Finalizar venta" ng-model="servicioEvent.fechaFin" class="md-input">
+                    </md-input-container>
                 </div>
-            </md-input-container>
 
-            <div flex="5" hide-xs hide-sm>
-                <!-- Spacer //-->
-            </div>
-
-            <md-input-container class="md-block" flex-gt-sm>
-                <label>Phone Number</label>
-                <input name="phone" ng-model="user.phone" ng-pattern="/^[(][0-9]{3}[)] [0-9]{3}-[0-9]{4}$/" />
-
-                <div class="hint" ng-show="showHints">(###) ###-####</div>
-
-                <div ng-messages="userForm.phone.$error" ng-hide="showHints">
-                    <div ng-message="pattern">(###) ###-#### - Please enter a valid phone number.</div>
-                </div>
-            </md-input-container>
-
-                <md-input-container class="md-block" flex-gt-sm>
-                    <label>Phone Number</label>
-                    <input name="phone" ng-model="user.phone" ng-pattern="/^[(][0-9]{3}[)] [0-9]{3}-[0-9]{4}$/" />
-
-                    <div class="hint" ng-show="showHints">(###) ###-####</div>
-
-                    <div ng-messages="userForm.phone.$error" ng-hide="showHints">
-                        <div ng-message="pattern">(###) ###-#### - Please enter a valid phone number.</div>
-                    </div>
-                </md-input-container>
-            </div>
-
-            <md-input-container class="mdl-cell mdl-cell--12-col mdl-cell--12-col-phone md-block">
-
-                    <textarea required ng-model="servicioEvent.desc" placeholder="Descripción" md-maxlength="300"
-                              rows="5"
-                              md-select-on-focus></textarea>
-            </md-input-container>
-
-            <div>
-                <i class="material-icons">event</i>
-                <md-input-container class="mdl-cell mdl-cell--12-col mdl-cell--12-col-phone">
-                    <input mdc-datetime-picker="" date="true" time="true" type="text" id=""
-                           placeholder="Finalizar venta" ng-model="servicioEvent.fechaFin" class="md-input">
-                </md-input-container>
-            </div>
-
-
-            <div class="absolute grey-70-c " style="right: 0px">
-                <i ng-click="removeChoice()" class="material-icons pointer btn_rsvp_trash">delete_forever</i>
+                <center>
+                    <button ng-click="removeChoice()" style="width:60%;float: right"
+                            class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect grey-70-c  mdl-cell mdl-cell--12-col mdl-cell--12-col-phone">
+                        <i class="material-icons pointer btn_rsvp_trash">delete_forever</i><strong>BORRAR</strong>
+                    </button>
+                </center>
             </div>
         </div>
 
-        <div class=" contentCard white-bg  " STYLE="padding-top: 20px;padding-bottom :20px">
+        <div class="col-xs-12 contentCard white-bg" STYLE="padding-top: 20px;padding-bottom :20px">
             <center>
                 <div>
                     <STRONG>AÑADIR PROMOCION</STRONG>
@@ -411,7 +373,6 @@
                 </button>
             </center>
         </div>
-
 
 
         <!--
