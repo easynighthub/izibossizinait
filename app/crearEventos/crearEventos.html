@@ -255,7 +255,45 @@
           </div>
 
         <br> -->
+        <br>
+        <div class="col-xs-12 contentCard white-bg  " STYLE="padding-top: 20px;padding-bottom :60px">
+            <center>
+            <div>
+                <STRONG>AÑADIR PROMOCION</STRONG>
+            </div>
 
+            <br>
+            <button class="  mdl-cell--3-col mdl-cell--12-col-phone
+            mdl-button mdl-js-button mdl-button--raised mdl-color--red mdl-color-text--white"
+
+                    ng-click="addNewChoicePREVENTA()" ng-model="PREVENTA">
+                <i class="material-icons">add_box</i>
+                PREVENTA
+            </button>
+            <button class="  mdl-cell--3-col mdl-cell--12-col-phone
+            mdl-button mdl-js-button mdl-button--raised mdl-color--indigo-A100 mdl-color-text--white"
+
+                    ng-click="addNewChoiceMESA()"
+                    ng-model="MESA">
+                <i class="material-icons">add_box</i>
+                MESA
+            </button>
+            <button class="  mdl-cell--3-col mdl-cell--12-col-phone
+            mdl-button mdl-js-button mdl-button--raised mdl-color--green mdl-color-text--white"
+                    ng-click="addNewChoiceBOTELLAS()" ng-model="PREVENTA">
+                <i class="material-icons">add_box</i>
+                BOTELLAS
+            </button>
+            <button class="  mdl-cell--3-col mdl-cell--12-col-phone
+            mdl-button mdl-js-button mdl-button--raised mdl-color--yellow mdl-color-text--white"
+                    ng-click="addNewChoiceVIP()"
+                    ng-model="VIP">
+                <i class="material-icons">add_box</i>
+                VIP
+            </button>
+            </center>
+        </div>
+        <br><br><br>
 
         <!--
           <div>
@@ -267,6 +305,7 @@
               </md-select>
             </md-input-container>
           </div> -->
+
 
         <div class="col-xs-12 contentCard white-bg" style="margin: 20px; padding-bottom: 50px"
              data-ng-repeat="servicioEvent in serviciosEvent">
@@ -323,38 +362,7 @@
         </div>
 
 
-        <div class="white-bg mdl-cell mdl-cell--12-col mdl-cell--12-col-phone md-block"
-             style="vertical-align: middle">
-            <div style="float: left; width: 30%">
-                <STRONG>AÑADIR PROMOCION</STRONG>
-            </div>
-            <button class="mdl-button mdl-js-button mdl-button--raised mdl-color--red mdl-color-text--white"
-                    style="width: 15%;float: right; margin: 10px"
-                    ng-click="addNewChoicePREVENTA()" ng-model="PREVENTA">
-                <i class="material-icons">add_box</i>
-                PREVENTA
-            </button>
-            <button class="mdl-button mdl-js-button mdl-button--raised mdl-color--indigo-A100 mdl-color-text--white"
-                    style="width: 15%;float: right; margin: 10px"
-                    ng-click="addNewChoiceMESA()"
-                    ng-model="MESA">
-                <i class="material-icons">add_box</i>
-                MESA
-            </button>
-            <button class="mdl-button mdl-js-button mdl-button--raised mdl-color--green mdl-color-text--white"
-                    style="width: 15%;float: right; margin: 10px"
-                    ng-click="addNewChoiceBOTELLAS()" ng-model="PREVENTA">
-                <i class="material-icons">add_box</i>
-                BOTELLAS
-            </button>
-            <button class="mdl-button mdl-js-button mdl-button--raised mdl-color--yellow mdl-color-text--white"
-                    style="width: 15%;float: right; margin: 10px"
-                    ng-click="addNewChoiceVIP()"
-                    ng-model="VIP">
-                <i class="material-icons">add_box</i>
-                VIP
-            </button>
-        </div>
+
 
 
         <!--
