@@ -1,5 +1,7 @@
 <link rel="stylesheet" type="text/css" href="css/cssCrearEvento.css" xmlns="http://www.w3.org/1999/html">
 
+
+
 <div class="mdl-cell mdl-cell--12-col mdl-cell--12-col-phone">
 
     <center>
@@ -256,44 +258,7 @@
 
         <br> -->
         <br>
-        <div class="col-xs-12 contentCard white-bg  " STYLE="padding-top: 20px;padding-bottom :60px">
-            <center>
-            <div>
-                <STRONG>AÑADIR PROMOCION</STRONG>
-            </div>
 
-            <br>
-            <button class="  mdl-cell--3-col mdl-cell--12-col-phone
-            mdl-button mdl-js-button mdl-button--raised mdl-color--red mdl-color-text--white"
-
-                    ng-click="addNewChoicePREVENTA()" ng-model="PREVENTA">
-                <i class="material-icons">add_box</i>
-                PREVENTA
-            </button>
-            <button class="  mdl-cell--3-col mdl-cell--12-col-phone
-            mdl-button mdl-js-button mdl-button--raised mdl-color--indigo-A100 mdl-color-text--white"
-
-                    ng-click="addNewChoiceMESA()"
-                    ng-model="MESA">
-                <i class="material-icons">add_box</i>
-                MESA
-            </button>
-            <button class="  mdl-cell--3-col mdl-cell--12-col-phone
-            mdl-button mdl-js-button mdl-button--raised mdl-color--green mdl-color-text--white"
-                    ng-click="addNewChoiceBOTELLAS()" ng-model="PREVENTA">
-                <i class="material-icons">add_box</i>
-                BOTELLAS
-            </button>
-            <button class="  mdl-cell--3-col mdl-cell--12-col-phone
-            mdl-button mdl-js-button mdl-button--raised mdl-color--yellow mdl-color-text--white"
-                    ng-click="addNewChoiceVIP()"
-                    ng-model="VIP">
-                <i class="material-icons">add_box</i>
-                VIP
-            </button>
-            </center>
-        </div>
-        <br><br><br>
 
         <!--
           <div>
@@ -307,7 +272,7 @@
           </div> -->
 
 
-        <div class="col-xs-12 contentCard white-bg" style="margin: 20px; padding-bottom: 50px"
+        <div class="col-xs-12 contentCard white-bg" style="margin: 20px; padding-bottom: 20px"
              data-ng-repeat="servicioEvent in serviciosEvent">
 
             <!-- datos de uno de los servicios -->
@@ -319,26 +284,74 @@
             </div>
 
             <div>
-                <input class="mdl-cell mdl-cell--1-col mdl-cell--12-col-phone form-control br-2  checkInput"
-                       style="width: 30%; float: right"
 
-                       required="required"
-                       type="number"
-                       ng-model="servicioEvent.precio" placeholder="Precio">
 
-                <input class="mdl-cell mdl-cell--1-col mdl-cell--12-col-phone form-control br-2  checkInput"
-                       style="width: 30%; float: right"
-                       required="required"
-                       type="number"
-                       ng-model="servicioEvent.cantidad" placeholder="Cantidad">
+                    <div class="mdl-cell--4-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" required="required" type="number"
+                               ng-model="servicioEvent.precio" placeholder="Precio" id="Precio">
+                        <label class="mdl-textfield__label" for="Precio"></label>
+                    </div>
 
-                <input class="mdl-cell mdl-cell--1-col mdl-cell--12-col-phone form-control br-2  checkInput"
-                       style="width: 30%; float: right"
-                       required="required"
-                       type="number"
-                       ng-model="servicioEvent.maxEntradas" placeholder="Max entradas por compra">
+
+
+
+                    <div class=" mdl-cell--4-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" required="required" type="number"
+                               ng-model="servicioEvent.cantidad" placeholder="cantidad" id="cantidad">
+                        <label class="mdl-textfield__label" for="cantidad"></label>
+                    </div>
+
+                <div class=" mdl-cell--4-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" required="required" type="number"
+                           ng-model="servicioEvent.maxEntradas" placeholder="Max entradas por compra" id="maxEntradas">
+                    <label class="mdl-textfield__label" for="maxEntradas"></label>
+                </div>
+
+
+
+
+            </div>
+            <div layout-gt-sm="row">
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Email</label>
+                <input name="email" ng-model="user.email"
+                       required minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/" />
+
+                <div class="hint" ng-show="showHints">How can we reach you?</div>
+
+                <div ng-messages="userForm.email.$error" ng-hide="showHints">
+                    <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+                        Your email must be between 10 and 100 characters long and look like an e-mail address.
+                    </div>
+                </div>
+            </md-input-container>
+
+            <div flex="5" hide-xs hide-sm>
+                <!-- Spacer //-->
             </div>
 
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Phone Number</label>
+                <input name="phone" ng-model="user.phone" ng-pattern="/^[(][0-9]{3}[)] [0-9]{3}-[0-9]{4}$/" />
+
+                <div class="hint" ng-show="showHints">(###) ###-####</div>
+
+                <div ng-messages="userForm.phone.$error" ng-hide="showHints">
+                    <div ng-message="pattern">(###) ###-#### - Please enter a valid phone number.</div>
+                </div>
+            </md-input-container>
+
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Phone Number</label>
+                    <input name="phone" ng-model="user.phone" ng-pattern="/^[(][0-9]{3}[)] [0-9]{3}-[0-9]{4}$/" />
+
+                    <div class="hint" ng-show="showHints">(###) ###-####</div>
+
+                    <div ng-messages="userForm.phone.$error" ng-hide="showHints">
+                        <div ng-message="pattern">(###) ###-#### - Please enter a valid phone number.</div>
+                    </div>
+                </md-input-container>
+            </div>
 
             <md-input-container class="mdl-cell mdl-cell--12-col mdl-cell--12-col-phone md-block">
 
@@ -361,7 +374,43 @@
             </div>
         </div>
 
+        <div class=" contentCard white-bg  " STYLE="padding-top: 20px;padding-bottom :20px">
+            <center>
+                <div>
+                    <STRONG>AÑADIR PROMOCION</STRONG>
+                </div>
 
+                <br>
+                <button class="  mdl-cell--3-col mdl-cell--12-col-phone
+            mdl-button mdl-js-button mdl-button--raised mdl-color--red mdl-color-text--white"
+
+                        ng-click="addNewChoicePREVENTA()" ng-model="PREVENTA">
+                    <i class="material-icons">add_box</i>
+                    PREVENTA
+                </button>
+                <button class="  mdl-cell--3-col mdl-cell--12-col-phone
+            mdl-button mdl-js-button mdl-button--raised mdl-color--indigo-A100 mdl-color-text--white"
+
+                        ng-click="addNewChoiceMESA()"
+                        ng-model="MESA">
+                    <i class="material-icons">add_box</i>
+                    MESA
+                </button>
+                <button class="  mdl-cell--3-col mdl-cell--12-col-phone
+            mdl-button mdl-js-button mdl-button--raised mdl-color--green mdl-color-text--white"
+                        ng-click="addNewChoiceBOTELLAS()" ng-model="PREVENTA">
+                    <i class="material-icons">add_box</i>
+                    BOTELLAS
+                </button>
+                <button class="  mdl-cell--3-col mdl-cell--12-col-phone
+            mdl-button mdl-js-button mdl-button--raised mdl-color--yellow mdl-color-text--white"
+                        ng-click="addNewChoiceVIP()"
+                        ng-model="VIP">
+                    <i class="material-icons">add_box</i>
+                    VIP
+                </button>
+            </center>
+        </div>
 
 
 
