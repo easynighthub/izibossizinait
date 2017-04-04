@@ -293,10 +293,10 @@
 
         <fieldset  data-ng-repeat="servicioEvent in serviciosEvent">
 <!-- datos de uno de los servicios -->
-            <input type="text" ng-value="servicioEvent.tipo" name="" placeholder="TIPO">
-            <input type="text" ng-value="servicioEvent.precio" name="" placeholder="Precio">
-            <input type="text" ng-value="servicioEvent.cantidad" name="" placeholder="Cantidad">
-            <input type="text" ng-value="servicioEvent.maxEntradas" name="" placeholder="maximo de Entradas">
+            <input type="text" ng-model="servicioEvent.tipo" name="" placeholder="TIPO">
+            <input type="text" ng-model="servicioEvent.precio" name="" placeholder="Precio">
+            <input type="text" ng-model="servicioEvent.cantidad" name="" placeholder="Cantidad">
+            <input type="text" ng-model="servicioEvent.maxEntradas" name="" placeholder="maximo de Entradas">
             <input type="text" ng-model="servicioEvent.desc" name="" placeholder="Descripción">
 
             <div style="float: left; width:50%;overflow:hidden;">
@@ -314,7 +314,7 @@
         <div id="choicesDisplay">
             {{ serviciosEvent }}
         </div>
-        <button ng-click="guardarServicios(servicioEvent)"
+        <button ng-click="guardarServicios(serviciosEvent)"
                 class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-cell mdl-cell--12-col mdl-cell--12-col-phone">
             Guardar Servicios
         </button>

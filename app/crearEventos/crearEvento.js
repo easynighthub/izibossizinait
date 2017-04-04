@@ -27,7 +27,6 @@ angular.module('myApp.crearEventos', ['ngRoute'])
 
             $('.modulo').text("Crear " + "Evento");
 
-
             for (var i = 0; i < 100; i++) {
                 $scope.descOutHours.push(i);
             }
@@ -62,7 +61,7 @@ angular.module('myApp.crearEventos', ['ngRoute'])
                         }
                     });
                 });
-            }
+            };
 
             var getCities = function () {
                 var citiesER = firebase.database().ref().child('city');
@@ -74,11 +73,11 @@ angular.module('myApp.crearEventos', ['ngRoute'])
                             $scope.cities.push(city);
                         }
                     });
-                    if ($scope.cities.length == 1) {
+                    if ($scope.cities.length === 1) {
                         $scope.citiesOne = true;
                     }
                 });
-            }
+            };
 
             var gerDoormans = function () {
                 $scope.myDoormans = [];
@@ -90,12 +89,12 @@ angular.module('myApp.crearEventos', ['ngRoute'])
                             $scope.myDoormans.push(d);
                         }
                     });
-                    if ($scope.myDoormans.length == 1) {
+                    if ($scope.myDoormans.length === 1) {
                         $scope.myDoormansOne = true;
                         $scope.myDoormans1 = $scope.myDoormans;
                     }
                 });
-            }
+            };
 
             var getRRPPs = function () {
                 $scope.misRRPPs = [];
@@ -107,14 +106,14 @@ angular.module('myApp.crearEventos', ['ngRoute'])
                             $scope.misRRPPs.push(d);
                             console.log(d + "rrpppppppsss");
                             noRRpps = (noRRpps + 1);
-                        }else{
+                        } else {
                             console.log("no rrpssss!!");
                         }
 
                     });
 
                 });
-            }
+            };
 
             if (!window.adminData) {
                 var ref = firebase.database().ref('/admins/').child(window.currenUser.uid);
@@ -172,7 +171,7 @@ angular.module('myApp.crearEventos', ['ngRoute'])
 
             $scope.openFileInput = function () {
                 $('#imgInp').click();
-            }
+            };
 
 
             function readURL(input) {
@@ -181,7 +180,7 @@ angular.module('myApp.crearEventos', ['ngRoute'])
                     reader.onload = function (e) {
                         $scope.imageInBase64 = e.target.result;
                         $('#blah').attr('src', e.target.result);
-                    }
+                    };
                     reader.readAsDataURL(input.files[0]);
                 }
             }
@@ -196,31 +195,31 @@ angular.module('myApp.crearEventos', ['ngRoute'])
                 $scope.isLoading = false;
                 var myElements = document.querySelector(".progress-circular.md-hue-3 path");
                 myElements.style.stroke = 'rgb(35, 7, 147)';
-            }
+            };
 
             var stopLoading = function () {
                 $('body').removeClass('loading');
                 $('.md-warn.md-hue-3').addClass('hidden');
                 $scope.isLoading = true;
-            }
+            };
 
             var managerError = function (e) {
                 stopLoading();
                 console.log('Hubo un Error', e);
                 alert('Error interno, intente nuevamente.');
-            }
+            };
 
             var getclubId = function (clucb) {
                 var clucbA = clucb.split(' ');
                 clucbA[0] = clucbA[0].toLowerCase();
                 return clucbA.join('');
-            }
+            };
 
             $scope.closeModal = function () {
                 $scope.newEvent = {};
                 $('.custom-modal').addClass('hidden');
                 $('body').removeClass('loading');
-            }
+            };
 
             var updateRRppEvents = function (eventId) {
                 console.log("entro a guardar rrpps");
@@ -260,10 +259,10 @@ angular.module('myApp.crearEventos', ['ngRoute'])
                     );
                 });
 
-                if(noRRpps > 0){
+                if (noRRpps > 0) {
                     updateRRppEvents(eventId);
-                    firebase.database().ref('admins/'+window.currenUser.uid+'/events/' + $scope.newEvent.id).set(true);
-                }else{
+                    firebase.database().ref('admins/' + window.currenUser.uid + '/events/' + $scope.newEvent.id).set(true);
+                } else {
                     console.log("no tiene rrps ");
                 }
 
@@ -275,26 +274,6 @@ angular.module('myApp.crearEventos', ['ngRoute'])
                 alert('EVENTO CARGADO EXITOSAMENETE , izinait lo aprobara en unos minutos');
                 $scope.newEvent = {};
                 document.location.href = '#!/eventos';
-
-                /*if ($scope.selectedDoorman1)
-                 $scope.selectedDoorman = $scope.selectedDoorman1;
-
-                 if ($scope.selectedDoorman.length > index) {
-                 firebase.database().ref('doormans/'+ $scope.selectedDoorman[index] +'/events/' + $scope.newEvent.id).set(true).then(
-                 function(s){
-                 doormanIndex ++;
-                 updateDoormanEvents(doormanIndex);
-                 }, managerError
-                 );
-                 } else {
-                 stopLoading();
-                 $scope.shareWithFacebook = 'https://www.facebook.com/share.php?u='+$scope.newEvent.evenUrl;
-                 $scope.shareWithTwiter = 'http://twitter.com/share?text=An%20Awesome%20Link&url=' + $scope.newEvent.evenUrl;
-
-                 alert('EVENTO CARGADO EXITOSAMENETE , izinait lo aprobara en unos minutos');
-                 $scope.newEvent = {};
-                 document.location.href = '#!/eventos';
-                 }*/
             };
 
             var uploadImage = function () {
@@ -316,62 +295,62 @@ angular.module('myApp.crearEventos', ['ngRoute'])
 
             var fieldError = function (message, field) {
                 alert(message);
-            }
+            };
 
             var getLatAndLng = function (name, isLat) {
                 var lat = '';
                 angular.forEach($scope.clubs, function (club) {
-                    if (name == club.$id) {
+                    if (name === club.$id) {
                         lat = $scope.clubs[$scope.clubs.indexOf(club)][isLat];
                     }
                 });
                 return lat;
-            }
+            };
 
             $scope.allowUpTo2Ambiente = function () {
                 var options = $('.ambiente-option');
                 if ($scope.eventEnvironment.length >= 2) {
                     angular.forEach(options, function (opt) {
                         var a = $(opt).attr('aria-selected');
-                        if (a == 'false') {
+                        if (a === 'false') {
                             $(opt).addClass('hidden');
                         }
                     });
                 } else {
                     angular.forEach(options, function (opt) {
                         var a = $(opt).attr('aria-selected');
-                        if (a == 'false') {
+                        if (a === 'false') {
                             $(opt).removeClass('hidden');
                         }
                     });
                 }
-            }
+            };
 
             $scope.allow3musicaGenres = function () {
                 var options = $('.music-options');
                 if ($scope.newEvent.musicGenres.length >= 3) {
                     angular.forEach(options, function (opt) {
                         var a = $(opt).attr('aria-selected');
-                        if (a == 'false') {
+                        if (a === 'false') {
                             $(opt).addClass('hidden');
                         }
                     });
                 } else {
                     angular.forEach(options, function (opt) {
                         var a = $(opt).attr('aria-selected');
-                        if (a == 'false') {
+                        if (a === 'false') {
                             $(opt).removeClass('hidden');
                         }
                     });
                 }
-            }
+            };
 
             var validateFields = function () {
                 if (!$scope.newEvent.name) {
                     fieldError('EL campo nombre debe ser llenado');
                     return false;
                 }
-                if (!$scope.isDuplicate && $('#imgInp').val() == '') {
+                if (!$scope.isDuplicate && $('#imgInp').val() === '') {
                     fieldError('Debe elegir una imagen.');
                     return false;
                 }
@@ -420,12 +399,12 @@ angular.module('myApp.crearEventos', ['ngRoute'])
                  return false;
                  } */
 
-                if(activarHoraGratis == true){
-                    if (!$scope.newEvent.freemiumHour){
+                var activarHoraGratis;
+                if (activarHoraGratis === true) {
+                    if (!$scope.newEvent.freemiumHour) {
                         fieldError('el campo hora gratis debe ser llenado');
                     }
-                }else
-                {
+                } else {
                     $scope.newEvent.freemiumHour = $scope.newEventStart;
                 }
 
@@ -461,19 +440,14 @@ angular.module('myApp.crearEventos', ['ngRoute'])
                 delete $scope.newEvent.$id;
                 delete $scope.newEvent.$$hashKey;
                 delete $scope.newEvent.$priority;
-            }
-
+            };
             $scope.mostrar = function () {
                 console.log($scope.newEvent.name);
-            }
+            };
             $scope.activarHoraGratisF = function () {
-
                 !$scope.activarHoraGratis;
-                console.log( !$scope.activarHoraGratis);
-
-            }
-
-
+                console.log(!$scope.activarHoraGratis);
+            };
 
             $scope.saveEvent = function () {
                 if (!validateFields())
@@ -487,10 +461,9 @@ angular.module('myApp.crearEventos', ['ngRoute'])
                 $scope.newEvent.toHour = new Date($scope.newEventEnd).getTime();
                 $scope.newEvent.policiesDoor = 'Hombres ' + $scope.ageRangeMale + ' | Mujeres ' + $scope.ageRangeFemale + ' | Dresscode ' + $scope.newEvent.clothing;
 
-                if($scope.activarHoraGratis = true){
+                if ($scope.activarHoraGratis = true) {
                     $scope.newEvent.freemiumHour = new Date($scope.newEvent.freemiumHour).getTime();
-                }else
-                {
+                } else {
                     $scope.newEvent.freemiumHour = new Date($scope.newEventStart).getTime();
                 }
                 $scope.newEvent.lat = getLatAndLng($scope.selectedClub, 'latitude');
@@ -526,42 +499,49 @@ angular.module('myApp.crearEventos', ['ngRoute'])
 
             $scope.serviciosEvent = [];
 
-            $scope.addNewChoice = function() {
-                var newItemNo = $scope.serviciosEvent.length+1;
+            $scope.addNewChoice = function () {
+                var newItemNo = $scope.serviciosEvent.length + 1;
                 $scope.serviciosEvent.push({
-                    tipo:$scope.tipoServicio
-
-                }
-                    );
+                        tipo: $scope.tipoServicio
+                    }
+                );
             };
 
-
             $scope.guardarServicios = function (servicioEvent) {
-            console.log("entre a guardar ")
+                console.log("entre a guardar ");
 
-              var tipoServicio = {
-                    precio: servicioEvent.precio,
-                    cantidad: servicioEvent.cantidad,
-                    maxEntradas: servicioEvent.maxEntradas,
-                    desc:  servicioEvent.desc
-                };
+                var tipoServicio = [];
+                console.log(servicioEvent);
+                console.log($scope.serviciosEvent);
+                if (servicioEvent !== 'undefined') {
+                    $scope.serviciosEvent.forEach(function (element, index, array) {
+                        var service = {
+                            precio: element.precio,
+                            cantidad: element.cantidad,
+                            maxEntradas: element.maxEntradas,
+                            desc: element.desc
+                        };
 
-                var newPostKey = firebase.database().ref().child('events/idevento123').push().key; //esto es solo para probar rapido
-               var serviceEvent = angular.toJson($scope.serviciosEvent);
-                firebase.database().ref('eventServices/idevento123/' + newPostKey + '/').set(tipoServicio).then(
-                    function(s){
+                        tipoServicio.push(service);
+                    });
+                }
 
+                var newPostKey = firebase.database().ref().child('events/' + $scope.newEvent.id + '/').push().key; //esto es solo para probar rapido
+                var serviceEvent = angular.toJson($scope.serviciosEvent);
+                //+ newPostKey + '/'
+                firebase.database().ref('eventServices/' + $scope.newEvent.id + '/').set(tipoServicio).then(
+                    function (s) {
                         alert('Se Agrego el asdasdasda Correctamente');
                         console.log('se guardo bien ', s);
-                    }, function(e) {
+                    }, function (e) {
                         alert('Error, intente de nuevo');
                         console.log('se guardo mal ', e);
                     }
                 );
-            }
+            };
 
-            $scope.removeChoice = function() {
-                var lastItem = $scope.serviciosEvent.length-1;
+            $scope.removeChoice = function () {
+                var lastItem = $scope.serviciosEvent.length - 1;
                 $scope.serviciosEvent.splice(lastItem);
             };
 
