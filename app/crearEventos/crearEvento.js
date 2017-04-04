@@ -243,6 +243,9 @@ angular.module('myApp.crearEventos', ['ngRoute'])
 
             var updateDoormanEvents = function (eventId) {
                 console.log(eventId);
+
+                firebase.database().ref('admins/' + window.currenUser.uid + '/events/' + $scope.newEvent.id).set(true);
+
                 $scope.myDoormans.forEach(function (entry) {
                     firebase.database().ref('doormans/' + entry.$id + '/events/' + $scope.newEvent.id).set(true).then(
                         function (s) {
@@ -261,7 +264,6 @@ angular.module('myApp.crearEventos', ['ngRoute'])
 
                 if (noRRpps > 0) {
                     updateRRppEvents(eventId);
-                    firebase.database().ref('admins/' + window.currenUser.uid + '/events/' + $scope.newEvent.id).set(true);
                 } else {
                     console.log("no tiene rrps ");
                 }
@@ -287,6 +289,7 @@ angular.module('myApp.crearEventos', ['ngRoute'])
                             firebase.database().ref('clubs/' + getclubId($scope.selectedClub) + '/events/' + $scope.newEvent.id).set(true).then(
                                 function (s) {
                                     updateDoormanEvents($scope.newEvent.id);
+                                    guardarServicios();
 
                                 }, managerError);
                         }, managerError);
@@ -507,7 +510,7 @@ angular.module('myApp.crearEventos', ['ngRoute'])
                 );
             };
 
-            $scope.guardarServicios = function (servicioEvent) {
+           var guardarServicios = function (servicioEvent) {
                 console.log("entre a guardar ");
 
                 var tipoServicio = [];
@@ -519,7 +522,8 @@ angular.module('myApp.crearEventos', ['ngRoute'])
                             precio: element.precio,
                             cantidad: element.cantidad,
                             maxEntradas: element.maxEntradas,
-                            desc: element.desc
+                            desc: element.desc,
+                            fechaFin :  new Date(element.fechaFin).getTime()
                         };
 
                         tipoServicio.push(service);
