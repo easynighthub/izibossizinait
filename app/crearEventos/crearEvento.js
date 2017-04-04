@@ -75,6 +75,7 @@ angular.module('myApp.crearEventos', ['ngRoute'])
                     });
                     if ($scope.cities.length === 1) {
                         $scope.citiesOne = true;
+
                     }
                 });
             };
