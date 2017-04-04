@@ -505,13 +505,51 @@ angular.module('myApp.crearEventos', ['ngRoute'])
 
             $scope.serviciosEvent = [];
 
-            $scope.addNewChoice = function () {
-                var newItemNo = $scope.serviciosEvent.length + 1;
+            $scope.addNewChoicePREVENTA = function () {
+                var newItemNo = $scope.PREVENTA;
                 $scope.serviciosEvent.push({
-                        tipo: $scope.tipoServicio
+                        tipo: "PREVENTA",
+                        color: '#f44336'
+
                     }
                 );
             };
+
+            $scope.addNewChoiceMESA = function () {
+                var newItemNo = $scope.MESA;
+                $scope.serviciosEvent.push({
+                        tipo: "MESA",
+                        color: '#8c9eff'
+                    }
+                );
+            };
+
+            $scope.addNewChoiceBOTELLAS = function () {
+                var newItemNo = $scope.BOTELLAS;
+                $scope.serviciosEvent.push({
+                        tipo: "BOTELLAS",
+                        color: '#4caf50'
+                    }
+                );
+            };
+
+            $scope.addNewChoiceVIP = function () {
+                var newItemNo = $scope.VIP;
+                $scope.serviciosEvent.push({
+                        tipo: "VIP",
+                        color: '#ffeb3b'
+                    }
+                );
+            };
+
+            $scope.addNewChoiceESPECIAL = function () {
+                var newItemNo = $scope.ESPECIAL;
+                $scope.serviciosEvent.push({
+                        tipo: "ESPECIAL"
+                    }
+                );
+            };
+
 
             var guardarServicios = function () {
                 if ("undefined" === typeof $scope.newEvent.id) {

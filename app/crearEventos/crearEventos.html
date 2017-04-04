@@ -96,12 +96,11 @@
         <br>
 
 
-
-
-        <div >
-            <md-input-container   class="mdl-cell mdl-cell&#45;&#45;12-col mdl-cell&#45;&#45;12-col-phone"   ng-show="citiesOne">
+        <div>
+            <md-input-container class="mdl-cell mdl-cell&#45;&#45;12-col mdl-cell&#45;&#45;12-col-phone"
+                                ng-show="citiesOne">
                 <label>Ciudad</label>
-                <md-select  ng-model="newEvent.city" class="city-select">
+                <md-select ng-model="newEvent.city" class="city-select">
                     <md-option ng-repeat="city in cities" selected ng-value="city.name">
                         {{city.name}}
                     </md-option>
@@ -109,11 +108,7 @@
             </md-input-container>
 
 
-
-
-
-
-            <div >
+            <div>
                 <md-input-container class="mdl-cell mdl-cell--12-col mdl-cell--12-col-phone">
                     <label>Club</label>
                     <md-select ng-model="selectedClub">
@@ -123,7 +118,7 @@
                     </md-select>
                 </md-input-container>
             </div>
-</div>
+        </div>
 
         <div class="col-xs-12 contentCard white-bg" STYLE="padding-top: 20px;padding-bottom :60px">
 
@@ -273,51 +268,123 @@
             </md-input-container>
           </div> -->
 
+        <div class="col-xs-12 contentCard white-bg" style="margin: 20px; padding-bottom: 50px"
+             data-ng-repeat="servicioEvent in serviciosEvent">
 
-        <button class="addfields" ng-click="addNewChoice()">Agregar Servicio</button>
+            <!-- datos de uno de los servicios -->
 
 
+            <div style="background-color: {{servicioEvent.color}}; color: white"
+                 class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-cell mdl-cell--12-col mdl-cell--12-col-phone">
+                <strong>{{servicioEvent.tipo}}</strong>
+            </div>
 
-        <select ng-model="tipoServicio">
-<!-- este es el tipo de servicio -->
-            <option ng-value="PREVENTA">PREVENTA</option>
-            <option ng-value="MESA" >MESA</option>
-            <option ng-value="BOTELLAS">BOTELLAS</option>
-            <option ng-value="VIP">VIP</option>
-        </select>
+            <div>
+                <input class="mdl-cell mdl-cell--1-col mdl-cell--12-col-phone form-control br-2  checkInput"
+                       style="width: 30%; float: right"
 
-        <fieldset  data-ng-repeat="servicioEvent in serviciosEvent">
-<!-- datos de uno de los servicios -->
-            <input type="text" ng-model="servicioEvent.tipo" name="" placeholder="TIPO">
-            <input type="text" ng-model="servicioEvent.precio" name="" placeholder="Precio">
-            <input type="text" ng-model="servicioEvent.cantidad" name="" placeholder="Cantidad">
-            <input type="text" ng-model="servicioEvent.maxEntradas" name="" placeholder="maximo de Entradas">
-            <input type="text" ng-model="servicioEvent.desc" name="" placeholder="Descripción">
+                       required="required"
+                       type="number"
+                       ng-model="servicioEvent.precio" placeholder="Precio">
 
-            <div style="float: left; width:50%;overflow:hidden;">
+                <input class="mdl-cell mdl-cell--1-col mdl-cell--12-col-phone form-control br-2  checkInput"
+                       style="width: 30%; float: right"
+                       required="required"
+                       type="number"
+                       ng-model="servicioEvent.cantidad" placeholder="Cantidad">
+
+                <input class="mdl-cell mdl-cell--1-col mdl-cell--12-col-phone form-control br-2  checkInput"
+                       style="width: 30%; float: right"
+                       required="required"
+                       type="number"
+                       ng-model="servicioEvent.maxEntradas" placeholder="Max entradas por compra">
+            </div>
+
+
+            <md-input-container class="mdl-cell mdl-cell--12-col mdl-cell--12-col-phone md-block">
+
+                    <textarea required ng-model="servicioEvent.desc" placeholder="Descripción" md-maxlength="300"
+                              rows="5"
+                              md-select-on-focus></textarea>
+            </md-input-container>
+
+            <div>
+                <i class="material-icons">event</i>
                 <md-input-container class="mdl-cell mdl-cell--12-col mdl-cell--12-col-phone">
                     <input mdc-datetime-picker="" date="true" time="true" type="text" id=""
-                           placeholder="Finalización" ng-model="servicioEvent.fechaFin" class="md-input">
+                           placeholder="Finalizar venta" ng-model="servicioEvent.fechaFin" class="md-input">
                 </md-input-container>
             </div>
 
-                <button class="remove" ng-show="$last" ng-click="removeChoice()">-</button>
-        </fieldset>
+
+            <div class="absolute grey-70-c " style="right: 0px">
+                <i ng-click="removeChoice()" class="material-icons pointer btn_rsvp_trash">delete_forever</i>
+            </div>
+        </div>
+
+
+        <div class="white-bg mdl-cell mdl-cell--12-col mdl-cell--12-col-phone md-block"
+             style="vertical-align: middle">
+            <div style="float: left; width: 30%">
+                <STRONG>AÑADIR PROMOCION</STRONG>
+            </div>
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-color--red mdl-color-text--white"
+                    style="width: 15%;float: right; margin: 10px"
+                    ng-click="addNewChoicePREVENTA()" ng-model="PREVENTA">
+                <i class="material-icons">add_box</i>
+                PREVENTA
+            </button>
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-color--indigo-A100 mdl-color-text--white"
+                    style="width: 15%;float: right; margin: 10px"
+                    ng-click="addNewChoiceMESA()"
+                    ng-model="MESA">
+                <i class="material-icons">add_box</i>
+                MESA
+            </button>
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-color--green mdl-color-text--white"
+                    style="width: 15%;float: right; margin: 10px"
+                    ng-click="addNewChoiceBOTELLAS()" ng-model="PREVENTA">
+                <i class="material-icons">add_box</i>
+                BOTELLAS
+            </button>
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-color--yellow mdl-color-text--white"
+                    style="width: 15%;float: right; margin: 10px"
+                    ng-click="addNewChoiceVIP()"
+                    ng-model="VIP">
+                <i class="material-icons">add_box</i>
+                VIP
+            </button>
+        </div>
+
+
+        <!--
+                <button class="addfields addfields mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-cell mdl-cell--5-col mdl-cell--12-col-phone" ng-click="addNewChoice()">Agregar Servicio</button>
+
+        <select ng-model="tipoServicio">
+            &lt;!&ndash; este es el tipo de servicio &ndash;&gt;
+            <option ng-value="PREVENTA">PREVENTA</option>
+            <option ng-value="MESA">MESA</option>
+            <option ng-value="BOTELLAS">BOTELLAS</option>
+            <option ng-value="VIP">VIP</option>
+        </select>
+-->
+
+
+        <!--   <button ng-click="guardarServicios(serviciosEvent)"
 
         <div id="choicesDisplay">
-            {{ serviciosEvent }}
-        </div>
-     <!--   <button ng-click="guardarServicios(serviciosEvent)"
-                class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-cell mdl-cell--12-col mdl-cell--12-col-phone">
-            Guardar Servicios
-        </button> -->
+               {{ serviciosEvent }}
+           </div>
+                   class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-cell mdl-cell--12-col mdl-cell--12-col-phone">
+               Guardar Servicios
+           </button> -->
 
 
         <div class="col-xs-12 mdl-cell mdl-cell--12-col mdl-cell--12-col-phone contentCard white-bg">
             <center>
                 <button ng-click="saveEvent()"
                         class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-cell mdl-cell--12-col mdl-cell--12-col-phone">
-                    PUBLICAR
+                    <strong>PUBLICAR</strong>
                 </button>
 
 
