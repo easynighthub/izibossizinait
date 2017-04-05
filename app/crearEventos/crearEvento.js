@@ -246,7 +246,8 @@ angular.module('myApp.crearEventos', ['ngRoute'])
                 console.log(eventId);
 
                 firebase.database().ref('admins/' + window.currenUser.uid + '/events/' + $scope.newEvent.id).set(true);
-
+                console("guarde bien el events id en el administrador");
+                console.log("entro a guardar doormans");
                 $scope.myDoormans.forEach(function (entry) {
                     firebase.database().ref('doormans/' + entry.$id + '/events/' + $scope.newEvent.id).set(true).then(
                         function (s) {
@@ -284,13 +285,14 @@ angular.module('myApp.crearEventos', ['ngRoute'])
                 var file = $('#imgInp')[0].files[0];
                 var ref = firebase.storage().ref('eventImages/' + Date.now() + '/' + file.name);
                 ref.put(file).then(function (snapshot) {
+                    console.log("guarde bien la imagen");
                     $scope.newEvent.image = snapshot.a.downloadURLs[0];
                     firebase.database().ref('events/' + $scope.newEvent.id).set($scope.newEvent).then(
                         function (s) {
                             firebase.database().ref('clubs/' + getclubId($scope.selectedClub) + '/events/' + $scope.newEvent.id).set(true).then(
                                 function (s) {
+                                    console.log("guerde bien todo el evento");
                                     updateDoormanEvents($scope.newEvent.id);
-                                    guardarServicios();
 
                                 }, managerError);
                         }, managerError);
@@ -491,6 +493,7 @@ angular.module('myApp.crearEventos', ['ngRoute'])
                 $scope.newEvent.freeCover = 0;
                 $scope.newEvent.isPremiumEvent = false;
 
+                console.log("entre a guardar los servicios");
                 guardarServicios();
 
                 cleanObject();
@@ -575,8 +578,7 @@ angular.module('myApp.crearEventos', ['ngRoute'])
                     var newPostKey = firebase.database().ref().child('events/' + $scope.newEvent.id + '/').push().key; //esto es solo para probar rapido
                     firebase.database().ref('eventServices/' + $scope.newEvent.id + '/').set(tipoServicio).then(
                         function (s) {
-                            alert('Se Agrego el asdasdasda Correctamente');
-                            console.log('se guardo bien ', s);
+                            console.log('se guardaron bien los servicios ', s);
                         }, function (e) {
                             alert('Error, intente de nuevo');
                             console.log('se guardo mal ', e);
