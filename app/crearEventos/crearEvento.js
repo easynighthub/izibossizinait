@@ -243,10 +243,11 @@ angular.module('myApp.crearEventos', ['ngRoute'])
             };
 
             var updateDoormanEvents = function (eventId) {
+
                 console.log(eventId);
 
                 firebase.database().ref('admins/' + window.currenUser.uid + '/events/' + $scope.newEvent.id).set(true);
-                console("guarde bien el events id en el administrador");
+                console.log("guarde bien el events id en el administrador");
                 console.log("entro a guardar doormans");
                 $scope.myDoormans.forEach(function (entry) {
                     firebase.database().ref('doormans/' + entry.$id + '/events/' + $scope.newEvent.id).set(true).then(
@@ -291,8 +292,9 @@ angular.module('myApp.crearEventos', ['ngRoute'])
                         function (s) {
                             firebase.database().ref('clubs/' + getclubId($scope.selectedClub) + '/events/' + $scope.newEvent.id).set(true).then(
                                 function (s) {
-                                    console.log("guerde bien todo el evento");
+
                                     updateDoormanEvents($scope.newEvent.id);
+                                    console.log("guerde bien todo el evento");
 
                                 }, managerError);
                         }, managerError);
