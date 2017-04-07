@@ -9,10 +9,10 @@
     <table class=" mdl-cell--10-col mdl-cell--10-col-phone mdl-data-table mdl-js-data-table  mdl-shadow--2dp">
         <thead>
         <tr  >
-            <th class="mdl-data-table__cell--non-numeric">#</th>
             <th>Habilitado</th>
             <th>Nombre</th>
             <th>Correo</th>
+            <th>Link</th>
 
          <!--   <th>ASISTENCIAS MENSUALES</th> -->
 
@@ -21,7 +21,6 @@
         <tbody ng-repeat="rrpp in rrpps">
         <tr>
 
-            <td class="mdl-data-table__cell--non-numeric">{{$index+1}}</td>
             <td>
                 <i ng-show="rrpp.admins == false"  ng-click="validar(rrpp)" aria-hidden="true">
                 <button class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored">
@@ -35,6 +34,7 @@
                 </i></td>
             <td>{{rrpp.name}}</td>
             <td>{{rrpp.email}}</td>
+            <td><a href="http://www.izinait.com/user/app/rrpp#{{rrpp.nickName}}">www.izinait.com/user/app/rrpp#{{rrpp.nickName}}</a> </td>
 
 
 

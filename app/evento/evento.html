@@ -7,6 +7,44 @@
 </center>
 
 <center>
+<table class=" mdl-cell--10-col mdl-cell--10-col-phone mdl-data-table mdl-js-data-table  mdl-shadow--2dp">
+	<thead>
+	<tr  >
+		<th class="mdl-data-table__cell--non-numeric">RRPP</th>
+		<th class="mdl-data-table__cell--non-numeric">IMPRESIONES</th>
+	</tr>
+	</thead>
+	<tbody ng-repeat="rrpp in rrpps">
+	<tr>
+
+		<td class="mdl-data-table__cell--non-numeric">{{rrpp.name}}</td>
+		<td class="mdl-data-table__cell--non-numeric">{{rrpp.openLink}}</td>
+
+
+	</tr>
+	</tbody>
+</table>
+	<br>RESERVAS <br>
+
+	<table class=" mdl-cell--10-col mdl-cell--10-col-phone mdl-data-table mdl-js-data-table  mdl-shadow--2dp">
+		<thead>
+		<tr  >
+			<th class="mdl-data-table__cell--non-numeric">Nombre Reserva</th>
+			<th class="mdl-data-table__cell--non-numeric">Valor</th>
+		</tr>
+		</thead>
+		<tbody ng-repeat="ticketUP in ticketsUP">
+		<tr>
+
+			<td class="mdl-data-table__cell--non-numeric">{{ticketUP.firstName+" "+ticketUP.lastName}}</td>
+			<td class="mdl-data-table__cell--non-numeric">{{ticketUP.totalAPagar}}</td>
+
+
+		</tr>
+		</tbody>
+	</table>
+</center>
+<center>
 	<h6>{{event.name}}</h6>
 
 	<div class="mdl-cell mdl-cell--12-col mdl-cell--12-col-phone">

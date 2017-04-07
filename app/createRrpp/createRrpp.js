@@ -53,6 +53,7 @@ angular.module('myApp.createRrpp', ['ngRoute'])
                 $scope.nombre = document.getElementById('nombre').value;
                 $scope.correo = document.getElementById('correo').value;
                 $scope.password = "proizinait";
+                $scope.nickName = document.getElementById('nickName').value;
 
 
 
@@ -64,15 +65,51 @@ angular.module('myApp.createRrpp', ['ngRoute'])
                     alert('Debe ingresar un nombre');
                     return;
                 }
+                if (!$scope.nickName) {
+                    alert('Debe ingresar un nickname');
+                    return;
+                }
+
+
+                if ($scope.nickName) {
+
+                    var buscarNickname = firebase.database().ref('/rrpps');
+                    var buscarmeRequest = $firebaseArray(buscarNickname);
+                    buscarmeRequest.$loaded().then(function () {
+                        $scope.rrpps = buscarmeRequest;
+                        console.log("ENTRO A LOS RRPPS");
+                        console.log($scope.rrpps);
+                        console.log("entre si mi nick estiste dentro de los rrpps");
+
+                        buscarNickname.once("value").then(function (snapshot) {
+                                $scope.rrpps.forEach(function (data) {
+                                    console.log("entre si mi nick estiste dentro de los rrpps");
+                                    var c = snapshot.child(data.$id+'/nickName').exists(); // true
+                                    if(data.nickName == $scope.nickName){
+                                        var nickNameYaExiste = true ;
+                                        console.log(nickNameYaExiste);
+                                        alert("El NICKNAME utilizado ya existe en otro rrpp, elije, escribe algo distinto");
+                                        return;
+                                    }
+
+                                });
+                            });
+
+                    });
+
+
+                }
 
 
 
                 var rrppRequest = $firebaseArray(firebase.database().ref('/rrpps'));
                 rrppRequest.$loaded().then(function(){
+                    console.log("no llegue hasta aca");
                     var rrppExist = $filter('filter')(rrppRequest, {email: $scope.correo});
                     console.log(rrppExist);
                     if (rrppExist.length > 0) {
-                        addRrppToAdmin(rrppExist[0].uid, true);
+                       // addRrppToAdmin(rrppExist[0].uid, true);
+
                     } else {
                         firebase.auth().createUserWithEmailAndPassword($scope.correo, $scope.password).then(
                             function(s) {
@@ -81,10 +118,11 @@ angular.module('myApp.createRrpp', ['ngRoute'])
                                     activo: true,
                                     email: $scope.correo,
                                     name: $scope.nombre,
-                                    uid: s.uid
+                                    uid: s.uid,
+                                    nickName : $scope.nickName
 
                                 };
-                                saveToFIrebase(rrpp);
+                               saveToFIrebase(rrpp);
                             }, function(e) {
                                 console.log(e);
                             }

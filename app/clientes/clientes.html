@@ -5,13 +5,13 @@
 	<thead>
 	<tr  >
 		<th class="mdl-data-table__cell--non-numeric">#</th>
-		<th>Foto</th>
+	<!-- <th>Foto</th> -->
 				<th>Nombre</th>
 		<th>sexo</th>
 		<th>Correo</th>
 		<th>Ultimo evento</th>
 		<th>Cumpleaños</th>
-		<th>Valoracion promedio</th>
+	<!--	<th>Valoracion promedio</th> -->
 	</tr>
 	</thead>
 	<tbody ng-repeat="cliente in clientes">
@@ -19,7 +19,7 @@
 
 		<td class="mdl-data-table__cell--non-numeric">{{$index+1}}</td>
 
-		<td><img class="mdl-list__item-avatar" src="{{cliente.picture}}"></td>
+		<!--<td><img class="mdl-list__item-avatar" src="{{cliente.picture}}"></td> -->
 
 		<td>{{cliente.firstName}} {{cliente.lastName}}</td>
 		<td class="gender-icon">
@@ -30,8 +30,8 @@
 		<td>{{cliente.lastDate | date : 'shortDate' }}</td>
 		<td>{{cliente.birthday}}</td>
 
-		<td> <i class="material-icons ">star</i><i class="material-icons ">star</i><i class="material-icons ">star</i><i class="material-icons ">star</i><i class="material-icons ">star</i> </td>
-
+	<!--	<td> <i class="material-icons ">star</i><i class="material-icons ">star</i><i class="material-icons ">star</i><i class="material-icons ">star</i><i class="material-icons ">star</i> </td>
+-->
 	</tr>
 	</tbody>
 </table>

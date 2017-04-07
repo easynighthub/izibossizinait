@@ -26,7 +26,74 @@ angular.module('myApp.evento', ['ngRoute'])
 	var descNotActive = 0;
         $('.modulo').text('Informe Evento');
 
-	var loadCharts = function() {
+        $scope.rrpps = [];
+        $scope.ticketsUP = [];
+
+
+        var impresionesRQ = $firebaseArray(firebase.database().ref("impresiones/").child($scope.event.$id));
+        console.log($scope.event.$id);
+        impresionesRQ.$loaded().then(function(){
+            $scope.todasLasImpresiones = impresionesRQ;
+          //  console.log( $scope.todasLasImpresiones);
+        });
+
+            var ref2 = firebase.database().ref('/rrpps');
+            var rrppsRequest = $firebaseArray(ref2);
+            rrppsRequest.$loaded().then(function(){
+                var adminRrpps = Object.keys(window.adminData.rrpps);
+                angular.forEach(rrppsRequest, function(d){
+                    if (adminRrpps.indexOf(d.uid) >= 0){
+
+
+                        angular.forEach(impresionesRQ, function(j){
+                            console.log("entro aca por lo menos");
+                            if (d.$id == (j.$id)){
+                                d.openLink = j.openLink;
+                               // console.log(d.openLink);
+                                $scope.rrpps.push(d);
+                                //console.log(d);
+
+                            }
+                        });
+
+                    }
+                });
+
+            });
+
+
+        var buscarTicketsEvent = firebase.database().ref('/tickets/' + $scope.event.$id);
+        var buscarTicketsEventRQ = $firebaseArray(buscarTicketsEvent);
+        buscarTicketsEventRQ.$loaded().then(function () {
+
+            $scope.todosLosTickets = buscarTicketsEventRQ;
+            $scope.usertickets = $scope.todosLosTickets;
+
+            buscarTicketsEvent.once("value").then(function (snapshot) {
+                $scope.usertickets.forEach(function (data) {
+                    var c = snapshot.child(data.$id).exists(); // true
+                    console.log(data.$id);
+                    if (c === true) {
+                        var buscarTicketsUsuario = firebase.database().ref('/tickets/' + $scope.event.$id+'/').child(data.$id);
+                        var buscarTicketsUsuarioRQ = $firebaseArray(buscarTicketsUsuario);
+                        buscarTicketsUsuarioRQ.$loaded().then(function () {
+                            angular.forEach(buscarTicketsUsuarioRQ, function(x){
+                                console.log("llegue a hacer push");
+                             $scope.ticketsUP.push(x);
+                             console.log( $scope.ticketsUP);
+                            });
+
+
+                        });
+                    }
+
+                });
+            });
+
+        });
+
+
+            var loadCharts = function() {
       google.charts.load('current', {'packages':['corechart']});
       google.charts.setOnLoadCallback(drawChart);
       function drawChart() {

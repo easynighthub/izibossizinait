@@ -39,6 +39,8 @@ angular.module('myApp.clientes', ['ngRoute'])
 	}
 
 	if (window.adminData) {
+        $('.user-header .text.user').text(window.adminData.name);
+        $('.modulo').text("Clientes");
 		getClients();
 	} else {
 		if (window.currenUser){
@@ -46,6 +48,8 @@ angular.module('myApp.clientes', ['ngRoute'])
 			var adminData = $firebaseObject(ref);
 			adminData.$loaded().then(function(){
 				window.adminData = adminData;
+                $('.user-header .text.user').text(window.adminData.name);
+                $('.modulo').text("Clientes");
 				getClients();
 			});
 		} else {
