@@ -30,14 +30,32 @@
 		<thead>
 		<tr  >
 			<th class="mdl-data-table__cell--non-numeric">Nombre Reserva</th>
+			<th class="mdl-data-table__cell--non-numeric">Servicio</th>
+			<th class="mdl-data-table__cell--non-numeric">Nombre RRPP</th>
 			<th class="mdl-data-table__cell--non-numeric">Valor</th>
+			<th class="mdl-data-table__cell--non-numeric">Pagado</th>
 		</tr>
 		</thead>
 		<tbody ng-repeat="ticketUP in ticketsUP">
 		<tr>
 
 			<td class="mdl-data-table__cell--non-numeric">{{ticketUP.firstName+" "+ticketUP.lastName}}</td>
+			<td class="mdl-data-table__cell--non-numeric">{{ticketUP.tipoService}}</td>
+			<td class="mdl-data-table__cell--non-numeric">{{ticketUP.nameRRPP}}</td>
 			<td class="mdl-data-table__cell--non-numeric">{{ticketUP.totalAPagar}}</td>
+
+			<td class="mdl-data-table__cell--non-numeric">
+				<i ng-show="ticketUP.paidOut == false"  ng-click="validar(ticketUP)" aria-hidden="true">
+					<button class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored">
+						<i class="material-icons">&#xE5CD;</i>
+					</button>
+				</i>
+				<i ng-show="ticketUP.paidOut == true"  ng-click="validar(ticketUP)" aria-hidden="true">
+					<button class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored">
+						<i class="material-icons">&#xE876;</i>
+					</button>
+				</i>
+			</td>
 
 
 		</tr>

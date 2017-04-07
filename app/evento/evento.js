@@ -77,12 +77,43 @@ angular.module('myApp.evento', ['ngRoute'])
                         var buscarTicketsUsuario = firebase.database().ref('/tickets/' + $scope.event.$id+'/').child(data.$id);
                         var buscarTicketsUsuarioRQ = $firebaseArray(buscarTicketsUsuario);
                         buscarTicketsUsuarioRQ.$loaded().then(function () {
-                            angular.forEach(buscarTicketsUsuarioRQ, function(x){
-                                console.log("llegue a hacer push");
-                             $scope.ticketsUP.push(x);
-                             console.log( $scope.ticketsUP);
-                            });
+                            angular.forEach(buscarTicketsUsuarioRQ, function(x) {
 
+
+
+
+                                rrppsRequest.$loaded().then(function () {
+                                    angular.forEach(rrppsRequest, function (h) {
+
+                                        if (x.rrppid == h.$id) {
+                                          // x.nameRRPP = h.name;
+                                         // $scope.ticketsUP.push(x);
+                                            x.nameRRPP = h.name;
+                                            // console.log(d.openLink);
+                                          //  $scope.ticketsUP.push(x);
+                                            var buscarServiciosEvents = firebase.database().ref('/eventServices/').child($scope.event.$id);
+                                            var buscarServiciosEventsRQ = $firebaseArray(buscarServiciosEvents);
+                                            buscarServiciosEventsRQ.$loaded().then(function () {
+                                                angular.forEach(buscarServiciosEventsRQ, function(k) {
+                                                    if (x.ideventservices == k.$id) {
+                                                        // x.nameRRPP = h.name;
+                                                        // $scope.ticketsUP.push(x);
+                                                        x.tipoService = k.tipo;
+                                                        // console.log(d.openLink);
+                                                        //  $scope.ticketsUP.push(x);
+                                                        $scope.ticketsUP.push(x);
+
+                                                    }
+
+                                                });
+                                            });
+                                        }
+
+
+
+                                    });
+                                });
+                            });
 
                         });
                     }
@@ -91,6 +122,16 @@ angular.module('myApp.evento', ['ngRoute'])
             });
 
         });
+
+
+        $scope.validar = function (ticketUP) {
+            console.log(ticketUP);
+            var TicketActualizar = ticketUP;
+            var ref = firebase.database().ref('tickets/'+ticketUP.eventId+'/'+ticketUP.userId).child(ticketUP.$id);
+            ref.update({
+                paidOut : !TicketActualizar.paidOut
+            });
+        };
 
 
             var loadCharts = function() {
