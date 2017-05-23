@@ -29,12 +29,34 @@ angular.module('myApp.eventos', ['ngRoute'])
 		$('.modulo').text("Eventos");
 	}
 
+
 	var ref1 = firebase.database().ref('/events').orderByChild('admin').equalTo(window.currenUser.uid);
 	var eventsRequest = $firebaseArray(ref1);
 	eventsRequest.$loaded().then(function(){
 		$scope.Allvents = eventsRequest;
-		$scope.events = $scope.Allvents;
+        $scope.events = $filter('filter')($scope.Allvents, getFuturesEvents);
+        $scope.events.forEach(function () {
+
+
+        });
 	});
+
+        var getFuturesEvents = function (value, index, array) {
+            // var currentDay = new Date().getTime();
+            var date = new Date().getTime();
+            // if (currentDay < value.toHour){
+            if (date < value.toHour) {
+                console.log("hooola");
+                return true;
+
+            }
+            //}
+            else
+                return false;
+        }
+
+
+
 
 	$scope.filterEventsByText = function() {
 		$scope.events = $filter('filter')($scope.Allvents, {name: $scope.filterNameInput});
