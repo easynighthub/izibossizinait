@@ -20,8 +20,7 @@ angular.module('myApp', [
   'myApp.eventosPasados',
   'myApp.rrpps',
   'myApp.createRrpp',
-  'myApp.version',
-
+  'myApp.version'
 ]).
 config(['$locationProvider', '$routeProvider',
   function($locationProvider, $routeProvider) {

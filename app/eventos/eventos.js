@@ -14,6 +14,8 @@ angular.module('myApp.eventos', ['ngRoute'])
 
 	$scope.filterDateInput = new Date();
 	$scope.isFuture = true;
+        $scope.eventsWithServices = [];
+
 
 	if (!window.adminData) {
 	  var ref = firebase.database().ref('/admins/').child(window.currenUser.uid);
@@ -35,9 +37,17 @@ angular.module('myApp.eventos', ['ngRoute'])
 	eventsRequest.$loaded().then(function(){
 		$scope.Allvents = eventsRequest;
         $scope.events = $filter('filter')($scope.Allvents, getFuturesEvents);
-        $scope.events.forEach(function () {
 
 
+
+        $scope.events.forEach(function (x) {
+            var eventServices = firebase.database().ref('/eventServices/'+x.$id);
+            var eventServicesRQ = $firebaseArray(eventServices);
+            eventServicesRQ.$loaded().then(function(){
+			x.reservas = eventServicesRQ;
+            	$scope.eventsWithServices.push(x);
+            	console.log($scope.eventsWithServices);
+            });
         });
 	});
 
@@ -46,7 +56,6 @@ angular.module('myApp.eventos', ['ngRoute'])
             var date = new Date().getTime();
             // if (currentDay < value.toHour){
             if (date < value.toHour) {
-                console.log("hooola");
                 return true;
 
             }

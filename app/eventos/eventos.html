@@ -2,7 +2,7 @@
 	<br>
 
 
-	<div class="filter-container">
+	<!--<div class="filter-container">
 
 		<md-input-container class="mdl-cell mdl-cell--3-col mdl-cell--12-col-phone">
 			<label >buscar por nombre</label>
@@ -19,20 +19,21 @@
 		<button  ng-click="seeAllEvents()"
 				 class="mdl-cell mdl-cell--3-col mdl-cell--12-col-phone mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"> Ver Todos</button>
 
-	</div>
+	</div> -->
 	<br>
 
 
 	<div class="mdl-grid">
 
-	<div class="event  mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--12-col-phone"
-		 ng-repeat="event in events  " ng-click="goToEventDetails(event)">
+	<div class="event  mdl-shadow--2dp mdl-cell mdl-cell--6-col mdl-cell--12-col-phone"
+		 ng-repeat="event in eventsWithServices  " ng-click="goToEventDetails(event)">
 
 
 		<div class="">
-			<div class="thumbnail">
+			<div class="thumbnail mdl-color--white">
 				<center>
-					<div class="event-img"
+					<div style="float: left" class="mdl-cell--6-col mdl-cell--12-col-phone">
+					<div class="event-img "
 						 style="background: url('{{event.image}}')  center center; background-size: cover; ">
 						<div class="event-overlay">
 
@@ -50,22 +51,40 @@
 
 
 						</div>
-
-
 					</div>
-					<div class=" mdl-color--white">
+					</div>
+					<div  style="float: left" class=" mdl-cell--6-col mdl-cell--12-col-phone">
+						Servicios<br>
+						<div ng-repeat="reserva in event.reservas  ">
+							<tr>
+
+
+								<td>{{reserva.tipo	}}</td>
+								<td>{{reserva.utilizados}} </td>
+
+
+
+							</tr>
+
+						</div>
+						<a class="mdl-cell mdl-cell--8-col mdl-cell--12-col-phone mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect "
+						   href="http://izinait.com/app/#!/detalleEvento?id={{event.$id}}">Ver en Izinait</a>
+						<i ng-show="event.visible == false" aria-hidden="true">
+							<button  class="mdl-button mdl-js-button mdl-button--primary">
+								Pendiente
+							</button>
+						</i>
+						<i ng-show="event.visible == true"  aria-hidden="true">
+							<button class="mdl-button mdl-js-button mdl-button--accent">
+								Habilitado
+							</button>
+						</i>
+					</div>
+
+					<div style="clear:both;" class=" mdl-color--white">
 						<div class="textoNombreEvento">
 							{{event.name}} <br>
-							<i ng-show="event.visible == false" aria-hidden="true">
-								<button  class="mdl-button mdl-js-button mdl-button--primary">
-									Pendiente
-								</button>
-								</i>
-							<i ng-show="event.visible == true"  aria-hidden="true">
-								<button class="mdl-button mdl-js-button mdl-button--accent">
-									Habilitado
-								</button>
-								</i>
+
 						</div>
 
 						<button class="mdl-cell mdl-cell--4-col mdl-cell--12-col-phone mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect "
@@ -74,8 +93,8 @@
 						<button class=" mdl-cell--4-col mdl-cell--12-col-phone mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect "
 								ng-click="duplicateEvent($index)">Duplicar</button>
 
-						<a class="mdl-cell mdl-cell--4-col mdl-cell--12-col-phone mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect "
-								href="http://izinait.com/app/#!/detalleEvento?id={{event.$id}}">Ver</a>
+						<button class="mdl-cell	 mdl-cell--4-col mdl-cell--12-col-phone mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect "
+								ng-click="duplicateEvent($index)">Editar</button>
 
 					<!--	<div class="j2">
 							<i class="material-icons" style="vertical-align: middle;">music_note</i>
@@ -90,6 +109,10 @@
 
 			</div>
 		</div>
+
+
+
+
 	</div>
 
 </div>

@@ -1,5 +1,13 @@
 var ingresarAdmin = document.getElementById('signIn');
 
+
+function recuperarContrasena() {
+    document.getElementById('textCorreoRecuperar').style.display = 'block';
+    document.getElementById('correoRecuperar').style.display = 'block';
+    document.getElementById('datosIngreso').style.display = 'none';
+
+}
+
 ingresarAdmin.addEventListener('click', function() {
 
 
